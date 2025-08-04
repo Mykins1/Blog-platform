@@ -1,6 +1,7 @@
 {
   "name": "socia-blog",
   "homepage": "https://mykins1.github.io/Socia-blog/",
+  "private": true,
   "version": "0.0.0",
   "type": "module",
   "scripts": {
