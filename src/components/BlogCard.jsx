@@ -21,7 +21,7 @@ const BlogCard = ({ blogs }) => {
 const BlogItem = ({ blog }) => {
   const [isExpanded, setIsExpanded] = useState(false);
   const [likes, setLikes] = useState(blog.likes || 0);
-  // const [comments, setComments] = useState(blog.comments || 0);
+  const [comments, setComments] = useState(blog.comments || 0);
   const [saved, setSaved] = useState(blog.saved || 0);
   const [liked, setLiked] = useState(false);
   const [isSaved, setIsSaved] = useState(false);
