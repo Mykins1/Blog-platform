@@ -2,13 +2,21 @@
 import BlogCard from "../components/BlogCard";
 import Messages from "../components/messages";
 import { Pen, Plus, SquarePen, User, Users } from "lucide-react";
-import useFetch from "../components/Handling";
+// import useFetch from "../components/Handling";
 import UserDropdown from "../components/Dropdown";
-
+import blogData from "../../blogData/db"
+import {useState} from "react"
 const Blog = () => {
-  const { data, isPending, error } = useFetch(
-    "https://mykins1.github.io/data/db.json"
-  );
+  // const { blogData, isPending, error } = useFetch(
+  //   "https://mykins1.github.io/blogData/db.json"
+  // );
+  const [isPending, setIsPending] = useState(true)
+  const error = false
+
+  setTimeout(() => {
+    setIsPending(false)
+  }, 10000)
+
   return (
     <div
       className=""
@@ -25,7 +33,7 @@ const Blog = () => {
       ) : (
         <div className="flex flex-col items-center max-w-4xl mx-auto w-full bg-white">
           
-          {data && <BlogCard blogs={data} title="Blogs" />}
+          {blogData && <BlogCard blogs={blogData} title="Blogs" />}
         </div>
       )}
     </div>

@@ -1,5 +1,4 @@
-{
-  "blogs": [
+  const blogData =  [
     {
       "img": "https://images.unsplash.com/photo-1502086223501-7ea6ecd79368?auto=format&fit=crop&w=900&q=80",
       "title": "Understanding React Hooks",
@@ -91,4 +90,6 @@
       "proffession": "Accessibility Specialist"
     }
   ]
-}
+
+
+  export default blogData;
