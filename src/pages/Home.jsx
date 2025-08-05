@@ -4,7 +4,7 @@ import Messages from "../components/messages";
 import { Pen, Plus, SquarePen, User, Users } from "lucide-react";
 // import useFetch from "../components/Handling";
 import UserDropdown from "../components/Dropdown";
-import blogData from "../../blogData/db"
+import blogData from "../../data/db.js"
 import {useState} from "react"
 const Blog = () => {
   // const { blogData, isPending, error } = useFetch(
