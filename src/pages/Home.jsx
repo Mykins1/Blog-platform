@@ -7,9 +7,7 @@ import UserDropdown from "../components/Dropdown";
 import blogData from "../../data/db.js"
 import {useState} from "react"
 const Blog = () => {
-  // const { blogData, isPending, error } = useFetch(
-  //   "https://mykins1.github.io/blogData/db.json"
-  // );
+  
   const [isPending, setIsPending] = useState(true)
   const error = false
 
@@ -32,8 +30,7 @@ const Blog = () => {
         </div>
       ) : (
         <div className="flex flex-col items-center max-w-4xl mx-auto w-full bg-white">
-          
-          {blogData && <BlogCard blogs={blogData} title="Blogs" />}
+          {blogData && <BlogCard blogs={blogData.blogs} title="Blogs" />}
         </div>
       )}
     </div>

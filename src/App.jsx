@@ -7,6 +7,7 @@ import Notifications from "./pages/Notification";
 import Settings from "./pages/Settings";
 import "./App.css";
 import BlogDetails from "./pages/BlogDetails";
+import SearchPage from "./pages/SearchPage";
 
 function App() {
   return (

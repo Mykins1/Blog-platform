@@ -1,7 +1,7 @@
 
 const Footer = () => {
     return (
-      <footer className="flex flex-col items-center justify-between gap-5 mb-2">
+      <footer className="flex flex-col items-center justify-between gap-5 mb-2 mt-auto">
         <div className=" flex justify-evenly w-full text-gray-700 ">
           {/* <a
             href="/blogs"

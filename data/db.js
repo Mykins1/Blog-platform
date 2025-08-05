@@ -1,4 +1,5 @@
-  const blogData =  [
+  const blogData =  {
+    blogs: [
     {
       "img": "https://images.unsplash.com/photo-1502086223501-7ea6ecd79368?auto=format&fit=crop&w=900&q=80",
       "title": "Understanding React Hooks",
@@ -91,5 +92,6 @@
     }
   ]
 
+  }
 
   export default blogData;
