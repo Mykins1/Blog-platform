@@ -4,6 +4,15 @@ import tailwindcss from '@tailwindcss/vite'
 
 // https://vite.dev/config/
 export default defineConfig({
-  base: "/Socia-blog",
-  plugins: [react(), tailwindcss()],
+  
+  plugins: [react(), tailwindcss(
+    {
+      theme: {
+        extend: {
+          fontFamily: {
+            "system-ui": ['"Segoe UI"', '"Helvetica Neue"', "Arial", "sans-serif"],
+          },
+        },
+      },
+  })],
 });

@@ -150,9 +150,6 @@ const BlogItem = ({ blog }) => {
           // Placeholder for comment click
         >
           <ChatCircle size={20} weight="regular" />
-          <span className="text-sm w-6 text-center inline-block">
-            {comments}
-          </span>
         </button>
         {/* Repost */}
         <button
