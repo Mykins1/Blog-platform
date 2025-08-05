@@ -82,8 +82,6 @@ const BlogItem = ({ blog }) => {
   return (
     <div className="max-w-[350px] flex flex-col gap-2">
       {/* Author info */}
-      {/* <hr className="block md:hidden border-t border-gray-300 mb-2 w-screen -ml-4" /> */}
-
       <div className="flex items-center gap-2 ">
         <img
           src={blog.authorImg}
@@ -115,7 +113,6 @@ const BlogItem = ({ blog }) => {
         </div>
       </div>
       {/* <hr className="block md:hidden border-t border-gray-300 mt-2 " /> */}
-
       {/* Blog Content with Read More */}
       <p className="text-md  leading-relaxed">
         <span
@@ -159,8 +156,13 @@ const BlogItem = ({ blog }) => {
           className="flex items-center gap-1 text-gray-500 hover:text-blue-500 transition"
           onSave={handleComment}
         >
-          <ChatCircle size={20} weight={commented? "text-blue-500":"regular"}  />
-          <span className="text-sm w-6 text-center inline-block">{comments}</span>
+          <ChatCircle
+            size={20}
+            weight={commented ? "text-blue-500" : "regular"}
+          />
+          <span className="text-sm w-6 text-center inline-block">
+            {comments}
+          </span>
         </button>
         {/* Repost */}
         <button
@@ -184,6 +186,7 @@ const BlogItem = ({ blog }) => {
           <BookmarkSimple size={20} weight={isSaved ? "fill" : "regular"} />
           <span className="text-sm w-6 text-center inline-block">{saved}</span>
         </button>
+
         {/* Share */}
         {/* <button
           className="flex items-center gap-1 text-gray-500 hover:text-blue-700 transition"
@@ -192,6 +195,9 @@ const BlogItem = ({ blog }) => {
           <ShareFat size={20} weight="regular" />
         </button> */}
       </div>
+      <div className="relative">
+        <hr className="absolute inset-x-0 border-t border-gray-300 w-screen -ml-3" />
+      </div>{" "}
     </div>
   );
 };
