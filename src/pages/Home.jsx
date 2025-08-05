@@ -6,7 +6,9 @@ import useFetch from "../components/Handling";
 import UserDropdown from "../components/Dropdown";
 
 const Blog = () => {
-  const { data, isPending, error } = useFetch("http://localhost:4000/blogs");
+  const { data, isPending, error } = useFetch(
+    "https://mykins1.github.io/data/db.json"
+  );
   return (
     <div
       className=""
