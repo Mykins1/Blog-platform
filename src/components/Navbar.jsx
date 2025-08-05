@@ -19,7 +19,9 @@ import { NavLink, useLocation } from "react-router-dom";
 const Navbar = () => {
   const [menuOpen, setMenuOpen] = useState(false);
   const [navbarTop, setNavbarTop] = useState(0); // State for the navbar's top position
-  const [darkMode, setDarkMode] = useState(false);
+  const [darkMode, setDarkMode] = useState(
+    document.documentElement.classList.contains("dark")
+  );
 
   // Prevent page interaction when sidebar is open
   useEffect(() => {
@@ -74,6 +76,17 @@ const Navbar = () => {
     // Cleanup function to remove the event listener
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
+
+  // Dark mode toggle handler
+  const handleDarkModeToggle = () => {
+    if (darkMode) {
+      document.documentElement.classList.remove("dark");
+      setDarkMode(false);
+    } else {
+      document.documentElement.classList.add("dark");
+      setDarkMode(true);
+    }
+  };
 
   return (
     <>
@@ -135,14 +148,14 @@ const Navbar = () => {
                 size={24}
                 className="text-gray-800 cursor-pointer"
                 weight="fill"
-                onClick={() => setDarkMode(false)}
+                onClick={handleDarkModeToggle}
               />
             ) : (
               <Moon
                 size={24}
                 className="text-gray-800 cursor-pointer"
                 weight="fill"
-                onClick={() => setDarkMode(true)}
+                onClick={handleDarkModeToggle}
               />
             )}
           </div>
