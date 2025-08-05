@@ -1,6 +1,6 @@
 {
   "name": "socia-blog",
-  "homepage": "https://mykins1.github.com/Socia-blog/",
+  "homepage": "https://mykins1.github.com/socia-blog/",
   "version": "0.0.0",
   "type": "module",
   "scripts": {
@@ -8,12 +8,13 @@
     "build": "vite build",
     "lint": "eslint .",
     "preview": "vite preview",
-    "predeploy": "npm run dev",
+    "predeploy": "npm run build",
     "deploy": "gh-pages -d dist"
   },
   "dependencies": {
     "@tailwindcss/vite": "^4.1.11",
     "date-fns": "^4.1.0",
+    "gh-pages": "^6.3.0",
     "lucide-react": "^0.525.0",
     "phosphor-react": "^1.4.1",
     "react": "^19.1.0",
