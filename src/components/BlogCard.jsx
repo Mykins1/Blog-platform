@@ -188,12 +188,12 @@ const BlogItem = ({ blog }) => {
         </button>
 
         {/* Share */}
-        {/* <button
+        <button
           className="flex items-center gap-1 text-gray-500 hover:text-blue-700 transition"
           title="Share"
         >
           <ShareFat size={20} weight="regular" />
-        </button> */}
+        </button>
       </div>
       <hr className="block md:hidden border-t border-gray-300 mb-2 w-screen -ml-3" />{" "}
     </div>
