@@ -15,7 +15,7 @@ const Footer = () => {
         </div>
         <div className="flex flex-col items-center gap-4">
           <p className="text-sm text-gray-500">
-            © {new Date().getFullYear()} Say it. All rights reserved.
+            © {new Date().getFullYear()} Socia. All rights reserved.
           </p>
         </div>
       </footer>
