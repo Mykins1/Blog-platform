@@ -58,8 +58,7 @@ const SearchPage = () => {
               className="w-8 h-8 rounded-full object-cover"
             />
             <div>
-              <div className="font-medium text-sm">{blog.title}</div>
-              <div className="text-xs text-gray-500">{blog.author}</div>
+              <div className="font-medium text-md">{blog.author}</div>
             </div>
           </div>
         ))}
