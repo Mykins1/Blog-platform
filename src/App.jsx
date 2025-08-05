@@ -30,6 +30,7 @@ function App() {
         <Navbar />
         <div className=" md:flex md:items-center md:justify-evenly max-w-auto mx-auto md:mx-0 p-3 pt-19">
           <Routes>
+            <Route path="*" element={<Home/>}/>
             <Route path="/" element={<Home />} />
             <Route path="/shorts" element={<Shorts />} />
             <Route path="/notifications" element={<Notifications />} />

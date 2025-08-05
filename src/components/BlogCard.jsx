@@ -22,6 +22,7 @@ const BlogItem = ({ blog }) => {
   const [isExpanded, setIsExpanded] = useState(false);
   const [likes, setLikes] = useState(blog.likes || 0);
   const [comments, setComments] = useState(blog.comments || 0);
+  const [commented, setCommented] = useState(false)
   const [saved, setSaved] = useState(blog.saved || 0);
   const [liked, setLiked] = useState(false);
   const [isSaved, setIsSaved] = useState(false);
@@ -49,6 +50,15 @@ const BlogItem = ({ blog }) => {
     setLiked(!liked);
   };
 
+  //comments handler
+  const handleComment = () =>{
+    if (commented) {
+      setComments(comments-1)
+    } else {
+      setComments( comments + 1)
+    }
+    setCommented(!commented)
+  }
   // Save button handler
   const handleSave = () => {
     if (isSaved) {
@@ -147,9 +157,10 @@ const BlogItem = ({ blog }) => {
         {/* Comment */}
         <button
           className="flex items-center gap-1 text-gray-500 hover:text-blue-500 transition"
-          // Placeholder for comment click
+          onSave={handleComment}
         >
-          <ChatCircle size={20} weight="regular" />
+          <ChatCircle size={20} weight={commented? "text-blue-500":"regular"}  />
+          <span className="text-sm w-6 text-center inline-block">{comments}</span>
         </button>
         {/* Repost */}
         <button
