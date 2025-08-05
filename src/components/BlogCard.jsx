@@ -102,7 +102,7 @@ const BlogItem = ({ blog }) => {
                 minHeight: "4px",
               }}
             ></div>
-            <div className="text-sm text-gray-700 italic">
+            <div className="text-sm text-gray-700">
               {" "}
               {blog.date
                 ? format(new Date(blog.date), "MMMM dd, yyyy")
@@ -195,9 +195,7 @@ const BlogItem = ({ blog }) => {
           <ShareFat size={20} weight="regular" />
         </button> */}
       </div>
-      <div className="relative">
-        <hr className="absolute inset-x-0 border-t border-gray-300 w-full" />
-      </div>{" "}
+      <hr className="block md:hidden border-t border-gray-300 mb-2 w-screen -ml-3" />{" "}
     </div>
   );
 };
