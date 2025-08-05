@@ -1,13 +1,15 @@
 {
   "name": "socia-blog",
-  "homepage": "https://mykins1.github.io/Socia-blog/",
+  "homepage": "https://mykins1.github.com/Socia-blog/",
   "version": "0.0.0",
   "type": "module",
   "scripts": {
     "dev": "vite",
     "build": "vite build",
     "lint": "eslint .",
-    "preview": "vite preview"
+    "preview": "vite preview",
+    "predeploy": "npm run dev",
+    "deploy": "gh-pages -d dist"
   },
   "dependencies": {
     "@tailwindcss/vite": "^4.1.11",
