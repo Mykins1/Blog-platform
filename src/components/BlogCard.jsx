@@ -196,7 +196,7 @@ const BlogItem = ({ blog }) => {
         </button> */}
       </div>
       <div className="relative">
-        <hr className="absolute inset-x-0 border-t border-gray-300 w-screen -ml-3" />
+        <hr className="absolute inset-x-0 border-t border-gray-300 w-full" />
       </div>{" "}
     </div>
   );
