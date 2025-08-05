@@ -35,6 +35,7 @@ function App() {
             <Route path="/notifications" element={<Notifications />} />
             <Route path="/settings" element={<Settings />} />
             <Route path="/blogs/:id" element={<BlogDetails />} />
+          
           </Routes>
         </div>
         <Footer />

@@ -242,7 +242,7 @@ export const BottomNav = ({ menuOpen, navbarTop }) => {
   const location = useLocation();
   return (
     <div
-      className={`fixed left-0 w-full bg-white border-t py-2 border-gray-200 ${
+      className={`fixed left-0 w-full bg-white border-t  border-gray-200 ${
         menuOpen ? "z-[99]" : "z-50"
       } md:hidden flex justify-evenly items-center shadow pointer-events-${
         menuOpen ? "none" : "auto"
