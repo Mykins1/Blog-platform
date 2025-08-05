@@ -5,7 +5,6 @@ import {
   ChatCircle,
   BookmarkSimple,
   ArrowsClockwise,
-  // ShareFat,
 } from "phosphor-react";
 
 const BlogCard = ({ blogs }) => {
@@ -187,13 +186,7 @@ const BlogItem = ({ blog }) => {
           <span className="text-sm w-6 text-center inline-block">{saved}</span>
         </button>
 
-        {/* Share */}
-        <button
-          className="flex items-center gap-1 text-gray-500 hover:text-blue-700 transition"
-          title="Share"
-        >
-          <ShareFat size={20} weight="regular" />
-        </button>
+        
       </div>
       <hr className="block md:hidden border-t border-gray-300 mb-2 w-screen -ml-3" />{" "}
     </div>

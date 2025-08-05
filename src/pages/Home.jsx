@@ -15,7 +15,7 @@ const Blog = () => {
 
   setTimeout(() => {
     setIsPending(false)
-  }, 3000)
+  }, 1000)
 
   return (
     <div
