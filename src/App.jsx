@@ -2,8 +2,7 @@ import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import Navbar, { BottomNav } from "./components/Navbar";
 import Footer from "./components/Footer";
 import Home from "./pages/Home";
-import Shorts from "./pages/Shorts";
-import Notifications from "./pages/Notification";
+
 import Settings from "./pages/Settings";
 import "./App.css";
 import BlogDetails from "./pages/BlogDetails";
@@ -25,10 +24,7 @@ function App() {
           <Routes>
             <Route path="/" element={<Home />} />
             <Route path="/search" element={<SearchPage />} />
-            <Route path="/shorts" element={<Shorts />} />
-            <Route path="/notifications" element={<Notifications />} />
             <Route path="/settings" element={<Settings />} />
-          
           </Routes>
         </div>
         <Footer />

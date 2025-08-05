@@ -4,8 +4,6 @@ import {
   House,
   MagnifyingGlass,
   Plus,
-  PlayCircle,
-  Bell,
   User,
   SignOut,
   Gear,
@@ -301,32 +299,7 @@ export const BottomNav = ({ menuOpen, navbarTop }) => {
           strokeWidth={location.pathname === "/addpost" ? 3 : 1.5}
         />
       </NavLink>
-      <NavLink
-        to="/shorts"
-        className={`flex flex-col items-center w-full gap-1 px-4 py-3 rounded-md transition ${
-          location.pathname === "/shorts"
-            ? "bg-gray-200 text-gray-800"
-            : "text-gray-700"
-        }`}
-      >
-        <PlayCircle
-          size={28}
-          weight={location.pathname === "/shorts" ? "fill" : "bold"}
-        />
-      </NavLink>
-      <NavLink
-        to="/notifications"
-        className={`flex flex-col items-center w-full gap-1 px-4 py-3 rounded-md transition ${
-          location.pathname === "/notifications"
-            ? "bg-gray-200 text-gray-800"
-            : "text-gray-700"
-        }`}
-      >
-        <Bell
-          size={28}
-          weight={location.pathname === "/notifications" ? "fill" : "bold"}
-        />
-      </NavLink>
+      
     </div>
   );
 };
