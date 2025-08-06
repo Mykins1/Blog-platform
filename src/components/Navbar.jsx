@@ -168,19 +168,21 @@ const Navbar = () => {
             fontFamily: "Poppins, sans-serif",
           }}
         >
-          <div className="flex items-center gap-2 w-full ">
-            <img
-              src="https://randomuser.me/api/portraits/men/5.jpg"
-              alt="User"
-              className="w-11 h-11 rounded-full object-cover border-none"
-            />
-            <div className="flex flex-col items-start">
-              <span className="font-bold text-lg">Mykel Akinsade</span>
-              <span className="text-gray-500 text-sm">@mykins1</span>
+          <div className="flex flex-col items-center">
+            <div className="flex items-center gap-2 w-full ">
+              <img
+                src="https://randomuser.me/api/portraits/men/5.jpg"
+                alt="User"
+                className="w-11 h-11 rounded-full object-cover border-none"
+              />
+              <div className="flex flex-col items-start">
+                <span className="font-bold text-lg">Mykel Akinsade</span>
+                <span className="text-gray-500 text-sm">@mykins1</span>
+              </div>
             </div>
+            <hr className="block md:hidden border-t border-gray-300 mt-2 w-full" />{" "}
           </div>
-
-          <nav className="flex flex-col gap-2 w-full mt-4">
+          <nav className="flex flex-col gap-2 w-full ">
             {/* Profile link with user icon */}
             <NavLink
               to="/profile"
@@ -211,6 +213,7 @@ const Navbar = () => {
               <BookmarkSimple size={22} weight="bold" />
               <span className="font-medium">Bookmarks</span>
             </NavLink>
+            <hr className="block md:hidden border-t border-gray-300 w-full" />{" "}
             {/* Settings link with gear icon */}
             <NavLink
               to="/settings"
