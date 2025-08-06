@@ -176,7 +176,7 @@ const Navbar = () => {
                 className="w-11 h-11 rounded-full object-cover border-none"
               />
               <div className="flex flex-col items-start">
-                <span className="font-bold text-lg">Mykel Akinsade</span>
+                <span className="font-semibold text-lg">Mykel Akinsade</span>
                 <span className="text-gray-500 text-sm">@mykins1</span>
               </div>
             </div>
@@ -189,7 +189,9 @@ const Navbar = () => {
               to="/profile"
               onClick={() => setMenuOpen(false)}
               className={({ isActive }) =>
-                `flex items-center gap-3 py-2 px-4 rounded-md transition te""
+                `flex items-center gap-3 py-2 px-4 rounded-md transition text-lg ${
+                  isActive
+                    ? ""
                     : "text-black hover:bg-gray-100"
                 }`
               }
