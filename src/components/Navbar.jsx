@@ -295,7 +295,7 @@ export const BottomNav = ({ menuOpen, navbarTop }) => {
       >
         <PlusCircle
           size={28}
-          weight={location.pathname === "/addpost" ? "fill" : "fill"}
+          weight={location.pathname === "/addpost" ? "fill" : "bold"}
           strokeWidth={location.pathname === "/addpost" ? 3 : 1.5}
         />
       </NavLink>
