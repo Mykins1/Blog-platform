@@ -22,7 +22,7 @@ const BlogItem = ({ blog }) => {
   const [likes, setLikes] = useState(blog.likes || 0);
   const [comments, setComments] = useState(blog.comments || 0);
   const [commented, setCommented] = useState(false)
-  const [saved, setSaved] = useState(blog.saved || 0);
+  const [saved, setSaved] = useState(false);
   const [liked, setLiked] = useState(false);
   const [isSaved, setIsSaved] = useState(false);
 
@@ -61,9 +61,9 @@ const BlogItem = ({ blog }) => {
   // Save button handler
   const handleSave = () => {
     if (isSaved) {
-      setSaved(saved - 1);
+      setSaved();
     } else {
-      setSaved(saved + 1);
+      setSaved();
     }
     setIsSaved(!isSaved);
   };
@@ -140,16 +140,6 @@ const BlogItem = ({ blog }) => {
       </div>
       {/* Like and Comment Icons */}
       <div className="flex items-center justify-around gap-1 w-full">
-        {/* Like */}
-        <button
-          className={`flex items-center gap-0.2 transition ${
-            liked ? "text-red-500" : "text-gray-500 hover:text-red-500"
-          }`}
-          onClick={handleLike}
-        >
-          <Heart size={20} weight={liked ? "fill" : "regular"} />
-          <span className="text-sm w-6 text-center inline-block">{likes}</span>
-        </button>
         {/* Comment */}
         <button
           className="flex items-center gap-1 text-gray-500 hover:text-blue-500 transition"
@@ -163,6 +153,17 @@ const BlogItem = ({ blog }) => {
             {comments}
           </span>
         </button>
+        {/* Like */}
+        <button
+          className={`flex items-center gap-0.2 transition ${
+            liked ? "text-red-500" : "text-gray-500 hover:text-red-500"
+          }`}
+          onClick={handleLike}
+        >
+          <Heart size={20} weight={liked ? "fill" : "regular"} />
+          <span className="text-sm w-6 text-center inline-block">{likes}</span>
+        </button>
+        
         {/* Repost */}
         <button
           className={`flex items-center gap-1 transition ${
@@ -183,7 +184,6 @@ const BlogItem = ({ blog }) => {
           onClick={handleSave}
         >
           <BookmarkSimple size={20} weight={isSaved ? "fill" : "regular"} />
-          <span className="text-sm w-6 text-center inline-block">{saved}</span>
         </button>
 
         
