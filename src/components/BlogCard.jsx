@@ -32,7 +32,7 @@ const BlogItem = ({ blog }) => {
 
   const toggleReadMore = () => setIsExpanded(!isExpanded);
 
-  const maxWords = 18;
+  const maxWords = 17;
   const words = blog.content.split(" ");
   const truncated =
     words.length > maxWords
