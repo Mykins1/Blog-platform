@@ -124,7 +124,7 @@ const BlogItem = ({ blog }) => {
         {words.length > maxWords && (
           <button
             onClick={toggleReadMore}
-            className="text-blue-700 text-sm font-light hover:underline inline-block whitespace-nowrap"
+            className="text-blue-700 text-sm font-normal ml-1 hover:underline inline-block whitespace-nowrap"
           >
             {isExpanded ? "" : "Show more"}
           </button>

@@ -7,6 +7,15 @@ module.exports = {
       fontFamily: {
         poppins: ["Poppins", "sans-serif"],
         inter: ["Inter", "sans-serif"],
+        sans: [
+          "system-ui",
+          "-apple-system",
+          "BlinkMacSystemFont",
+          '"Segoe UI"',
+          "Roboto",
+          "Arial",
+          "sans-serif",
+        ],
       },
     },
   },
