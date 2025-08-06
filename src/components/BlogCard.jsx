@@ -139,7 +139,7 @@ const BlogItem = ({ blog }) => {
         />
       </div>
       {/* Like and Comment Icons */}
-      <div className="flex items-center justify-around gap-1 mt-2 w-full">
+      <div className="flex items-center justify-around gap-1 w-full">
         {/* Like */}
         <button
           className={`flex items-center gap-0.2 transition ${
