@@ -2,7 +2,7 @@ import { useState } from "react";
 import { format } from "date-fns";
 import {
   Heart,
-  ChatCircle,
+  ChatCircleText,
   BookmarkSimple,
   ArrowsClockwise,
 } from "phosphor-react";
@@ -155,7 +155,7 @@ const BlogItem = ({ blog }) => {
           className="flex items-center gap-1 text-gray-500 hover:text-blue-500 transition"
           onSave={handleComment}
         >
-          <ChatCircle
+          <ChatCircleText
             size={20}
             weight={commented ? "text-blue-500" : "regular"}
           />

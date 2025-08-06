@@ -3,7 +3,7 @@ import { X } from "lucide-react";
 import {
   House,
   MagnifyingGlass,
-  Plus,
+  PlusCircle,
   User,
   SignOut,
   Gear,
@@ -264,7 +264,7 @@ export const BottomNav = ({ menuOpen, navbarTop }) => {
     >
       <NavLink
         to="/"
-        className={`flex flex-col items-center w-full gap-1 px-4 py-3 rounded-md transition ${
+        className={`flex flex-col items-center w-full gap-1 px-4 py-3 rounded-r-md transition ${
           location.pathname === "/"
             ? "bg-gray-200 text-gray-800"
             : "text-gray-800"
@@ -287,15 +287,15 @@ export const BottomNav = ({ menuOpen, navbarTop }) => {
       </NavLink>
       <NavLink
         to="/addpost"
-        className={`flex flex-col items-center w-full gap-1 px-4 py-3 rounded-md transition ${
+        className={`flex flex-col items-center w-full gap-1 px-4 py-3 rounded-l-md transition ${
           location.pathname === "/addpost"
             ? "bg-gray-200 text-gray-800"
             : "text-gray-800"
         }`}
       >
-        <Plus
+        <PlusCircle
           size={28}
-          weight={location.pathname === "/addpost" ? "bold" : "bold"}
+          weight={location.pathname === "/addpost" ? "fill" : "fill"}
           strokeWidth={location.pathname === "/addpost" ? 3 : 1.5}
         />
       </NavLink>
