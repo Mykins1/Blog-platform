@@ -163,13 +163,13 @@ const Navbar = () => {
         <div
           className={`fixed top-0 left-0 h-full w-[70vw] max-w-md bg-white shadow-lg z-[102] transition-transform ${
             menuOpen ? "translate-x-0" : "-translate-x-full"
-          } md:hidden flex flex-col items-start pt-5 gap-6 px-3`}
+          } md:hidden flex flex-col items-start pt-5 gap-2 px-3`}
           style={{
             fontFamily: "Poppins, sans-serif",
           }}
         >
           <div className="flex flex-col items-center">
-            <div className="flex items-center gap-2 w-full ">
+            <div className="flex items-center shrink-1  gap-2 w-full ">
               <img
                 src="https://randomuser.me/api/portraits/men/5.jpg"
                 alt="User"
@@ -180,8 +180,9 @@ const Navbar = () => {
                 <span className="text-gray-500 text-sm">@mykins1</span>
               </div>
             </div>
-            <hr className="block md:hidden border-t border-gray-300 mt-2 w-full" />{" "}
           </div>
+          <hr className="block md:hidden border-t border-gray-300 w-full " />
+
           <nav className="flex flex-col gap-2 w-full ">
             {/* Profile link with user icon */}
             <NavLink
