@@ -189,9 +189,7 @@ const Navbar = () => {
               to="/profile"
               onClick={() => setMenuOpen(false)}
               className={({ isActive }) =>
-                `flex items-center gap-3 py-2 px-4 rounded-md transition text-lg ${
-                  isActive
-                    ? "bg-gray-200 text-blue-600 font-semibold"
+                `flex items-center gap-3 py-2 px-4 rounded-md transition te""
                     : "text-black hover:bg-gray-100"
                 }`
               }
@@ -206,7 +204,7 @@ const Navbar = () => {
               className={({ isActive }) =>
                 `flex items-center gap-3 py-2 px-4 rounded-md transition text-lg ${
                   isActive
-                    ? "bg-gray-200 text-blue-600 font-semibold"
+                    ? ""
                     : "text-black hover:bg-gray-100"
                 }`
               }
@@ -222,7 +220,7 @@ const Navbar = () => {
               className={({ isActive }) =>
                 `flex items-center gap-3 py-2 px-4 rounded-md transition text-lg ${
                   isActive
-                    ? "bg-gray-200 text-blue-600 font-semibold"
+                    ? ""
                     : "text-black hover:bg-gray-100"
                 }`
               }
