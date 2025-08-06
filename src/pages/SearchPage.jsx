@@ -36,7 +36,7 @@ const SearchPage = () => {
         />
         <input
           type="text"
-          className="w-full border border-gray-400 bg-gray-100 p-2 pl-10 rounded-md"
+          className="w-full border border-gray-400 bg-gray-50 p-2 pl-10 rounded-full"
           placeholder="Search..."
           value={query}
           onChange={(e) => setQuery(e.target.value)}
