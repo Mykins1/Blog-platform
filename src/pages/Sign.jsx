@@ -34,7 +34,7 @@ const SignPage = () => {
           )}
           <div className="relative">
             <input
-              type="password"
+              type={showPassword ? "text" : "password"}
               placeholder="Password"
               className=" w-full p-2 px-4  border-b border-gray-400 "
             />
@@ -44,7 +44,7 @@ const SignPage = () => {
               onClick={() => setShowPassword((prev) => !prev)}
               tabIndex={-1}
             >
-              {showPassword ? <Eye size={16} weight="fill"/> : <EyeSlash size={16} weight="fill"/>}
+              {showPassword ? <Eye size={18} weight="fill"/> : <EyeSlash size={18} weight="fill"/>}
             </button>
           </div>
           <button
