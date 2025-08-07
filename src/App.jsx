@@ -7,6 +7,7 @@ import Settings from "./pages/Settings";
 import "./App.css";
 import BlogDetails from "./pages/BlogDetails";
 import SearchPage from "./pages/SearchPage";
+import SignIn from "./pages/Sign";
 
 function App() {
   return (
@@ -25,6 +26,7 @@ function App() {
             <Route path="/" element={<Home/>} />
             <Route path="/search" element={<SearchPage />} />
             <Route path="/settings" element={<Settings />} />
+            <Route path="/sign" element={<SignIn />} />
           </Routes>
         </div>
         {/* <Footer /> */}

@@ -190,9 +190,7 @@ const Navbar = () => {
               onClick={() => setMenuOpen(false)}
               className={({ isActive }) =>
                 `flex items-center gap-3 py-2 px-4 rounded-md transition text-lg ${
-                  isActive
-                    ? ""
-                    : "text-black hover:bg-gray-100"
+                  isActive ? "" : "text-black hover:bg-gray-100"
                 }`
               }
             >
@@ -205,9 +203,7 @@ const Navbar = () => {
               onClick={() => setMenuOpen(false)}
               className={({ isActive }) =>
                 `flex items-center gap-3 py-2 px-4 rounded-md transition text-lg ${
-                  isActive
-                    ? ""
-                    : "text-black hover:bg-gray-100"
+                  isActive ? "" : "text-black hover:bg-gray-100"
                 }`
               }
             >
@@ -221,9 +217,7 @@ const Navbar = () => {
               onClick={() => setMenuOpen(false)}
               className={({ isActive }) =>
                 `flex items-center gap-3 py-2 px-4 rounded-md transition text-lg ${
-                  isActive
-                    ? ""
-                    : "text-black hover:bg-gray-100"
+                  isActive ? "" : "text-black hover:bg-gray-100"
                 }`
               }
             >
@@ -241,6 +235,18 @@ const Navbar = () => {
               <SignOut size={22} weight="bold" />
               <span className="font-medium">Logout</span>
             </button>
+            <NavLink
+              to="/sign"
+              onClick={() => setMenuOpen(false)}
+              className={({ isActive }) =>
+                `flex items-center gap-3 py-2 px-4 rounded-md transition text-lg ${
+                  isActive ? "" : "text-black hover:bg-gray-100"
+                }`
+              }
+            >
+              <SignOut size={22} weight="bold" />
+              <span className="font-medium">Sign Page</span>
+            </NavLink>
           </nav>
         </div>
       </div>

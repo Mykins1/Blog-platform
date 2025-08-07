@@ -13,7 +13,7 @@ const Blog = () => {
   return (
     <div
       className=""
-      style={{ fontFamily: "Inter, sans-serif", background: "#fff" }}
+      // style={{ fontFamily: "Inter, sans-serif", background: "#fff" }}
     >
       {isPending ? (
         <div className="flex items-center justify-center h-150">
