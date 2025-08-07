@@ -1,7 +1,9 @@
 import { useState } from "react";
+import {Eye, EyeSlash} from "phosphor-react";
 
 const SignPage = () => {
   const [showSignUp, setShowSignUp] = useState(false);
+  const [showPassword, setShowPassword] = useState(false);
 
   return (
     <div className="flex items-center justify-center h-130">
@@ -30,12 +32,21 @@ const SignPage = () => {
               className=" p-2 px-4 border-b border-gray-400 "
             />
           )}
-          <input
-            type="password"
-            placeholder="Password"
-            className=" p-2 px-4  border-b border-gray-400 "
-          />
-
+          <div className="relative">
+            <input
+              type="password"
+              placeholder="Password"
+              className=" w-full p-2 px-4  border-b border-gray-400 "
+            />
+            <button
+              type="button"
+              className="text-gray-500 absolute right-2 top-1/2 transform -translate-y-1/2"
+              onClick={() => setShowPassword((prev) => !prev)}
+              tabIndex={-1}
+            >
+              {showPassword ? <Eye size={16} weight="fill"/> : <EyeSlash size={16} weight="fill"/>}
+            </button>
+          </div>
           <button
             type="submit"
             className="bg-gray-800 text-white p-2 mt-3 rounded-full"
