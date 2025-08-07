@@ -29,7 +29,7 @@ const SignPage = () => {
           )}
           <button
             type="submit"
-            className="bg-gray-800 text-white p-2 rounded-full"
+            className="bg-gray-800 text-white p-2 mt-3 rounded-full"
           >
             {showSignUp ? "Sign Up" : "Sign In"}
           </button>
@@ -39,7 +39,7 @@ const SignPage = () => {
             <>
               Already have an account?{" "}
               <button
-                className="text-blue-500 underline"
+                className="text-blue-500 hover:underline"
                 onClick={() => setShowSignUp(false)}
               >
                 Sign In
@@ -49,7 +49,7 @@ const SignPage = () => {
             <>
               Don't have an account?{" "}
               <button
-                className="text-blue-500 underline"
+                className="text-blue-500 hover:underline"
                 onClick={() => setShowSignUp(true)}
               >
                 Sign Up
