@@ -4,6 +4,7 @@ import {
   Route,
   useLocation,
 } from "react-router-dom";
+import { NavbarProvider } from "./contexts/Visibility";
 import Navbar, { BottomNav } from "./components/Navbar";
 import Footer from "./components/Footer";
 import Home from "./pages/Home";
@@ -11,7 +12,7 @@ import Settings from "./pages/Settings";
 import "./App.css";
 import BlogDetails from "./pages/BlogDetails";
 import SearchPage from "./pages/SearchPage";
-import SignIn from "./pages/Sign";
+import SignIn from "./pages/SignPage";
 
 function AppContent() {
   const location = useLocation();
@@ -44,7 +45,9 @@ function AppContent() {
 function App() {
   return (
     <Router>
-      <AppContent />
+      <NavbarProvider>
+        <AppContent />
+      </NavbarProvider>
     </Router>
   );
 }

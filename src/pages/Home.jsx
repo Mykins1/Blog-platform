@@ -1,14 +1,13 @@
-import BlogCard from "../contexts/BlogCard.jsx";
-import blogData from "../../data/db.js"
-import {useState} from "react"
+import { useState } from "react";
+import BlogCard from "../components/BlogCard.jsx";
+import blogData from "../../data/db.js";
 const Blog = () => {
-  
-  const [isPending, setIsPending] = useState(true)
-  const error = false
+  const [isPending, setIsPending] = useState(true);
+  const error = false;
 
   setTimeout(() => {
-    setIsPending(false)
-  }, 0)
+    setIsPending(false);
+  }, 0);
 
   return (
     <div
