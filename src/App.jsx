@@ -4,7 +4,6 @@ import {
   Route,
   useLocation,
 } from "react-router-dom";
-import { NavbarProvider } from "./contexts/Visibility";
 import Navbar, { BottomNav } from "./components/Navbar";
 import Footer from "./components/Footer";
 import Home from "./pages/Home";
@@ -45,9 +44,7 @@ function AppContent() {
 function App() {
   return (
     <Router>
-      <NavbarProvider>
-        <AppContent />
-      </NavbarProvider>
+      <AppContent />
     </Router>
   );
 }
