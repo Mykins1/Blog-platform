@@ -6,8 +6,9 @@ const SignPage = () => {
   return (
     <div className="flex items-center justify-center h-130">
       <div className="flex flex-col items-center bg-white p-8 w-full rounded-md ">
-        <h1 className="text-2xl font-bold mb-4">
-          {showSignUp ? "Sign Up" : "Sign In"}
+        <h1 className="text-2xl text-center font-bold mb-4">
+          Welcome to <br/>Socia
+          {/* {showSignUp ? "Sign Up" : "Sign In"} */}
         </h1>
         <form className="flex flex-col gap-3 w-full">
           {showSignUp ? (
