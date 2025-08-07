@@ -1,9 +1,4 @@
-// import React, { useState } from "react";
-import BlogCard from "../components/BlogCard";
-import Messages from "../components/messages";
-import { Pen, Plus, SquarePen, User, Users } from "lucide-react";
-// import useFetch from "../components/Handling";
-import UserDropdown from "../components/Dropdown";
+import BlogCard from "../contexts/BlogCard.jsx";
 import blogData from "../../data/db.js"
 import {useState} from "react"
 const Blog = () => {

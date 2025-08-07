@@ -16,8 +16,8 @@ const SearchPage = () => {
         (blog) =>
           (blog.author &&
             blog.author.toLowerCase().includes(query.toLowerCase())) ||
-          (blog.proffession &&
-            blog.proffession.toLowerCase().includes(query.toLowerCase()))
+          (blog.profession &&
+            blog.profession.toLowerCase().includes(query.toLowerCase()))
       )
     );
   }, [query]);

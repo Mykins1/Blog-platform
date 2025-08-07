@@ -61,7 +61,7 @@ const BlogItem = ({ blog }) => {
   // Save button handler
   const handleSave = () => {
     if (isSaved) {
-      setSaved();
+      setSaved(saved);
     } else {
       setSaved();
     }
