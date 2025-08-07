@@ -95,10 +95,10 @@ const BlogItem = ({ blog }) => {
             <div
               className="dot bg-gray-500 rounded-full"
               style={{
-                width: "4px",
-                height: "4px",
-                minWidth: "4px",
-                minHeight: "4px",
+                width: "3px",
+                height: "3px",
+                minWidth: "2px",
+                minHeight: "2px",
               }}
             ></div>
             <div className="text-sm text-gray-700">
