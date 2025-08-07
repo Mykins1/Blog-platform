@@ -23,18 +23,19 @@ const SignPage = () => {
               className=" p-2 px-4 border-b border-gray-400 "
             />
           )}
+          {showSignUp && (
+            <input
+              type="text"
+              placeholder="Create Username"
+              className=" p-2 px-4 border-b border-gray-400 "
+            />
+          )}
           <input
             type="password"
             placeholder="Password"
             className=" p-2 px-4  border-b border-gray-400 "
           />
-          {showSignUp && (
-            <input
-              type="text"
-              placeholder="Username"
-              className=" p-2 px-4 border-b border-gray-400 "
-            />
-          )}
+
           <button
             type="submit"
             className="bg-gray-800 text-white p-2 mt-3 rounded-full"
