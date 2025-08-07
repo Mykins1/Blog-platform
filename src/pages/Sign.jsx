@@ -10,11 +10,19 @@ const SignPage = () => {
           {showSignUp ? "Sign Up" : "Sign In"}
         </h1>
         <form className="flex flex-col gap-3 w-full">
-          <input
-            type="email"
-            placeholder="Email"
-            className=" p-2 px-4 border-b border-gray-400 "
-          />
+          {showSignUp ? (
+            <input
+              type="email"
+              placeholder="Email"
+              className=" p-2 px-4 border-b border-gray-400 "
+            />
+          ) : (
+            <input
+              type="email"
+              placeholder="Username or email"
+              className=" p-2 px-4 border-b border-gray-400 "
+            />
+          )}
           <input
             type="password"
             placeholder="Password"

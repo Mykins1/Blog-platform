@@ -34,12 +34,11 @@ const Navbar = () => {
     };
   }, [menuOpen]);
 
-  // Implement X app's scroll-hide logic
   useEffect(() => {
     let lastScrollY = window.scrollY;
     let ticking = false;
     const navbarHeight = 70; // Adjust if your navbar height changes
-    const hideThreshold = 96; // 1 inch in pixels
+    const hideThreshold = 60; 
 
     const handleScroll = () => {
       // Use requestAnimationFrame to optimize performance
