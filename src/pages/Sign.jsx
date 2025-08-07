@@ -24,7 +24,7 @@ const SignPage = () => {
             <input
               type="text"
               placeholder="Username"
-              className="mb-4 p-2 px-4 border-b border-gray-400 "
+              className=" p-2 px-4 border-b border-gray-400 "
             />
           )}
           <button
