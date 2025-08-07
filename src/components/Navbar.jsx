@@ -131,7 +131,7 @@ const Navbar = () => {
             <img
               src="https://randomuser.me/api/portraits/men/5.jpg"
               alt=""
-              className="md:w-10 md:h-10 w-9 h-9 rounded-full object-cover border-none cursor-pointer"
+              className="md:w-10 md:h-10 w-8 h-8 rounded-full object-cover border-none cursor-pointer"
               onClick={() => {
                 setMenuOpen(!menuOpen);
               }}
@@ -173,7 +173,7 @@ const Navbar = () => {
               <img
                 src="https://randomuser.me/api/portraits/men/5.jpg"
                 alt="User"
-                className="w-11 h-11 rounded-full object-cover border-none"
+                className="w-9 h-9 rounded-full object-cover border-none"
               />
               <div className="flex flex-col items-start">
                 <span className="font-semibold text-lg">Mykel Akinsade</span>
