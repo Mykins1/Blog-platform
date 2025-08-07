@@ -153,16 +153,6 @@ const BlogItem = ({ blog }) => {
             {comments}
           </span>
         </button>
-        {/* Like */}
-        <button
-          className={`flex items-center gap-0.2 transition ${
-            liked ? "text-red-500" : "text-gray-500 hover:text-red-500"
-          }`}
-          onClick={handleLike}
-        >
-          <Heart size={20} weight={liked ? "fill" : "regular"} />
-          <span className="text-sm w-6 text-center inline-block">{likes}</span>
-        </button>
         
         {/* Repost */}
         <button
@@ -175,6 +165,17 @@ const BlogItem = ({ blog }) => {
           <span className="text-sm w-6 text-center inline-block">
             {reposts}
           </span>
+        </button>
+
+{/* Like */}
+        <button
+          className={`flex items-center gap-0.2 transition ${
+            liked ? "text-red-500" : "text-gray-500 hover:text-red-500"
+          }`}
+          onClick={handleLike}
+        >
+          <Heart size={20} weight={liked ? "fill" : "regular"} />
+          <span className="text-sm w-6 text-center inline-block">{likes}</span>
         </button>
         {/* Save */}
         <button
