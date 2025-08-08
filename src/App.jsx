@@ -12,10 +12,14 @@ import "./App.css";
 import BlogDetails from "./pages/BlogDetails";
 import SearchPage from "./pages/SearchPage";
 import SignIn from "./pages/SignPage";
+import Profile from "./pages/Profile";
+
 
 function AppContent() {
   const location = useLocation();
-  const hideNavbar = location.pathname === "/sign";
+  const hideNavbar = location.pathname === "/sign" || location.pathname.startsWith("/profile/");
+  const isProfilePage = location.pathname.startsWith("/profile/");
+
 
   return (
     <div
@@ -27,9 +31,15 @@ function AppContent() {
       }}
     >
       {!hideNavbar && <Navbar />}
-      <div className="body md:items-center md:justify-evenly max-w-auto mx-auto md:mx-0 p-3 md:pt-19 pt-19">
+      <div
+        className={`body md:items-center md:justify-evenly max-w-auto mx-auto md:mx-0 p-3 ${
+          isProfilePage ? "" : "md:pt-19 pt-19"
+        }`}
+      >
+        {" "}
         <Routes>
-          <Route path="/" element={<Home />} />  
+          <Route path="/" element={<Home />} />
+          <Route path="/profile/:author" element={<Profile />} />
           <Route path="/search" element={<SearchPage />} />
           <Route path="/settings" element={<Settings />} />
           <Route path="/sign" element={<SignIn />} />

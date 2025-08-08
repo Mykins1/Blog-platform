@@ -6,6 +6,7 @@ import {
   BookmarkSimple,
   Repeat,
 } from "phosphor-react";
+import { Link } from "react-router-dom";
 
 const BlogCard = ({ blogs }) => {
   return (
@@ -36,7 +37,7 @@ const BlogItem = ({ blog }) => {
       if (window.innerWidth >= 768) {
         setMaxWords(40); // More words for md and above
       } else {
-        setMaxWords(20); // Default for small screens
+        setMaxWords(17); // Default for small screens
       }
     };
     handleResize(); // Set on mount
@@ -92,36 +93,40 @@ const BlogItem = ({ blog }) => {
   return (
     <div className="max-w-[350px] flex flex-col gap-2">
       {/* Author info */}
-      <div className="flex items-center gap-2 ">
-        <img
-          src={blog.authorImg}
-          alt="User"
-          className="w-8 h-8 rounded-full object-cover"
-        />
+      <Link to={`/profile/${encodeURIComponent(blog.author)}`}>
+        <div className="flex items-center gap-2 ">
+          <img
+            src={blog.authorImg}
+            alt="User"
+            className="w-8 h-8 rounded-full object-cover"
+          />
 
-        <div className="leading-tight">
-          <div className="flex items-center gap-1">
-            <div className="text-md font-medium  ">{blog.author}</div>
-            {/* Use a fixed size for the dot */}
-            <div
-              className="dot bg-gray-500 rounded-full"
-              style={{
-                width: "3px",
-                height: "3px",
-                minWidth: "2px",
-                minHeight: "2px",
-              }}
-            ></div>
-            <div className="text-sm text-gray-700">
-              {" "}
-              {blog.date
-                ? format(new Date(blog.date), "MMMM dd, yyyy")
-                : "No date"}
+          <div className="leading-tight">
+            <div className="flex items-center gap-1">
+              <div className="text-md font-medium  ">{blog.author}</div>
+              {/* Use a fixed size for the dot */}
+              <div
+                className="dot bg-gray-500 rounded-full"
+                style={{
+                  width: "3px",
+                  height: "3px",
+                  minWidth: "2px",
+                  minHeight: "2px",
+                }}
+              ></div>
+              <div className="text-sm text-gray-700">
+                {" "}
+                {blog.date
+                  ? format(new Date(blog.date), "MMMM dd, yyyy")
+                  : "No date"}
+              </div>
+            </div>
+            <div className="text-sm text-gray-700 italic">
+              {blog.proffession}
             </div>
           </div>
-          <div className="text-sm text-gray-700 italic">{blog.proffession}</div>
         </div>
-      </div>
+      </Link>
       {/* <hr className="block md:hidden border-t border-gray-300 mt-2 " /> */}
       {/* Blog Content with Read More */}
       <p className="text-md  leading-snug">
@@ -177,7 +182,7 @@ const BlogItem = ({ blog }) => {
             {reposts}
           </span>
         </button>
-        
+
         {/* Like */}
         <button
           className={`flex items-center gap-0.2 transition ${
