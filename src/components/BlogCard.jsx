@@ -4,7 +4,7 @@ import {
   Heart,
   ChatCircleText,
   BookmarkSimple,
-  Repeat,
+  ArrowsClockwise,
 } from "phosphor-react";
 
 const BlogCard = ({ blogs }) => {
@@ -79,7 +79,7 @@ const BlogItem = ({ blog }) => {
   };
 
   return (
-    <div className="max-w-[350px] flex flex-col gap-2 leading-tight">
+    <div className="max-w-[350px] flex flex-col gap-2">
       {/* Author info */}
       <div className="flex items-center gap-2 ">
         <img
@@ -88,9 +88,9 @@ const BlogItem = ({ blog }) => {
           className="w-8 h-8 rounded-full object-cover"
         />
 
-        <div className="leading-[0.5]">
+        <div className="leading-tight">
           <div className="flex items-center gap-1">
-            <div className="text-md font-semibold  ">{blog.author}</div>
+            <div className="text-md font-medium  ">{blog.author}</div>
             {/* Use a fixed size for the dot */}
             <div
               className="dot bg-gray-500 rounded-full"
@@ -153,20 +153,6 @@ const BlogItem = ({ blog }) => {
             {comments}
           </span>
         </button>
-
-        {/* Repost */}
-        <button
-          className={`flex items-center gap-1 transition ${
-            isReposted ? "text-green-600" : "text-gray-500 hover:text-green-600"
-          }`}
-          onClick={handleRepost}
-        >
-          <Repeat size={20} weight={isReposted ? "fill" : "regular"} />
-          <span className="text-sm w-6 text-center inline-block">
-            {reposts}
-          </span>
-        </button>
-
         {/* Like */}
         <button
           className={`flex items-center gap-0.2 transition ${
@@ -178,6 +164,18 @@ const BlogItem = ({ blog }) => {
           <span className="text-sm w-6 text-center inline-block">{likes}</span>
         </button>
         
+        {/* Repost */}
+        <button
+          className={`flex items-center gap-1 transition ${
+            isReposted ? "text-green-600" : "text-gray-500 hover:text-green-600"
+          }`}
+          onClick={handleRepost}
+        >
+          <ArrowsClockwise size={20} weight={isReposted ? "fill" : "regular"} />
+          <span className="text-sm w-6 text-center inline-block">
+            {reposts}
+          </span>
+        </button>
         {/* Save */}
         <button
           className={`flex items-center gap-1 transition ${
@@ -187,8 +185,10 @@ const BlogItem = ({ blog }) => {
         >
           <BookmarkSimple size={20} weight={isSaved ? "fill" : "regular"} />
         </button>
+
+        
       </div>
-      <hr className="block md:hidden border-t border-gray-300  w-screen -ml-3" />{" "}
+      <hr className="block md:hidden border-t border-gray-300 mb-2 w-screen -ml-3" />{" "}
     </div>
   );
 };
