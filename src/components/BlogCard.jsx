@@ -4,7 +4,7 @@ import {
   Heart,
   ChatCircleText,
   BookmarkSimple,
-  ArrowsClockwise,
+  Repeat,
 } from "phosphor-react";
 
 const BlogCard = ({ blogs }) => {
@@ -153,6 +153,20 @@ const BlogItem = ({ blog }) => {
             {comments}
           </span>
         </button>
+
+        {/* Repost */}
+        <button
+          className={`flex items-center gap-1 transition ${
+            isReposted ? "text-green-600" : "text-gray-500 hover:text-green-600"
+          }`}
+          onClick={handleRepost}
+        >
+          <Repeat size={20} weight={isReposted ? "fill" : "regular"} />
+          <span className="text-sm w-6 text-center inline-block">
+            {reposts}
+          </span>
+        </button>
+        
         {/* Like */}
         <button
           className={`flex items-center gap-0.2 transition ${
@@ -163,19 +177,7 @@ const BlogItem = ({ blog }) => {
           <Heart size={20} weight={liked ? "fill" : "regular"} />
           <span className="text-sm w-6 text-center inline-block">{likes}</span>
         </button>
-        
-        {/* Repost */}
-        <button
-          className={`flex items-center gap-1 transition ${
-            isReposted ? "text-green-600" : "text-gray-500 hover:text-green-600"
-          }`}
-          onClick={handleRepost}
-        >
-          <ArrowsClockwise size={20} weight={isReposted ? "fill" : "regular"} />
-          <span className="text-sm w-6 text-center inline-block">
-            {reposts}
-          </span>
-        </button>
+
         {/* Save */}
         <button
           className={`flex items-center gap-1 transition ${
@@ -185,10 +187,8 @@ const BlogItem = ({ blog }) => {
         >
           <BookmarkSimple size={20} weight={isSaved ? "fill" : "regular"} />
         </button>
-
-        
       </div>
-      <hr className="block md:hidden border-t border-gray-300 mb-2 w-screen -ml-3" />{" "}
+      <hr className="block md:hidden border-t border-gray-300  w-screen -ml-3" />{" "}
     </div>
   );
 };
