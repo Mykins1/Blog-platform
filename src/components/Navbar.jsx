@@ -185,7 +185,7 @@ const Navbar = () => {
           <nav className="flex flex-col gap-2 w-full ">
             {/* Profile link with user icon */}
             <NavLink
-              to="/profile"
+              to={`/profile/${encodeURIComponent("Mykel Akinsade")}`}
               onClick={() => setMenuOpen(false)}
               className={({ isActive }) =>
                 `flex items-center gap-3 py-2 px-4 rounded-md transition text-lg ${
