@@ -23,7 +23,7 @@ const Blog = () => {
           <div className="error">{error}</div>
         </div>
       ) : (
-        <div className="flex flex-col items-center max-w-4xl mx-auto w-full bg-white">
+        <div className="flex flex-col items-center max-w-4xl mx-auto w-full bg-white md:flex-col">
           {blogData && <BlogCard blogs={blogData.blogs} title="Blogs" />}
         </div>
       )}

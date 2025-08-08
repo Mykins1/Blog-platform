@@ -27,7 +27,7 @@ function AppContent() {
       }}
     >
       {!hideNavbar && <Navbar />}
-      <div className="body md:flex md:items-center md:justify-evenly max-w-auto mx-auto md:mx-0 p-3 pt-19">
+      <div className="body md:items-center md:justify-evenly max-w-auto mx-auto md:mx-0 p-3 md:pt-19 pt-19">
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/search" element={<SearchPage />} />
