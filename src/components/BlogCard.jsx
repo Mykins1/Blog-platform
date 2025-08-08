@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { format } from "date-fns";
 import {
   Heart,
@@ -25,14 +25,25 @@ const BlogItem = ({ blog }) => {
   const [saved, setSaved] = useState(false);
   const [liked, setLiked] = useState(false);
   const [isSaved, setIsSaved] = useState(false);
-
-  // Add repost state
   const [reposts, setReposts] = useState(blog.reposts || 0);
   const [isReposted, setIsReposted] = useState(false);
 
   const toggleReadMore = () => setIsExpanded(!isExpanded);
+  const [maxWords, setMaxWords] = useState(20);
 
-  const maxWords = 17;
+  useEffect(() => {
+    const handleResize = () => {
+      if (window.innerWidth >= 768) {
+        setMaxWords(40); // More words for md and above
+      } else {
+        setMaxWords(20); // Default for small screens
+      }
+    };
+    handleResize(); // Set on mount
+    window.addEventListener("resize", handleResize);
+    return () => window.removeEventListener("resize", handleResize);
+  }, []);
+
   const words = blog.content.split(" ");
   const truncated =
     words.length > maxWords
@@ -113,7 +124,7 @@ const BlogItem = ({ blog }) => {
       </div>
       {/* <hr className="block md:hidden border-t border-gray-300 mt-2 " /> */}
       {/* Blog Content with Read More */}
-      <p className="text-md  leading-tight">
+      <p className="text-md  leading-snug">
         <span
           className={`${
             !isExpanded ? "truncate whitespace-pre-wrap align-bottom" : ""
