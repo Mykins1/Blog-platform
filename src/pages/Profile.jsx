@@ -24,22 +24,22 @@ const Profile = () => {
         <p className="text-center text-sm text-gray-600">{user.proffession}</p>
       </div>
 
-      <div>
-        <h3 className="flex justify-starttext-lg font-bold mb-4 px-4 text-center">
+      <div className="flex flex-col gap-2">
+        <h3 className="flex justify-start text-lg font-bold px-4 text-center">
           Posts
         </h3>
-        <div className="flex flex-col gap-4">
+        <div className="flex flex-col">
           {userPosts.length === 0 ? (
             <div className="text-center text-gray-400">No posts yet.</div>
           ) : (
             userPosts.map((post) => (
-              <div key={post.id} className=" rounded p-4 bg-white">
-                <h4 className="font-semibold mb-2">{post.title}</h4>
+              <div key={post.id} className=" rounded px-4 bg-white">
+                <h4 className="font-semibold mt-2">{post.title}</h4>
                 <p className="text-sm text-gray-700 mb-2">{post.content}</p>
                 <img
                   src={post.img}
                   alt={post.title}
-                  className="w-full h-40 object-cover rounded mb-2"
+                  className="w-full h-40 object-cover rounded"
                 />
               </div>
             ))
