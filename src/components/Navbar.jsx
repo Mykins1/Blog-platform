@@ -3,7 +3,7 @@ import { X } from "lucide-react";
 import {
   House,
   MagnifyingGlass,
-  PlusCircle,
+  Plus,
   User,
   SignOut,
   Gear,
@@ -273,18 +273,33 @@ export const BottomNav = ({ menuOpen, navbarTop }) => {
     >
       <NavLink
         to="/"
-        className={`flex flex-col items-center w-full gap-1 px-4 py-2 rounded-r-md transition ${
+        className={`flex flex-col items-center w-full    rounded-r-md transition ${
           location.pathname === "/"
             ? "bg-gray-200 text-gray-800"
             : "text-gray-800"
         }`}
       >
         <House size={28} weight={location.pathname === "/" ? "fill" : "bold"} />
-        <span className="text-sm">Home</span>
+        <span className="text-xs">Home</span>
+      </NavLink>
+      <NavLink
+        to="/addpost"
+        className={`flex flex-col items-center w-full gap-1 py-1 rounded-md transition ${
+          location.pathname === "/addpost"
+            ? "bg-gray-200 text-gray-800"
+            : "text-gray-800"
+        }`}
+      >
+        <Plus
+          className=" bg-gray-200 rounded-full p-1"
+          size={28}
+          weight={location.pathname === "/addpost" ? "bold" : "bold"}
+          strokeWidth={location.pathname === "/addpost" ? 3 : 1.5}
+        />
       </NavLink>
       <NavLink
         to="/search"
-        className={`flex flex-col items-center w-full gap-1 px-4 py-2 rounded-md transition ${
+        className={`flex flex-col items-center w-full rounded-md transition ${
           location.pathname === "/search"
             ? "bg-gray-200 text-gray-800"
             : "text-gray-700"
@@ -294,22 +309,8 @@ export const BottomNav = ({ menuOpen, navbarTop }) => {
           size={28}
           weight={location.pathname === "/search" ? "fill" : "bold"}
         />
+        <span className="text-xs">Search</span>
       </NavLink>
-      <NavLink
-        to="/addpost"
-        className={`flex flex-col items-center w-full gap-1 px-4 py-2 rounded-l-md transition ${
-          location.pathname === "/addpost"
-            ? "bg-gray-200 text-gray-800"
-            : "text-gray-800"
-        }`}
-      >
-        <PlusCircle
-          size={28}
-          weight={location.pathname === "/addpost" ? "fill" : "bold"}
-          strokeWidth={location.pathname === "/addpost" ? 3 : 1.5}
-        />
-      </NavLink>
-      
     </div>
   );
 };
