@@ -1,10 +1,9 @@
 import { useState, useEffect } from "react";
 import { MagnifyingGlass } from "phosphor-react";
 import blogData from "../../data/db.js";
-import { Link } from "react-router";
+import { Link } from "react-router-dom";
 
-
-const SearchPage = ({blog}) => {
+const SearchPage = () => {
   const [query, setQuery] = useState("");
   const [filtered, setFiltered] = useState([]);
 
@@ -25,19 +24,7 @@ const SearchPage = ({blog}) => {
   }, [query]);
 
   return (
-    <div
-      className="flex flex-col gap-4 w-full"
-      style={{
-        fontFamily: {
-          "system-ui": [
-            '"Segoe UI"',
-            '"Helvetica Neue"',
-            "Arial",
-            "sans-serif",
-          ],
-        },
-      }}
-    >
+    <div className="flex flex-col gap-4 w-full">
       <div className="relative w-full">
         <MagnifyingGlass
           className="absolute left-3 top-1/2 -translate-y-1/2 text-gray-400"
@@ -51,28 +38,29 @@ const SearchPage = ({blog}) => {
           onChange={(e) => setQuery(e.target.value)}
         />
       </div>
+
       {/* Live search results */}
       <div className="flex flex-col gap-2">
         {query && filtered.length === 0 && (
           <div className="text-gray-400 text-sm px-2">No results found.</div>
         )}
-        <Link to={`/profile/${encodeURIComponent(blog.author)}`}>
-          {filtered.map((blog) => (
-            <div
-              key={blog.id}
-              className="flex items-center gap-3 p-2 rounded hover:bg-gray-100 transition"
-            >
-              <img
-                src={blog.authorImg}
-                alt={blog.author}
-                className="w-8 h-8 rounded-full object-cover"
-              />
-              <div>
-                <div className="font-medium text-md">{blog.author}</div>
-              </div>
+
+        {filtered.map((blog) => (
+          <Link
+            key={blog.id}
+            to={`/profile/${encodeURIComponent(blog.author)}`}
+            className="flex items-center gap-3 p-2 rounded hover:bg-gray-100 transition"
+          >
+            <img
+              src={blog.authorImg}
+              alt={blog.author}
+              className="w-8 h-8 rounded-full object-cover"
+            />
+            <div>
+              <div className="font-medium text-md">{blog.author}</div>
             </div>
-          ))}
-        </Link>
+          </Link>
+        ))}
       </div>
     </div>
   );
