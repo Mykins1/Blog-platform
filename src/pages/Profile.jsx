@@ -14,19 +14,22 @@ const Profile = () => {
 
   return (
     <div>
-      <div className="flex flex-col leading-tight mb-8">
+      <div className="flex items-center gap-5 leading-tight mb-8">
         <img
           src={user.authorImg}
           alt={user.author}
-          className="w-24 h-24 rounded-full mx-auto"
+          className="w-24 h-24 rounded-full"
         />
-        <h2 className="text-xl font-semibold text-center">{user.author}</h2>
-        <p className="text-center text-sm text-gray-600">{user.proffession}</p>
+        <div className="flex flex-col text-left">
+          <h2 className="text-xl font-semibold">{user.author}</h2>
+          <p className="text-sm text-gray-600">{user.proffession}</p>
+        </div>
       </div>
 
       <div className="flex flex-col gap-2">
-        <h3 className="flex justify-start text-lg font-bold px-4 text-center">
+        <h3 className="flex flex-col text-left text-lg font-bold px-4">
           Posts
+          <hr className="block md:hidden border-t border-gray-300  w-screen -ml-7" />
         </h3>
         <div className="flex flex-col">
           {userPosts.length === 0 ? (
@@ -38,9 +41,10 @@ const Profile = () => {
                 <p className="text-sm text-gray-700 mb-2">{post.content}</p>
                 <img
                   src={post.img}
-                  alt={post.title}
+                  // alt={post.title}
                   className="w-full h-40 object-cover rounded"
                 />
+                <hr className="block md:hidden border-t border-gray-300 w-full mx-auto my-3" />
               </div>
             ))
           )}

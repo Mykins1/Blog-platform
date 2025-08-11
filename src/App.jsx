@@ -13,6 +13,7 @@ import BlogDetails from "./pages/BlogDetails";
 import SearchPage from "./pages/SearchPage";
 import SignIn from "./pages/SignPage";
 import Profile from "./pages/Profile";
+import Root from "./Root";
 
 
 function AppContent() {
@@ -37,7 +38,7 @@ function AppContent() {
         }`}
       >
         {" "}
-        <Routes>
+        <Routes element={<Root />}>
           <Route path="/" element={<Home />} />
           <Route path="/profile/:author" element={<Profile />} />
           <Route path="/search" element={<SearchPage />} />
