@@ -90,7 +90,7 @@ const Navbar = () => {
     <>
       {/* Navbar always above BottomNav */}
       <div
-        className="fixed w-full flex flex-col md:flex-row items-center justify-between md:p-6 px-4 py-3 bg-white shadow-md z-[101] transition-all duration-300"
+        className="fixed w-full flex flex-col md:flex-row items-center justify-between border-b border-gray-300 md:p-6 px-4 py-3 bg-white z-[101] transition-all duration-300"
         style={{
           fontFamily: "Poppins, sans-serif",
           top: `${navbarTop}px`, // Apply the dynamic top position
