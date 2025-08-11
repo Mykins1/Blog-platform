@@ -58,8 +58,6 @@ function AppContent() {
 export default function App() {
   return (
     <Router>
-      {/* Make ScrollMemory global so it works for all routes */}
-      <ScrollMemory />
       <AppContent />
     </Router>
   );

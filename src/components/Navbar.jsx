@@ -280,6 +280,7 @@ export const BottomNav = ({ menuOpen, navbarTop }) => {
         }`}
       >
         <House size={28} weight={location.pathname === "/" ? "fill" : "bold"} />
+        <span className="text-sm">Home</span>
       </NavLink>
       <NavLink
         to="/search"
