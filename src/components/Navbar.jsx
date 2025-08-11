@@ -292,9 +292,7 @@ export const BottomNav = ({ menuOpen, navbarTop }) => {
       <NavLink
         to="/"
         className={`flex flex-col items-center w-full    rounded-r-md transition ${
-          location.pathname === "/"
-            ? "bg-gray-200 text-gray-800"
-            : "text-gray-800"
+          location.pathname === "/" ? "bg-gray-300" : ""
         }`}
       >
         <House size={28} weight={location.pathname === "/" ? "fill" : "bold"} />
@@ -303,9 +301,7 @@ export const BottomNav = ({ menuOpen, navbarTop }) => {
       <NavLink
         to="/addpost"
         className={`flex flex-col items-center w-full gap-1 py-2 rounded-md transition ${
-          location.pathname === "/addpost"
-            ? "bg-gray-200 text-gray-800"
-            : "text-gray-800"
+          location.pathname === "/addpost" ? "bg-gray-300" : ""
         }`}
       >
         <Plus

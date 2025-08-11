@@ -6,39 +6,50 @@ import { Link } from "react-router-dom";
 const SearchPage = () => {
   const [query, setQuery] = useState("");
   const [filteredAuthors, setFilteredAuthors] = useState([]);
+  const [debouncedQuery, setDebouncedQuery] = useState(query);
 
+  // Debouncing the query to avoid excessive re-renders
   useEffect(() => {
-    if (!query) {
+    const timer = setTimeout(() => {
+      setDebouncedQuery(query);
+    }, 500); // 500ms delay for debounce
+
+    return () => clearTimeout(timer); // Cleanup the timer
+  }, [query]);
+
+  // Filter blogs based on the debounced query
+  useEffect(() => {
+    if (!debouncedQuery) {
       setFilteredAuthors([]);
       return;
     }
 
-    // Filter first
-    const filtered = blogData.blogs.filter(
-      (blog) =>
-        (blog.author &&
-          blog.author.toLowerCase().includes(query.toLowerCase())) ||
-        (blog.profession &&
-          blog.profession.toLowerCase().includes(query.toLowerCase()))
-    );
+    // Accumulating filtered blogs based on author or profession
+    const filtered = blogData.blogs.reduce((acc, blog) => {
+      // Ensure author and profession are available
+      const authorKey = blog.author?.trim().toLowerCase();
+      const professionKey = blog.profession?.trim().toLowerCase();
 
-    // Deduplicate by author
-    const unique = [];
-    const seen = new Set();
-
-    filtered.forEach((blog) => {
-      const authorKey = blog.author.trim().toLowerCase();
-      if (!seen.has(authorKey)) {
-        seen.add(authorKey);
-        unique.push(blog);
+      // Check if either the author or profession matches the query
+      if (
+        !acc.some((item) => item.author.toLowerCase() === authorKey) && // Deduplication by author
+        (
+          authorKey?.includes(debouncedQuery.toLowerCase()) || 
+          professionKey?.includes(debouncedQuery.toLowerCase())
+        )
+      ) {
+        acc.push(blog); // Add blog to result if condition is met
       }
-    });
 
-    setFilteredAuthors(unique);
-  }, [query]);
+      return acc; // Return accumulated results
+    }, []); // Initial value of accumulator is an empty array
+
+    setFilteredAuthors(filtered); // Update the state with the filtered blogs
+  }, [debouncedQuery]);
 
   return (
     <div className="flex flex-col gap-4 w-full">
+      {/* Search Input */}
       <div className="relative w-full">
         <MagnifyingGlass
           className="absolute left-3 top-1/2 -translate-y-1/2 text-gray-400"
@@ -46,22 +57,24 @@ const SearchPage = () => {
         />
         <input
           type="text"
-          className="w-full border border-gray-400 bg-gray-50 p-2 pl-10 rounded-full"
+          className="w-full border border-gray-400 bg-gray-50 p-2 pl-10 rounded-full focus:outline-none focus:ring-2 focus:ring-blue-500 transition"
           placeholder="Search..."
+          aria-label="Search authors and professions"
           value={query}
           onChange={(e) => setQuery(e.target.value)}
         />
       </div>
 
-      {/* Live search results */}
+      {/* Live Search Results */}
       <div className="flex flex-col gap-2">
         {query && filteredAuthors.length === 0 && (
           <div className="text-gray-400 text-sm px-2">No results found.</div>
         )}
 
+        {/* Display filtered blogs */}
         {filteredAuthors.map((blog) => (
           <Link
-            key={blog.author} // safe to use author since it's unique now
+            key={blog.id} // Assuming the blog has a unique 'id'
             to={`/profile/${encodeURIComponent(blog.author)}`}
             className="flex items-center gap-3 p-2 rounded hover:bg-gray-100 transition"
           >

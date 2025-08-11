@@ -14,7 +14,7 @@ const Profile = () => {
 
   return (
     <div>
-      <div className="flex items-center gap-5 leading-tight mb-8">
+      <div className="flex items-center gap-4 px-4 leading-tight mb-8">
         <img
           src={user.authorImg}
           alt={user.author}
@@ -22,7 +22,7 @@ const Profile = () => {
         />
         <div className="flex flex-col text-left">
           <h2 className="text-xl font-semibold">{user.author}</h2>
-          <p className="text-sm text-gray-600">{user.proffession}</p>
+          <p className="text-sm text-gray-600">{user.profession}</p>
         </div>
       </div>
 

@@ -8,7 +8,7 @@
         id: 1,
         author: "Aina Rita",
         authorImg: "https://randomuser.me/api/portraits/women/1.jpg",
-        proffession: "Software Engineer",
+        profession: "Software Engineer",
         date: 4444444444,
       },
       {
@@ -19,7 +19,7 @@
         id: 2,
         author: "Mykel Akinsade",
         authorImg: "https://randomuser.me/api/portraits/men/5.jpg",
-        proffession: "Full Stack Developer",
+        profession: "Frontend Developer",
       },
       {
         img: "https://images.unsplash.com/photo-1545239351-1141bd82e8a6?auto=format&fit=crop&w=900&q=80",
@@ -29,7 +29,7 @@
         id: 3,
         author: "Alice Smith",
         authorImg: "https://randomuser.me/api/portraits/women/3.jpg",
-        proffession: "Frontend Developer",
+        profession: "Frontend Developer",
       },
       {
         img: "https://images.unsplash.com/photo-1519389950473-47ba0277781c?auto=format&fit=crop&w=900&q=80",
@@ -39,7 +39,7 @@
         id: 4,
         author: "Bob Johnson",
         authorImg: "https://randomuser.me/api/portraits/men/4.jpg",
-        proffession: "UI/UX Designer",
+        profession: "UI/UX Designer",
       },
       {
         img: "https://images.unsplash.com/photo-1555066931-4365d14bab8c?auto=format&fit=crop&w=900&q=80",
@@ -49,7 +49,7 @@
         id: 2,
         author: "Mykel Akinsade",
         authorImg: "https://randomuser.me/api/portraits/men/5.jpg",
-        proffession: "Full Stack Developer",
+        profession: "Frontend Developer",
       },
       {
         img: "https://images.unsplash.com/photo-1465101046530-73398c7f28ca?auto=format&fit=crop&w=900&q=80",
@@ -59,7 +59,7 @@
         id: 6,
         author: "Jane Doe",
         authorImg: "https://randomuser.me/api/portraits/women/6.jpg",
-        proffession: "Web Designer",
+        profession: "Web Designer",
       },
       {
         img: "https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=crop&w=900&q=80",
@@ -69,7 +69,7 @@
         id: 7,
         author: "Samuel Green",
         authorImg: "https://randomuser.me/api/portraits/men/7.jpg",
-        proffession: "Backend Developer",
+        profession: "Backend Developer",
       },
       {
         img: "https://images.unsplash.com/photo-1461749280684-dccba630e2f6?auto=format&fit=crop&w=900&q=80",
@@ -79,7 +79,7 @@
         id: 8,
         author: "Linda Brown",
         authorImg: "https://randomuser.me/api/portraits/women/8.jpg",
-        proffession: "Software Engineer",
+        profession: "Software Engineer",
         date: 333430000000,
       },
       {
@@ -90,7 +90,7 @@
         id: 9,
         author: "Chris Lee",
         authorImg: "https://randomuser.me/api/portraits/men/9.jpg",
-        proffession: "Node.js Developer",
+        profession: "Node.js Developer",
       },
       {
         img: "https://images.unsplash.com/photo-1465101178521-c1a9136a3b99?auto=format&fit=crop&w=900&q=80",
@@ -100,7 +100,7 @@
         id: 10,
         author: "Fatima Yusuf",
         authorImg: "https://randomuser.me/api/portraits/women/10.jpg",
-        proffession: "Accessibility Specialist",
+        profession: "Accessibility Specialist",
       },
     ],
   };
