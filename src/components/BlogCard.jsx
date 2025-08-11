@@ -18,6 +18,27 @@ const BlogCard = ({ blogs }) => {
   );
 };
 
+const formatDate = (date) => {
+  const d = new Date(date)
+  console.log(d)
+  const months = [
+    "Jan",
+    "Feb",
+    "Mar",
+    "Apr",
+    "May",
+    "Jun",
+    "Jul",
+    "Aug",
+    "Sep",
+    "Oct",
+    "Nov",
+    "Dec",
+  ];
+  return `${d.getDate()} ${months[d.getMonth()]} ${d.getUTCFullYear()}`;
+};
+
+
 const BlogItem = ({ blog }) => {
   const [isExpanded, setIsExpanded] = useState(false);
   const [likes, setLikes] = useState(blog.likes || 0);
@@ -90,6 +111,8 @@ const BlogItem = ({ blog }) => {
     setIsReposted(!isReposted);
   };
 
+  console.log(blog)
+
   return (
     <div className="max-w-[350px] flex flex-col gap-2">
       {/* Author info */}
@@ -115,10 +138,7 @@ const BlogItem = ({ blog }) => {
                 }}
               ></div>
               <div className="text-sm text-gray-700">
-                {" "}
-                {blog.date
-                  ? format(new Date(blog.date), "MMMM dd, yyyy")
-                  : "No date"}
+                {blog.date ? formatDate(blog.date) : "No date"}
               </div>
             </div>
             <div className="text-sm text-gray-700 italic">
