@@ -140,8 +140,8 @@ const BlogItem = ({ blog }) => {
                 {blog.date ? formatDate(blog.date) : "No date"}
               </div>
             </div>
-            <div className="text-sm text-gray-700 italic">
-              {blog.proffession}
+            <div className="text-xs text-gray-700 italic">
+              {blog.profession}
             </div>
           </div>
         </div>
