@@ -90,7 +90,7 @@ const Navbar = () => {
     <>
       {/* Navbar always above BottomNav */}
       <div
-        className="fixed w-full flex flex-col md:flex-row items-center justify-between border-b border-gray-300 md:p-6 px-4 py-3 bg-white z-[101] transition-all duration-300"
+        className="fixed w-full flex flex-col md:flex-row items-center justify-between border-b border-gray-200 md:p-6 px-4 py-3 bg-white z-[101] transition-all duration-300"
         style={{
           fontFamily: "Poppins, sans-serif",
           top: `${navbarTop}px`, // Apply the dynamic top position
@@ -242,7 +242,7 @@ const Navbar = () => {
               <span className="font-medium">Settings</span>
             </NavLink>
             {/* Logout button with sign out icon */}
-            <button
+            {/* <button
               className="flex items-center gap-3 py-2 px-4 rounded-md transition text-lg text-black hover:bg-gray-100"
               onClick={() => {
                 // Placeholder for logout logic
@@ -251,7 +251,7 @@ const Navbar = () => {
             >
               <SignOut size={22} weight="bold" />
               <span className="font-medium">Logout</span>
-            </button>
+            </button> */}
             <NavLink
               to="/sign"
               onClick={() => setMenuOpen(false)}
@@ -262,7 +262,7 @@ const Navbar = () => {
               }
             >
               <SignOut size={22} weight="bold" />
-              <span className="font-medium">Sign Page</span>
+              <span className="font-medium">Logout</span>
             </NavLink>
           </nav>
         </div>

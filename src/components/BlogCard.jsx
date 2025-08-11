@@ -223,7 +223,7 @@ const BlogItem = ({ blog }) => {
           <BookmarkSimple size={20} weight={isSaved ? "fill" : "regular"} />
         </button>
       </div>
-      <hr className="block md:hidden border-t border-gray-300  w-screen -ml-3" />{" "}
+      <hr className="block md:hidden border-t border-gray-200  w-screen -ml-3" />{" "}
     </div>
   );
 };
