@@ -10,6 +10,7 @@ import {
   BookmarkSimple,
   Moon,
   Sun,
+  ChatsCircle,
 } from "phosphor-react";
 import { NavLink, useLocation } from "react-router-dom";
 
@@ -17,9 +18,9 @@ import { NavLink, useLocation } from "react-router-dom";
 const Navbar = () => {
   const [menuOpen, setMenuOpen] = useState(false);
   const [navbarTop, setNavbarTop] = useState(0); // State for the navbar's top position
-  const [darkMode, setDarkMode] = useState(
-    document.documentElement.classList.contains("dark")
-  );
+  // const [darkMode, setDarkMode] = useState(
+  //   document.documentElement.classList.contains("dark")
+  // );
 
   // Prevent page interaction when sidebar is open
   useEffect(() => {
@@ -75,15 +76,15 @@ const Navbar = () => {
   }, []);
 
   // Dark mode toggle handler
-  const handleDarkModeToggle = () => {
-    if (darkMode) {
-      document.documentElement.classList.remove("dark");
-      setDarkMode(false);
-    } else {
-      document.documentElement.classList.add("dark");
-      setDarkMode(true);
-    }
-  };
+  // const handleDarkModeToggle = () => {
+  //   if (darkMode) {
+  //     document.documentElement.classList.remove("dark");
+  //     setDarkMode(false);
+  //   } else {
+  //     document.documentElement.classList.add("dark");
+  //     setDarkMode(true);
+  //   }
+  // };
 
   return (
     <>
@@ -140,6 +141,23 @@ const Navbar = () => {
             <h1 className="text-xl font-bold ">Socia</h1>
           </div>
           <div>
+            <NavLink
+              to="/search"
+              className={`flex flex-col items-center w-full rounded-full p-1 transition ${
+                location.pathname === "/search"
+                  ? "bg-gray-200 text-gray-800"
+                  : "text-gray-700"
+              }`}
+            >
+              <MagnifyingGlass
+              className=""
+                size={28}
+                weight={location.pathname === "/search" ? "fill" : "bold"}
+              />
+            
+            </NavLink>
+          </div>
+          {/* <div>
             {darkMode ? (
               <Sun
                 size={24}
@@ -155,7 +173,7 @@ const Navbar = () => {
                 onClick={handleDarkModeToggle}
               />
             )}
-          </div>
+          </div> */}
         </div>
 
         {/* Mobile Sidebar */}
@@ -284,7 +302,7 @@ export const BottomNav = ({ menuOpen, navbarTop }) => {
       </NavLink>
       <NavLink
         to="/addpost"
-        className={`flex flex-col items-center w-full gap-1 py-1 rounded-md transition ${
+        className={`flex flex-col items-center w-full gap-1 py-2 rounded-md transition ${
           location.pathname === "/addpost"
             ? "bg-gray-200 text-gray-800"
             : "text-gray-800"
@@ -297,7 +315,7 @@ export const BottomNav = ({ menuOpen, navbarTop }) => {
           strokeWidth={location.pathname === "/addpost" ? 3 : 1.5}
         />
       </NavLink>
-      <NavLink
+      {/* <NavLink
         to="/search"
         className={`flex flex-col items-center w-full rounded-md transition ${
           location.pathname === "/search"
@@ -305,12 +323,12 @@ export const BottomNav = ({ menuOpen, navbarTop }) => {
             : "text-gray-700"
         }`}
       >
-        <MagnifyingGlass
+        <ChatsCircle
           size={28}
           weight={location.pathname === "/search" ? "fill" : "bold"}
         />
-        <span className="text-xs">Search</span>
-      </NavLink>
+        <span className="text-xs">Chats</span>
+      </NavLink> */}
     </div>
   );
 };
