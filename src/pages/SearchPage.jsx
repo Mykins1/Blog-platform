@@ -5,22 +5,36 @@ import { Link } from "react-router-dom";
 
 const SearchPage = () => {
   const [query, setQuery] = useState("");
-  const [filtered, setFiltered] = useState([]);
+  const [filteredAuthors, setFilteredAuthors] = useState([]);
 
   useEffect(() => {
     if (!query) {
-      setFiltered([]);
+      setFilteredAuthors([]);
       return;
     }
-    setFiltered(
-      blogData.blogs.filter(
-        (blog) =>
-          (blog.author &&
-            blog.author.toLowerCase().includes(query.toLowerCase())) ||
-          (blog.profession &&
-            blog.profession.toLowerCase().includes(query.toLowerCase()))
-      )
+
+    // Filter first
+    const filtered = blogData.blogs.filter(
+      (blog) =>
+        (blog.author &&
+          blog.author.toLowerCase().includes(query.toLowerCase())) ||
+        (blog.profession &&
+          blog.profession.toLowerCase().includes(query.toLowerCase()))
     );
+
+    // Deduplicate by author
+    const unique = [];
+    const seen = new Set();
+
+    filtered.forEach((blog) => {
+      const authorKey = blog.author.trim().toLowerCase();
+      if (!seen.has(authorKey)) {
+        seen.add(authorKey);
+        unique.push(blog);
+      }
+    });
+
+    setFilteredAuthors(unique);
   }, [query]);
 
   return (
@@ -41,13 +55,13 @@ const SearchPage = () => {
 
       {/* Live search results */}
       <div className="flex flex-col gap-2">
-        {query && filtered.length === 0 && (
+        {query && filteredAuthors.length === 0 && (
           <div className="text-gray-400 text-sm px-2">No results found.</div>
         )}
 
-        {filtered.map((blog) => (
+        {filteredAuthors.map((blog) => (
           <Link
-            key={blog.id}
+            key={blog.author} // safe to use author since it's unique now
             to={`/profile/${encodeURIComponent(blog.author)}`}
             className="flex items-center gap-3 p-2 rounded hover:bg-gray-100 transition"
           >
@@ -58,6 +72,7 @@ const SearchPage = () => {
             />
             <div>
               <div className="font-medium text-md">{blog.author}</div>
+              <div className="text-xs text-gray-500">{blog.profession}</div>
             </div>
           </Link>
         ))}
