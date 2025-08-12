@@ -8,6 +8,7 @@
 Nav {
   font-family: 'Poppins', sans-serif;
 }
+
 body {
   font-family: "Nata Sans",
     sans-serif;
@@ -120,12 +121,14 @@ body {
   --sidebar-ring: oklch(0.556 0 0);
 }
 
+/* Confirm dark mode is enabled and used in your Tailwind config and CSS. */
+
 @layer base {
   * {
     @apply border-border outline-ring/50;
   }
+
   body {
     @apply bg-background text-foreground;
   }
 }
-
