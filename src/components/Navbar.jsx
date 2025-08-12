@@ -97,7 +97,7 @@ const Navbar = () => {
         }}
       >
         {/* Desktop Layout */}
-        <div className="hidden md:flex w-full items-center justify-between gap-8 shrink-0">
+        <div className="hidden md:flex w-full items-center justify-between gap-8 shrink-0 dark:bg-gray-500">
           <div className="flex flex-col min-w-[120px]">
             <h1 className="text-2xl font-bold ">Socia</h1>
           </div>
