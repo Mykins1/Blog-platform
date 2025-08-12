@@ -9,7 +9,6 @@
         author: "Aina Rita",
         authorImg: "https://randomuser.me/api/portraits/women/1.jpg",
         profession: "Software Engineer",
-        date: 4444444444,
       },
       {
         img: "https://images.unsplash.com/photo-1521747116042-5a810fda9664?auto=format&fit=crop&w=900&q=80",
@@ -80,7 +79,6 @@
         author: "Linda Brown",
         authorImg: "https://randomuser.me/api/portraits/women/8.jpg",
         profession: "Software Engineer",
-        date: 333430000000,
       },
       {
         img: "https://images.unsplash.com/photo-1519125323398-675f0ddb6308?auto=format&fit=crop&w=900&q=80",

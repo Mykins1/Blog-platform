@@ -13,6 +13,7 @@ import "./App.css";
 import SearchPage from "./pages/SearchPage";
 import SignIn from "./pages/SignPage";
 import Profile from "./pages/Profile";
+import { ThemeProvider } from "./components/Theme-provider";
 
 function AppContent() {
   const location = useLocation();
@@ -40,13 +41,15 @@ function AppContent() {
           overflowY: "auto",
         }}
       >
-        <Routes>
-          <Route path="/" element={<Home />} />
-          <Route path="/profile/:author" element={<Profile />} />
-          <Route path="/search" element={<SearchPage />} />
-          <Route path="/settings" element={<Settings />} />
-          <Route path="/sign" element={<SignIn />} />
-        </Routes>
+        <ThemeProvider defaultTheme="dark" storageKey="vite-ui-theme">
+          <Routes>
+            <Route path="/" element={<Home />} />
+            <Route path="/profile/:author" element={<Profile />} />
+            <Route path="/search" element={<SearchPage />} />
+            <Route path="/settings" element={<Settings />} />
+            <Route path="/sign" element={<SignIn />} />
+          </Routes>
+        </ThemeProvider>
       </div>
 
       {/* <Footer /> */}
