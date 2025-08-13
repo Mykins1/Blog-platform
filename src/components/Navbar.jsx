@@ -204,7 +204,7 @@ const Navbar = () => {
             {/* Profile link with user icon */}
             <NavLink
               to={`/profile/${encodeURIComponent("Mykel Akinsade")}`}
-              onClick={() => setMenuOpen(false)}
+              onClick={() => setMenuOpen(true)}
               className={({ isActive }) =>
                 `flex items-center gap-3 py-2 px-4 rounded-md transition text-lg ${
                   isActive ? "" : "text-black hover:bg-gray-100"
@@ -217,7 +217,7 @@ const Navbar = () => {
             {/* Bookmarks link with bookmark icon */}
             <NavLink
               to="/bookmarks"
-              onClick={() => setMenuOpen(false)}
+              onClick={() => setMenuOpen(true)}
               className={({ isActive }) =>
                 `flex items-center gap-3 py-2 px-4 rounded-md transition text-lg ${
                   isActive ? "" : "text-black hover:bg-gray-100"
@@ -231,7 +231,7 @@ const Navbar = () => {
             {/* Settings link with gear icon */}
             <NavLink
               to="/settings"
-              onClick={() => setMenuOpen(false)}
+              onClick={() => setMenuOpen(true)}
               className={({ isActive }) =>
                 `flex items-center gap-3 py-2 px-4 rounded-md transition text-lg ${
                   isActive ? "" : "text-black hover:bg-gray-100"
