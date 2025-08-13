@@ -1,14 +1,17 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import BlogCard from "../components/BlogCard.jsx";
 import blogData from "../../data/db.js";
 
 export default function Blog() {
   const [isPending, setIsPending] = useState(true);
   const error = false;
-  
-  setTimeout(() => {
-    setIsPending(false);
-  }, 0);
+
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      setIsPending(false);
+    }, 0);
+    return () => clearTimeout(timer);
+  }, []);
 
   return (
     <div
@@ -31,4 +34,3 @@ export default function Blog() {
     </div>
   );
 }
-

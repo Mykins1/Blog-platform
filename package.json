@@ -1,6 +1,6 @@
 {
   "name": "socia-blog",
-  "homepage": "https://mykins1.github.com/socia-blog/",
+  // "homepage": "https://mykins1.github.com/socia-blog/",
   "version": "0.0.0",
   "type": "module",
   "scripts": {

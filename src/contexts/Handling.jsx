@@ -1,31 +1,31 @@
-import { useState, useEffect } from "react";
-const useFetch = (url) => {
-    const [data, setData] = useState(null);
-    const [isPending, setIsPending] = useState(true);
-    const [error, setError] = useState(null);
+// import { useState, useEffect } from "react";
+// const useFetch = (url) => {
+//     const [data, setData] = useState(null);
+//     const [isPending, setIsPending] = useState(true);
+//     const [error, setError] = useState(null);
      
-        useEffect(() => {
-            setTimeout(() => {
-              fetch(url)
-              .then((res) => {
-                if (!res.ok) {
-                  throw Error("Network response was not ok");
-                }
-                return res.json();
-              })
-              .then((data) => {
-                setData(data);
-                setIsPending(false);
-                setError(null);
-              })
-              .catch((err) => {
-                setError(err.message);
-                setIsPending(false);
-              });
-            }, []);
-        }, [url]);
+//         useEffect(() => {
+//             setTimeout(() => {
+//               fetch(url)
+//               .then((res) => {
+//                 if (!res.ok) {
+//                   throw Error("Network response was not ok");
+//                 }
+//                 return res.json();
+//               })
+//               .then((data) => {
+//                 setData(data);
+//                 setIsPending(false);
+//                 setError(null);
+//               })
+//               .catch((err) => {
+//                 setError(err.message);
+//                 setIsPending(false);
+//               });
+//             }, []);
+//         }, [url]);
         
-    return { data, isPending, error };
-}
+//     return { data, isPending, error };
+// }
  
-export default useFetch;
+// export default useFetch;
