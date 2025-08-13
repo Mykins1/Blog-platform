@@ -1,10 +1,15 @@
-import { Outlet, useLocation } from "react-router-dom";
+import { Routes, Route, useLocation } from "react-router-dom";
 import Navbar, { BottomNav } from "./components/Navbar";
 import Footer from "./components/Footer";
+import Home from "./pages/Home";
+import Settings from "./pages/Settings";
 import "./App.css";
+import SearchPage from "./pages/SearchPage";
+import SignIn from "./pages/SignPage";
+import Profile from "./pages/Profile";
 import { useTheme } from "./components/Theme-provider";
 
-function App() {
+function AppContent() {
   const location = useLocation();
   const hideNavbar =
     location.pathname === "/sign" || location.pathname.startsWith("/profile/");
@@ -33,12 +38,19 @@ function App() {
           overflowY: "auto",
         }}
       >
-        <Outlet />
+        <Routes>
+          <Route path="/" element={<Home />} />
+          <Route path="/profile/:author" element={<Profile />} />
+          <Route path="/search" element={<SearchPage />} />
+          <Route path="/settings" element={<Settings />} />
+          <Route path="/sign" element={<SignIn />} />
+        </Routes>
       </div>
 
+      {/* <Footer /> */}
       <BottomNav />
     </div>
   );
 }
 
-export default App;
+export default AppContent;
