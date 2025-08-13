@@ -1,12 +1,23 @@
 import { useState, useEffect } from "react";
 import { MagnifyingGlass } from "phosphor-react";
 import blogData from "../../data/db.js";
-import { Link } from "react-router-dom";
+import { Link, useSearchParams } from "react-router-dom";
 
 const SearchPage = () => {
-  const [query, setQuery] = useState("");
+  const [searchParams, setSearchParams] = useSearchParams();
+  const initialQuery = searchParams.get("q") || "";
+  const [query, setQuery] = useState(initialQuery);
   const [filteredAuthors, setFilteredAuthors] = useState([]);
   const [debouncedQuery, setDebouncedQuery] = useState(query);
+
+  // Update URL when query changes
+  useEffect(() => {
+    if (query) {
+      setSearchParams({ q: query });
+    } else {
+      setSearchParams({});
+    }
+  }, [query, setSearchParams]);
 
   // Debouncing the query to avoid excessive re-renders
   useEffect(() => {
@@ -33,10 +44,8 @@ const SearchPage = () => {
       // Check if either the author or profession matches the query
       if (
         !acc.some((item) => item.author.toLowerCase() === authorKey) && // Deduplication by author
-        (
-          authorKey?.includes(debouncedQuery.toLowerCase()) || 
-          professionKey?.includes(debouncedQuery.toLowerCase())
-        )
+        (authorKey?.includes(debouncedQuery.toLowerCase()) ||
+          professionKey?.includes(debouncedQuery.toLowerCase()))
       ) {
         acc.push(blog); // Add blog to result if condition is met
       }
