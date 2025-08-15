@@ -7,20 +7,16 @@ import "./App.css";
 import SearchPage from "./pages/SearchPage";
 import SignIn from "./pages/SignPage";
 import Profile from "./pages/Profile";
-import { useTheme } from "./components/Theme-provider";
 
 function AppContent() {
   const location = useLocation();
   const hideNavbar =
     location.pathname === "/sign" || location.pathname.startsWith("/profile/");
   const isProfilePage = location.pathname.startsWith("/profile/");
-  const { theme } = useTheme();
 
   return (
     <div
-      className={`min-h-screen bg-white text-gray-900 ${
-        theme === "dark" ? "dark" : ""
-      }`}
+      className= "min-h-screen bg-white text-gray-900"
       style={{
         scrollbarWidth: "none",
         msOverflowStyle: "none",

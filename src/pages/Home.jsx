@@ -1,5 +1,4 @@
 // import { useState, useEffect } from "react";
-import {React} from "react";
 import BlogCard from "../components/BlogCard.jsx";
 import blogData from "../../data/db.js";
 
