@@ -179,7 +179,7 @@ const Navbar = () => {
         <div
           className={`fixed top-0 left-0 h-full w-[70vw] max-w-md bg-white shadow-lg z-[102] transition-transform ${
             menuOpen ? "translate-x-0" : "-translate-x-full"
-          } md:hidden flex flex-col items-start pt-5 gap-2 px-3`}
+          } md:hidden flex flex-col items-start pt-5 gap-2 `}
           style={{
             fontFamily: "Poppins, sans-serif",
           }}
@@ -205,7 +205,7 @@ const Navbar = () => {
               to={`/profile/${encodeURIComponent("Mykel Akinsade")}`}
               onClick={() => setMenuOpen(true)}
               className={({ isActive }) =>
-                `flex items-center gap-3 py-2 px-4 rounded-md transition duration-300 ease-in-out text-lg ${
+                `flex items-center gap-3 py-2 px-4 transition duration-300 ease-in-out text-lg ${
                   isActive ? "" : "text-black hover:bg-gray-100"
                 }
                   active:bg-gray-300`
@@ -219,7 +219,7 @@ const Navbar = () => {
               to="/bookmarks"
               onClick={() => setMenuOpen(true)}
               className={({ isActive }) =>
-                `flex items-center gap-3 py-2 px-4 rounded-md transition text-lg ${
+                `flex items-center gap-3 py-2 px-4 transition text-lg ${
                   isActive ? "" : "text-black hover:bg-gray-100"
                 }
                   active:bg-gray-300`
@@ -234,7 +234,7 @@ const Navbar = () => {
               to="/settings"
               onClick={() => setMenuOpen(true)}
               className={({ isActive }) =>
-                `flex items-center gap-3 py-2 px-4 rounded-md transition text-lg ${
+                `flex items-center gap-3 py-2 px-4 transition text-lg ${
                   isActive ? "" : "text-black hover:bg-gray-100"
                 }
                   active:bg-gray-300`
@@ -258,7 +258,7 @@ const Navbar = () => {
               to="/sign"
               onClick={() => setMenuOpen(false)}
               className={({ isActive }) =>
-                `flex items-center gap-3 py-2 px-4 rounded-md transition text-lg ${
+                `flex items-center gap-3 py-2 px-4 transition text-lg ${
                   isActive ? "" : "text-black hover:bg-gray-100"
                 }
                   active:bg-gray-300`
