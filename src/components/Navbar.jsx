@@ -303,7 +303,7 @@ export const BottomNav = ({ menuOpen, navbarTop }) => {
       </NavLink>
       <NavLink
         to="/addpost"
-        className={`flex flex-col items-center w-full gap-1 py-2 rounded-md transition ${
+        className={`flex flex-col items-center w-full gap-1 py-2 rounded-l-md transition ${
           location.pathname === "/addpost" ? "bg-gray-300" : ""
         }`}
       >
