@@ -208,7 +208,7 @@ const Navbar = () => {
                 `flex items-center gap-3 py-2 px-4 transition duration-300 ease-in-out text-lg ${
                   isActive ? "" : "text-black hover:bg-gray-100"
                 }
-                  active:bg-gray-300`
+                  active:bg-gray-200 `
               }
             >
               <User size={22} weight="bold" />
@@ -219,10 +219,10 @@ const Navbar = () => {
               to="/bookmarks"
               onClick={() => setMenuOpen(true)}
               className={({ isActive }) =>
-                `flex items-center gap-3 py-2 px-4 transition text-lg ${
+                `flex items-center gap-3 py-2 px-4 transition duration-300 ease-in-out text-lg ${
                   isActive ? "" : "text-black hover:bg-gray-100"
                 }
-                  active:bg-gray-300`
+                  active:bg-gray-200 `
               }
             >
               <BookmarkSimple size={22} weight="bold" />
@@ -234,10 +234,10 @@ const Navbar = () => {
               to="/settings"
               onClick={() => setMenuOpen(true)}
               className={({ isActive }) =>
-                `flex items-center gap-3 py-2 px-4 transition text-lg ${
+                `flex items-center gap-3 py-2 px-4 transition duration-300 ease-in-out text-lg ${
                   isActive ? "" : "text-black hover:bg-gray-100"
                 }
-                  active:bg-gray-300`
+                  active:bg-gray-200`
               }
             >
               <Gear size={22} weight="bold" />
@@ -261,7 +261,7 @@ const Navbar = () => {
                 `flex items-center gap-3 py-2 px-4 transition text-lg ${
                   isActive ? "" : "text-black hover:bg-gray-100"
                 }
-                  active:bg-gray-300`
+                  active:bg-gray-200`
               }
             >
               <SignOut size={22} weight="bold" />
