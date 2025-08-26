@@ -90,14 +90,14 @@ const Navbar = () => {
     <>
       {/* Navbar always above BottomNav */}
       <div
-        className="fixed w-full flex flex-col md:flex-row items-center justify-between border-b border-gray-200 md:p-6 px-4 py-3 bg-white z-[101] transition-all duration-300"
+        className="fixed w-full flex flex-col md:flex-row items-center justify-between border-b border-gray-200  px-4 py-3 bg-white z-[101] transition-all duration-300"
         style={{
           fontFamily: "Poppins, sans-serif",
           top: `${navbarTop}px`, // Apply the dynamic top position
         }}
       >
         {/* Desktop Layout */}
-        <div className="hidden md:flex w-full items-center justify-between gap-8 shrink-0 dark:bg-gray-500">
+        <div className="hidden md:flex w-full items-center justify-between gap-8 shrink-0 ">
           <div className="flex flex-col min-w-[120px]">
             <h1 className="text-2xl font-bold ">Socia</h1>
           </div>
@@ -150,11 +150,10 @@ const Navbar = () => {
               }`}
             >
               <MagnifyingGlass
-              className=""
+                className=""
                 size={28}
                 weight={location.pathname === "/search" ? "fill" : "bold"}
               />
-            
             </NavLink>
           </div>
           {/* <div>
@@ -206,9 +205,10 @@ const Navbar = () => {
               to={`/profile/${encodeURIComponent("Mykel Akinsade")}`}
               onClick={() => setMenuOpen(true)}
               className={({ isActive }) =>
-                `flex items-center gap-3 py-2 px-4 rounded-md transition text-lg ${
+                `flex items-center gap-3 py-2 px-4 rounded-md transition duration-300 ease-in-out text-lg ${
                   isActive ? "" : "text-black hover:bg-gray-100"
-                }`
+                }
+                  active:bg-gray-300`
               }
             >
               <User size={22} weight="bold" />
@@ -221,7 +221,8 @@ const Navbar = () => {
               className={({ isActive }) =>
                 `flex items-center gap-3 py-2 px-4 rounded-md transition text-lg ${
                   isActive ? "" : "text-black hover:bg-gray-100"
-                }`
+                }
+                  active:bg-gray-300`
               }
             >
               <BookmarkSimple size={22} weight="bold" />
@@ -235,7 +236,8 @@ const Navbar = () => {
               className={({ isActive }) =>
                 `flex items-center gap-3 py-2 px-4 rounded-md transition text-lg ${
                   isActive ? "" : "text-black hover:bg-gray-100"
-                }`
+                }
+                  active:bg-gray-300`
               }
             >
               <Gear size={22} weight="bold" />
@@ -258,7 +260,8 @@ const Navbar = () => {
               className={({ isActive }) =>
                 `flex items-center gap-3 py-2 px-4 rounded-md transition text-lg ${
                   isActive ? "" : "text-black hover:bg-gray-100"
-                }`
+                }
+                  active:bg-gray-300`
               }
             >
               <SignOut size={22} weight="bold" />
