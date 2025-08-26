@@ -90,7 +90,7 @@ const Navbar = () => {
     <>
       {/* Navbar always above BottomNav */}
       <div
-        className="fixed w-full flex flex-col md:flex-row items-center justify-between border-b border-gray-200  px-4 py-3 bg-white z-[101] transition-all duration-300"
+        className="nav fixed w-full flex flex-col md:flex-row items-center justify-between border-b border-gray-200  px-4 py-3 bg-white z-[101] transition-all duration-300"
         style={{
           fontFamily: "Poppins, sans-serif",
           top: `${navbarTop}px`, // Apply the dynamic top position
@@ -177,14 +177,14 @@ const Navbar = () => {
 
         {/* Mobile Sidebar */}
         <div
-          className={`fixed top-0 left-0 h-full w-[70vw] max-w-md bg-white shadow-lg z-[102] transition-transform ${
+          className={`fixed top-0 left-0 h-full w-[70vw] max-w-md font bg-white shadow-lg z-[102] transition-transform ${
             menuOpen ? "translate-x-0" : "-translate-x-full"
           } md:hidden flex flex-col items-start pt-5 gap-2 `}
           style={{
             fontFamily: "Poppins, sans-serif",
           }}
         >
-          <div className="flex flex-col items-center">
+          <div className="flex flex-col items-center px-3">
             <div className="flex items-center shrink-1  gap-2 w-full ">
               <img
                 src="https://randomuser.me/api/portraits/men/5.jpg"
