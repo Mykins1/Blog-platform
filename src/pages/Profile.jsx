@@ -13,7 +13,7 @@ const Profile = () => {
     };
 
     return (
-      <div className="flex absolute top-2 left-1 bg-gray-100 active:bg-gray-200 rounded-md p-2 ">
+      <div className="flex absolute top-2 left-1 active:bg-gray-200 rounded-md p-2 ">
         <ArrowLeft size={25} onClick={handleGoBack} className="text-black cursor-pointer" />
       </div>
     );
