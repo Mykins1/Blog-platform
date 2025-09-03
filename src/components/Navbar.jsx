@@ -180,9 +180,9 @@ const Navbar = () => {
           className={`fixed top-0 left-0 h-full w-[70vw] max-w-md font bg-white shadow-lg z-[102] transition-transform ${
             menuOpen ? "translate-x-0" : "-translate-x-full"
           } md:hidden flex flex-col items-start pt-5 gap-2 `}
-          style={{
-            fontFamily: "Poppins, sans-serif",
-          }}
+          // style={{
+          //   fontFamily: "Poppins, sans-serif",
+          // }}
         >
           <div className="flex flex-col items-center px-3">
             <div className="flex items-center shrink-1  gap-2 w-full ">
