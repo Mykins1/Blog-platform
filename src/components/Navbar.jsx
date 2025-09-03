@@ -92,7 +92,7 @@ const Navbar = () => {
       <div
         className="nav fixed w-full flex flex-col md:flex-row items-center justify-between border-b border-gray-200  px-4 py-3 bg-white z-[101] transition-all duration-300"
         style={{
-          fontFamily: "Poppins, sans-serif",
+          // fontFamily: "Poppins, sans-serif",
           top: `${navbarTop}px`, // Apply the dynamic top position
         }}
       >
