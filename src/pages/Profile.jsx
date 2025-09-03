@@ -1,7 +1,24 @@
 import { useParams } from "react-router-dom";
 import blogData from "../../data/db.js";
+import { ArrowLeft } from "phosphor-react";
+import { useNavigate } from "react-router-dom";
+
 
 const Profile = () => {
+  const BackButton = () => {
+  const navigate = useNavigate();
+
+    const handleGoBack = () => {
+      navigate(-1); // This navigates back one step in the history stack
+    };
+
+    return (
+      <div className="flex absolute top-2 left-1 bg-gray-100 active:bg-gray-200 rounded-md p-2 ">
+        <ArrowLeft size={25} onClick={handleGoBack} className="text-black cursor-pointer" />
+      </div>
+    );
+  };
+
   const { author } = useParams();
   const user = blogData.blogs.find((blog) => blog.author === author);
 
@@ -14,7 +31,9 @@ const Profile = () => {
 
   return (
     <div>
-      <div className="flex items-center gap-4 px-4 leading-tight mb-8">
+
+      <BackButton />
+      <div className="flex items-center gap-4 px-4 leading-tight mb-8 mt-6">
         <img
           src={user.authorImg}
           alt={user.author}
