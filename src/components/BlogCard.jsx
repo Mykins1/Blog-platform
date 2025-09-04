@@ -136,11 +136,11 @@ const BlogItem = ({ blog }) => {
                   minHeight: "2px",
                 }}
               ></div>
-              <div className="text-sm text-gray-700">
+              <div className="text-sm font-normal text-gray-700">
                 {blog.date ? formatDate(blog.date) : "No date"}
               </div>
             </div>
-            <div className="text-xs text-gray-700 italic">
+            <div className="text-xs text-gray-700 font-normal italic">
               {blog.profession}
             </div>
           </div>
@@ -148,7 +148,7 @@ const BlogItem = ({ blog }) => {
       </Link>
       {/* <hr className="block md:hidden border-t border-gray-300 mt-2 " /> */}
       {/* Blog Content with Read More */}
-      <p className="text-md  leading-snug">
+      <p className="text-md text-black font-medium leading-snug">
         <span
           className={`${
             !isExpanded ? "truncate whitespace-pre-wrap align-bottom" : ""
