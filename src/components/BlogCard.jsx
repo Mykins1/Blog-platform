@@ -136,11 +136,11 @@ const BlogItem = ({ blog }) => {
                   minHeight: "2px",
                 }}
               ></div>
-              <div className="text-sm font-normal text-gray-700">
+              <div className="text-sm font-normal ">
                 {blog.date ? formatDate(blog.date) : "No date"}
               </div>
             </div>
-            <div className="text-xs text-gray-700 font-normal italic">
+            <div className="text-xs font-normal italic">
               {blog.profession}
             </div>
           </div>
