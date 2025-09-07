@@ -220,7 +220,7 @@ const Navbar = () => {
               onClick={() => setMenuOpen(true)}
               className={({ isActive }) =>
                 `flex items-center gap-3 py-2 px-4 rounded-lg transition duration-300 ease-in-out text-lg ${
-                  isActive ? "bg-gray-300" : "text-black hover:bg-gray-100"
+                  isActive ? "bg-gray-200" : "text-black hover:bg-gray-100"
                 }
                   active:bg-gray-200 `
               }
@@ -235,7 +235,7 @@ const Navbar = () => {
               onClick={() => setMenuOpen(true)}
               className={({ isActive }) =>
                 `flex items-center gap-3 py-2 px-4 rounded-lg transition duration-300 ease-in-out text-lg ${
-                  isActive ? "bg-gray-300" : "text-black hover:bg-gray-100"
+                  isActive ? "bg-gray-200" : "text-black hover:bg-gray-100"
                 }
                   active:bg-gray-200`
               }
