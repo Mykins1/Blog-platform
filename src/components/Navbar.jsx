@@ -143,7 +143,7 @@ const Navbar = () => {
           <div>
             <NavLink
               to="/search"
-              className={`flex flex-col items-center w-full rounded-full p-1 transition ${
+              className={`flex flex-col items-center w-full rounded-lg p-1 transition ${
                 location.pathname === "/search"
                   ? "bg-gray-200 text-gray-800"
                   : "text-gray-700"
@@ -177,7 +177,7 @@ const Navbar = () => {
 
         {/* Mobile Sidebar */}
         <div
-          className={`fixed top-0 left-0 h-full w-[70vw] max-w-md font bg-white shadow-lg z-[102] transition-transform ${
+          className={`fixed px-2 top-0 left-0 h-full w-[70vw] max-w-md font bg-white shadow-lg z-[102] transition-transform ${
             menuOpen ? "translate-x-0" : "-translate-x-full"
           } md:hidden flex flex-col items-start pt-5 gap-2 `}
           // style={{
@@ -205,8 +205,8 @@ const Navbar = () => {
               to={`/profile/${encodeURIComponent("Mykel Akinsade")}`}
               onClick={() => setMenuOpen(true)}
               className={({ isActive }) =>
-                `flex items-center gap-3 py-2 px-4 transition duration-300 ease-in-out text-lg ${
-                  isActive ? "" : "text-black hover:bg-gray-100"
+                `flex items-center gap-3 py-2 px-4 rounded-lg transition duration-300 ease-in-out text-lg ${
+                  isActive ? "bg-gray-300" : "text-black hover:bg-gray-100"
                 }
                   active:bg-gray-200 `
               }
@@ -219,8 +219,8 @@ const Navbar = () => {
               to="/bookmarks"
               onClick={() => setMenuOpen(true)}
               className={({ isActive }) =>
-                `flex items-center gap-3 py-2 px-4 transition duration-300 ease-in-out text-lg ${
-                  isActive ? "" : "text-black hover:bg-gray-100"
+                `flex items-center gap-3 py-2 px-4 rounded-lg transition duration-300 ease-in-out text-lg ${
+                  isActive ? "bg-gray-300" : "text-black hover:bg-gray-100"
                 }
                   active:bg-gray-200 `
               }
@@ -234,8 +234,8 @@ const Navbar = () => {
               to="/settings"
               onClick={() => setMenuOpen(true)}
               className={({ isActive }) =>
-                `flex items-center gap-3 py-2 px-4 transition duration-300 ease-in-out text-lg ${
-                  isActive ? "" : "text-black hover:bg-gray-100"
+                `flex items-center gap-3 py-2 px-4 rounded-lg transition duration-300 ease-in-out text-lg ${
+                  isActive ? "bg-gray-300" : "text-black hover:bg-gray-100"
                 }
                   active:bg-gray-200`
               }
@@ -259,7 +259,7 @@ const Navbar = () => {
               onClick={() => setMenuOpen(false)}
               className={({ isActive }) =>
                 `flex items-center gap-3 py-2 px-4 transition text-lg ${
-                  isActive ? "" : "text-black hover:bg-gray-100"
+                  isActive ? "" : "text-red-500 hover:bg-gray-100"
                 }
                   active:bg-gray-200`
               }

@@ -66,7 +66,7 @@ const SearchPage = () => {
         />
         <input
           type="text"
-          className="w-full border border-gray-400 bg-gray-50 p-2 pl-10 rounded-full focus:outline-none focus:ring-2 focus:ring-blue-500 transition"
+          className="w-full border border-gray-400 bg-gray-50 p-2 pl-10 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 transition"
           placeholder="Search..."
           aria-label="Search authors and professions"
           value={query}

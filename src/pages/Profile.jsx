@@ -57,7 +57,7 @@ const Profile = () => {
             userPosts.map((post) => (
               <div key={post.id} className=" rounded px-4 bg-white">
                 <h4 className="font-semibold mt-2">{post.title}</h4>
-                <p className="text-sm text-gray-700 mb-2">{post.content}</p>
+                <p className="text-sm font-medium text-gray-700 mb-2">{post.content}</p>
                 <img
                   src={post.img}
                   // alt={post.title}
