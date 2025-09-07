@@ -85,7 +85,7 @@ const SearchPage = () => {
           <Link
             key={blog.id} // Assuming the blog has a unique 'id'
             to={`/profile/${encodeURIComponent(blog.author)}`}
-            className="flex items-center gap-3 p-2 rounded hover:bg-gray-100 transition"
+            className="flex items-center gap-3 p-2 rounded-lg hover:bg-gray-100 transition active:bg-gray-200"
           >
             <img
               src={blog.authorImg}
