@@ -40,7 +40,7 @@ const SignPage = () => {
             />
             <button
               type="button"
-              className="text-gray-500 absolute right-2 top-1/2 transform -translate-y-1/2"
+              className="text-gray-500 absolute right-2 top-1/3 transform -translate-y-1/2"
               onClick={() => setShowPassword((prev) => !prev)}
               tabIndex={-1}
             >
