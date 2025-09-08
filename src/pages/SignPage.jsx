@@ -46,15 +46,18 @@ const SignPage = () => {
             >
               {showPassword ? <Eye size={18} weight="fill"/> : <EyeSlash size={18} weight="fill"/>}
             </button>
+            <div className="flex text-gray-500 mt-1 items-center justify-end text-sm">
+              {showSignUp ? "" : "Forgot password?"}
+            </div>
           </div>
           <button
             type="submit"
-            className="bg-gray-800 text-white p-2 mt-3 rounded-full"
+            className="bg-gray-800 text-white font-medium p-2 mt-3 rounded-full"
           >
             {showSignUp ? "Sign Up" : "Sign In"}
           </button>
         </form>
-        <span className="text-sm text-gray-500 pt-3">
+        <span className="text-sm font-medium text-gray-500 pt-3">
           {showSignUp ? (
             <>
               Already have an account?{" "}

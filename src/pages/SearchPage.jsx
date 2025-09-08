@@ -3,7 +3,7 @@ import { MagnifyingGlass } from "phosphor-react";
 import blogData from "../../data/db.js";
 import { Link, useSearchParams } from "react-router-dom";
 
-const SearchPage = () => {
+export default function SearchPage() {
   const [searchParams, setSearchParams] = useSearchParams();
   const initialQuery = searchParams.get("q") || "";
   const [query, setQuery] = useState(initialQuery);
@@ -101,6 +101,4 @@ const SearchPage = () => {
       </div>
     </div>
   );
-};
-
-export default SearchPage;
+}
