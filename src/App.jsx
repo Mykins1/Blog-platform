@@ -42,9 +42,8 @@ function AppContent() {
           <Route path="/sign" element={<SignIn />} />
         </Routes>
       </div>
-
-      {/* <Footer /> */}
       <BottomNav />
+      <Footer />
     </div>
   );
 }
