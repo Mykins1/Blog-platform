@@ -35,7 +35,7 @@ const SignPage = () => {
           <div className="relative">
             <input
               type={showPassword ? "text" : "password"}
-              placeholder="Password"
+              placeholder={showSignUp ? "Create Password" : "Password"}
               className=" w-full p-2 px-4  border-b border-gray-400 "
             />
             <button
