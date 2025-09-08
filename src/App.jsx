@@ -7,16 +7,18 @@ import "./App.css";
 import SearchPage from "./pages/SearchPage";
 import SignIn from "./pages/SignPage";
 import Profile from "./pages/Profile";
+import Bookmarks from "./pages/Bookmarks";
 
-function AppContent() {
+
+export default function AppContent() {
   const location = useLocation();
-  const hideNavbar =
-    location.pathname === "/sign" || location.pathname.startsWith("/profile/");
-  const isProfilePage = location.pathname.startsWith("/profile/");
+  const hideNavbar = location.pathname === "/sign" || location.pathname.startsWith("/profile/") || location.pathname === "/bookmarks" || location.pathname === "/settings";
+  const hideFooter = location.pathname.startsWith("/profile/");
+  const isProfilePage = location.pathname.startsWith("/profile/") || location.pathname === "/bookmarks" || location.pathname === "/settings";
 
   return (
     <div
-      className= "min-h-screen bg-white text-gray-900"
+      className="min-h-screen bg-white text-gray-900"
       style={{
         scrollbarWidth: "none",
         msOverflowStyle: "none",
@@ -24,10 +26,9 @@ function AppContent() {
       }}
     >
       {!hideNavbar && <Navbar />}
-
       <div
         className={`body md:items-center md:justify-evenly max-w-auto mx-auto md:mx-0 p-3 ${
-          isProfilePage ? "pt-8" : "md:pt-19 pt-19"
+          isProfilePage ? "" : "md:pt-19 pt-19"
         }`}
         style={{
           height: "100%",
@@ -40,12 +41,11 @@ function AppContent() {
           <Route path="/search" element={<SearchPage />} />
           <Route path="/settings" element={<Settings />} />
           <Route path="/sign" element={<SignIn />} />
+          <Route path="/bookmarks" element={<Bookmarks />} />
         </Routes>
       </div>
       <BottomNav />
-      <Footer />
+      {!hideFooter && <Footer />}
     </div>
   );
 }
-
-export default AppContent;
