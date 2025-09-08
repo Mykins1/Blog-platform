@@ -143,7 +143,7 @@ const Navbar = () => {
           <div>
             <NavLink
               to="/search"
-              className={`flex flex-col items-center w-full rounded-lg p-1 transition ${
+              className={`flex flex-col items-center w-full rounded-full p-1 transition ${
                 location.pathname === "/search"
                   ? "bg-gray-200 text-gray-800"
                   : "text-gray-700"
