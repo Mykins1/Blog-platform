@@ -9,7 +9,7 @@ export default function Header({title}) {
   return (
     <div>
       <div className="flex items-center justify-between w-full">
-        <div className="flex active:bg-gray-200 rounded-md p-2 hover:bg-gray-100">
+        <div className="flex active:bg-gray-200 rounded-md px-2 hover:bg-gray-100">
           <ArrowLeft
             size={25}
             onClick={handleGoBack}
