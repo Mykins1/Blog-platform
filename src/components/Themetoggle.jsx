@@ -10,19 +10,19 @@ const ThemeToggle = () => {
         onClick={() => setTheme("light")}
         className={`theme-button ${theme === "light" ? "active" : ""}`}
       >
-        Light ☀️
+        Light
       </button>
       <button
         onClick={() => setTheme("dark")}
         className={`theme-button ${theme === "dark" ? "active" : ""}`}
       >
-        Dark 🌙
+        Dark
       </button>
       <button
         onClick={() => setTheme("system")}
         className={`theme-button ${theme === "system" ? "active" : ""}`}
       >
-        System 💻
+        System
       </button>
     </div>
   );
