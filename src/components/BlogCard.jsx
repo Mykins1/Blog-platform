@@ -6,6 +6,8 @@ import {
   Repeat,
 } from "phosphor-react";
 import { Link } from "react-router-dom";
+import { useTheme } from "../context/ThemeContext.js";
+
 
 const BlogCard = ({ blogs }) => {
   return (
@@ -111,9 +113,11 @@ const BlogItem = ({ blog }) => {
   };
 
   console.log(blog)
+    const { themeClasses } = useTheme();
+  
 
   return (
-    <div className="max-w-[350px] flex flex-col gap-2">
+    <div className={`max-w-[350px] flex flex-col gap-2 ${themeClasses.background} ${themeClasses.text} rounded-2xl`}>
       {/* Author info */}
       <Link to={`/profile/${encodeURIComponent(blog.author)}`}>
         <div className="flex items-center gap-2 ">
@@ -128,7 +132,7 @@ const BlogItem = ({ blog }) => {
               <div className="text-md font-medium  ">{blog.author}</div>
               {/* Use a fixed size for the dot */}
               <div
-                className="dot bg-gray-500 rounded-full"
+                className=""
                 style={{
                   width: "3px",
                   height: "3px",
@@ -148,7 +152,7 @@ const BlogItem = ({ blog }) => {
       </Link>
       {/* <hr className="block md:hidden border-t border-gray-300 mt-2 " /> */}
       {/* Blog Content with Read More */}
-      <p className="text-md text-black font-medium leading-snug">
+      <p className="text-md font-medium leading-snug">
         <span
           className={`${
             !isExpanded ? "truncate whitespace-pre-wrap align-bottom" : ""
@@ -177,7 +181,7 @@ const BlogItem = ({ blog }) => {
       <div className="flex items-center justify-around gap-1 w-full">
         {/* Comment */}
         <button
-          className="flex items-center gap-1 text-gray-500 hover:text-blue-500 transition"
+          className="flex items-center gap-1 hover:text-blue-500 transition"
           onSave={handleComment}
         >
           <ChatCircleText
@@ -192,7 +196,7 @@ const BlogItem = ({ blog }) => {
         {/* Repost */}
         <button
           className={`flex items-center gap-1 transition ${
-            isReposted ? "text-green-600" : "text-gray-500 hover:text-green-600"
+            isReposted ? "text-green-600" : " hover:text-green-600"
           }`}
           onClick={handleRepost}
         >
@@ -205,7 +209,7 @@ const BlogItem = ({ blog }) => {
         {/* Like */}
         <button
           className={`flex items-center gap-0.2 transition ${
-            liked ? "text-red-500" : "text-gray-500 hover:text-red-500"
+            liked ? "text-red-500" : " hover:text-red-500"
           }`}
           onClick={handleLike}
         >
@@ -216,7 +220,7 @@ const BlogItem = ({ blog }) => {
         {/* Save */}
         <button
           className={`flex items-center gap-1 transition ${
-            isSaved ? "text-yellow-500" : "text-gray-500 hover:text-yellow-500"
+            isSaved ? "text-yellow-500" : " hover:text-yellow-500"
           }`}
           onClick={handleSave}
         >

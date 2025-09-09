@@ -1,6 +1,8 @@
 // import { useState, useEffect } from "react";
 import BlogCard from "../components/BlogCard.jsx";
 import blogData from "../../data/db.js";
+import { useTheme } from "../context/ThemeContext.js";
+
 
 export default function Blog() {
   // const [isPending, setIsPending] = useState(true);
@@ -12,6 +14,7 @@ export default function Blog() {
   //   }, 0);
   //   return () => clearTimeout(timer);
   // }, []);
+  const { themeClasses } = useTheme();
 
   return (
     <div
@@ -27,7 +30,7 @@ export default function Blog() {
           <div className="error">{error}</div>
         </div>
       ) : ( */}
-        <div className="flex flex-col items-center max-w-4xl mx-auto w-full bg-white md:flex-col">
+        <div className={`flex flex-col items-center max-w-4xl mx-auto w-full ${themeClasses.background} md:flex-col`}>
           {blogData && <BlogCard blogs={blogData.blogs} title="Blogs" />}
         </div>
       {/* )} */}

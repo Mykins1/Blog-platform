@@ -1,5 +1,4 @@
-import React, { useState, useEffect } from "react";
-import { X } from "lucide-react";
+import { useState, useEffect } from "react";
 import {
   House,
   MagnifyingGlass,
@@ -8,28 +7,23 @@ import {
   SignOut,
   Gear,
   BookmarkSimple,
-  Moon,
-  Sun,
-  ChatsCircle,
 } from "phosphor-react";
 import { NavLink, useLocation } from "react-router-dom";
+import { useTheme } from "../context/ThemeContext.js";
 
-// Navbar component - The main navigation bar for the application
 const Navbar = () => {
   const [menuOpen, setMenuOpen] = useState(false);
-  const [navbarTop, setNavbarTop] = useState(0); // State for the navbar's top position
-  // const [darkMode, setDarkMode] = useState(
-  //   document.documentElement.classList.contains("dark")
-  // );
+  const [navbarTop, setNavbarTop] = useState(0);
+  const location = useLocation();
+  const { themeClasses } = useTheme();
 
-  // Prevent page interaction when sidebar is open
+
   useEffect(() => {
     if (menuOpen) {
       document.body.style.overflow = "hidden";
     } else {
       document.body.style.overflow = "";
     }
-    // Cleanup function to restore body overflow on component unmount
     return () => {
       document.body.style.overflow = "";
     };
@@ -70,21 +64,12 @@ const Navbar = () => {
 
     // Add the scroll event listener
     window.addEventListener("scroll", handleScroll);
-
+     
     // Cleanup function to remove the event listener
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
-  // Dark mode toggle handler
-  // const handleDarkModeToggle = () => {
-  //   if (darkMode) {
-  //     document.documentElement.classList.remove("dark");
-  //     setDarkMode(false);
-  //   } else {
-  //     document.documentElement.classList.add("dark");
-  //     setDarkMode(true);
-  //   }
-  // };
+
 
   return (
     <>
@@ -92,14 +77,13 @@ const Navbar = () => {
       <div
         className="nav fixed w-full flex flex-col md:flex-row items-center justify-between border-b border-gray-200  px-4 py-3 bg-white z-[101] transition-all duration-300"
         style={{
-          // fontFamily: "Poppins, sans-serif",
           top: `${navbarTop}px`, // Apply the dynamic top position
         }}
       >
         {/* Desktop Layout */}
         <div className="hidden md:flex w-full items-center justify-between gap-8 shrink-0 ">
           <div className="flex flex-col min-w-[120px]">
-            <h1 className="text-2xl font-bold ">Socia</h1>
+            <h1 className={` ${themeClasses.text} text-2xl font-bold `}>Socia</h1>
           </div>
           <div>
             <div className="flex gap-8 items-center min-w-[180px] justify-center">
@@ -138,7 +122,7 @@ const Navbar = () => {
             />
           </div>
           <div>
-            <h1 className="text-xl font-bold ">Socia</h1>
+            <h1 className={` ${themeClasses.text} text-xl font-bold `}>Socia</h1>
           </div>
           <div>
             <NavLink
@@ -156,23 +140,6 @@ const Navbar = () => {
               />
             </NavLink>
           </div>
-          {/* <div>
-            {darkMode ? (
-              <Sun
-                size={24}
-                className="text-gray-800 cursor-pointer"
-                weight="fill"
-                onClick={handleDarkModeToggle}
-              />
-            ) : (
-              <Moon
-                size={24}
-                className="text-gray-800 cursor-pointer"
-                weight="fill"
-                onClick={handleDarkModeToggle}
-              />
-            )}
-          </div> */}
         </div>
 
         {/* Mobile Sidebar */}
@@ -180,9 +147,6 @@ const Navbar = () => {
           className={`fixed px-2 top-0 left-0 h-full w-[70vw] max-w-md font bg-white shadow-lg z-[102] transition-transform ${
             menuOpen ? "translate-x-0" : "-translate-x-full"
           } md:hidden flex flex-col items-start pt-5 gap-2 `}
-          // style={{
-          //   fontFamily: "Poppins, sans-serif",
-          // }}
         >
           <div className="flex flex-col items-center px-3">
             <div className="flex items-center shrink-1  gap-2 w-full ">
@@ -243,17 +207,7 @@ const Navbar = () => {
               <Gear size={22} weight="bold" />
               <span className="font-medium">Settings</span>
             </NavLink>
-            {/* Logout button with sign out icon */}
-            {/* <button
-              className="flex items-center gap-3 py-2 px-4 rounded-md transition text-lg text-black hover:bg-gray-100"
-              onClick={() => {
-                // Placeholder for logout logic
-                setMenuOpen(false);
-              }}
-            >
-              <SignOut size={22} weight="bold" />
-              <span className="font-medium">Logout</span>
-            </button> */}
+           
             <NavLink
               to="/sign"
               onClick={() => setMenuOpen(false)}
@@ -281,9 +235,11 @@ export default Navbar;
 // --- Bottom Navigation for Mobile ---
 export const BottomNav = ({ menuOpen, navbarTop }) => {
   const location = useLocation();
+    const { themeClasses } = useTheme();
+
   return (
     <div
-      className={`fixed left-0 w-full bg-white border-t  border-gray-200 ${
+      className={`fixed ${themeClasses.text}left-0 w-full bg-white border-t  border-gray-200 ${
         menuOpen ? "z-[99]" : "z-50"
       } md:hidden flex justify-evenly items-center shadow pointer-events-${
         menuOpen ? "none" : "auto"

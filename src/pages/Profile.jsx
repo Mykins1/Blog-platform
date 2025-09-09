@@ -1,14 +1,16 @@
 import { useParams } from "react-router-dom";
 import blogData from "../../data/db.js";
-import { ArrowLeft } from "phosphor-react";
 import Header from "../components/PageHeader.jsx";
+import { useTheme } from "../context/ThemeContext.js";
 
-const Profile = () => {
+export default function Profile() {
   const { author } = useParams();
   const user = blogData.blogs.find((blog) => blog.author === author);
 
   // Get all posts by this user
   const userPosts = blogData.blogs.filter((blog) => blog.author === author);
+
+  const { themeClasses } = useTheme();
 
   if (!user) {
     return <div className="p-8 text-center">User not found.</div>;
@@ -25,7 +27,7 @@ const Profile = () => {
         />
         <div className="flex flex-col text-left">
           <h2 className="text-xl font-semibold">{user.author}</h2>
-          <p className="text-sm text-gray-600">{user.profession}</p>
+          <p className={`text-sm font-medium ${themeClasses.span}`}>{user.profession}</p>
         </div>
       </div>
 
@@ -34,14 +36,14 @@ const Profile = () => {
           Posts
           <hr className="block md:hidden border-t border-gray-300  w-screen -ml-7" />
         </h3>
-        <div className="flex flex-col">
+        <div className={`flex flex-col ${themeClasses.background} gap-4 px-4 mb-8`}>
           {userPosts.length === 0 ? (
-            <div className="text-center text-gray-400">No posts yet.</div>
+            <div className={`text-center ${themeClasses.text}`} >No posts yet.</div>
           ) : (
             userPosts.map((post) => (
-              <div key={post.id} className=" rounded px-4 bg-white">
-                <h4 className="font-semibold mt-2">{post.title}</h4>
-                <p className="text-sm font-medium text-gray-700 mb-2">
+              <div key={post.id} className={`rounded px-4 ${themeClasses.background}`}>
+                <h4 className={`font-semibold mt-2 ${themeClasses.text}`}>{post.title}</h4>
+                <p className={`text-sm font-medium ${themeClasses.text} mb-2`}>
                   {post.content}
                 </p>
                 <img
@@ -59,4 +61,3 @@ const Profile = () => {
   );
 };
 
-export default Profile;

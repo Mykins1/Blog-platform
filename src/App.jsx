@@ -1,4 +1,5 @@
 import { Routes, Route, useLocation } from "react-router-dom";
+// import { useState } from "react";
 import Navbar, { BottomNav } from "./components/Navbar";
 import Footer from "./components/Footer";
 import Home from "./pages/Home";
@@ -8,17 +9,28 @@ import SearchPage from "./pages/SearchPage";
 import SignIn from "./pages/SignPage";
 import Profile from "./pages/Profile";
 import Bookmarks from "./pages/Bookmarks";
+import { useTheme } from "./context/ThemeContext.js";
 
-
-export default function AppContent() {
+export default function App() {
+  const { themeClasses } = useTheme();
+  // Routing logic
   const location = useLocation();
-  const hideNavbar = location.pathname === "/sign" || location.pathname.startsWith("/profile/") || location.pathname === "/bookmarks" || location.pathname === "/settings";
+  const hideNavbar =
+    location.pathname === "/sign" ||
+    location.pathname.startsWith("/profile/") ||
+    location.pathname === "/bookmarks" ||
+    location.pathname === "/settings";
   const hideFooter = location.pathname.startsWith("/profile/");
-  const isProfilePage = location.pathname.startsWith("/profile/") || location.pathname === "/bookmarks" || location.pathname === "/settings";
+  const isProfilePage =
+    location.pathname.startsWith("/profile/") ||
+    location.pathname === "/bookmarks" ||
+    location.pathname === "/settings";
+
+  // const [isDarkMode, setIsDarkMode] = useState(false);
 
   return (
     <div
-      className="min-h-screen bg-white text-gray-900"
+      className={`min-h-screen ${themeClasses.background} ${themeClasses.text}`}
       style={{
         scrollbarWidth: "none",
         msOverflowStyle: "none",
