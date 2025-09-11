@@ -1,5 +1,5 @@
 import Header from "../components/PageHeader";
-import ThemeButton from "../components/ThemeToggle";
+import ThemeButton from "../components/ThemeButton";
 
 export default function Settings() {
   return (
