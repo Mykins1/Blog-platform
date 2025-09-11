@@ -1,8 +1,9 @@
 
 import { useTheme } from "../context/ThemeContext.js";
 
-const ThemeToggle = () => {
+export default function ThemeToggle() {
   const { theme, setTheme } = useTheme();
+
 
   return (
     <div className="button-group">
@@ -27,5 +28,3 @@ const ThemeToggle = () => {
     </div>
   );
 };
-
-export default ThemeToggle;
