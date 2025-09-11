@@ -129,11 +129,13 @@ const BlogItem = ({ blog }) => {
 
           <div className="leading-tight">
             <div className="flex items-center gap-1">
-              <div className="text-md font-medium  ">{blog.author}</div>
+              <div className={`text-md font-medium `}>{blog.author}</div>
               {/* Use a fixed size for the dot */}
               <div
                 className=""
                 style={{
+                  backgroundColor: "#6B7280",
+                  borderRadius: "50%",
                   width: "3px",
                   height: "3px",
                   minWidth: "2px",
@@ -144,7 +146,7 @@ const BlogItem = ({ blog }) => {
                 {blog.date ? formatDate(blog.date) : "No date"}
               </div>
             </div>
-            <div className="text-xs font-normal italic">
+            <div className={`text-xs font-normal italic ${themeClasses.span}`}>
               {blog.profession}
             </div>
           </div>
@@ -163,7 +165,7 @@ const BlogItem = ({ blog }) => {
         {words.length > maxWords && (
           <button
             onClick={toggleReadMore}
-            className="text-blue-500 text-md font-normal ml-1 hover:underline inline-block whitespace-nowrap"
+            className="text-sky-600 text-md font-medium ml-1 hover:underline inline-block whitespace-nowrap"
           >
             {isExpanded ? "" : "Show more"}
           </button>
@@ -227,7 +229,7 @@ const BlogItem = ({ blog }) => {
           <BookmarkSimple size={20} weight={isSaved ? "fill" : "regular"} />
         </button>
       </div>
-      <hr className="block md:hidden border-t border-gray-200  w-screen -ml-3" />{" "}
+      <hr className={`block md:hidden border-t ${themeClasses.border} w-screen -ml-3`} />{" "}
     </div>
   );
 };

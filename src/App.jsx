@@ -26,7 +26,6 @@ export default function App() {
     location.pathname === "/bookmarks" ||
     location.pathname === "/settings";
 
-  // const [isDarkMode, setIsDarkMode] = useState(false);
 
   return (
     <div

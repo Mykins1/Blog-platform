@@ -11,7 +11,7 @@ import {
 import { NavLink, useLocation } from "react-router-dom";
 import { useTheme } from "../context/ThemeContext.js";
 
-const Navbar = () => {
+export default function Navbar(){
   const [menuOpen, setMenuOpen] = useState(false);
   const [navbarTop, setNavbarTop] = useState(0);
   const location = useLocation();
@@ -75,7 +75,7 @@ const Navbar = () => {
     <>
       {/* Navbar always above BottomNav */}
       <div
-        className="nav fixed w-full flex flex-col md:flex-row items-center justify-between border-b border-gray-200  px-4 py-2 bg-white z-[101] transition-all duration-300"
+      className={`nav fixed w-full flex flex-col md:flex-row items-center justify-between border-b ${themeClasses.border}  px-4 py-2 z-[101] transition-all duration-300`}
         style={{
           top: `${navbarTop}px`, // Apply the dynamic top position
         }}
@@ -83,7 +83,9 @@ const Navbar = () => {
         {/* Desktop Layout */}
         <div className="hidden md:flex w-full items-center justify-between gap-8 shrink-0 ">
           <div className="flex flex-col min-w-[120px]">
-            <h1 className={` ${themeClasses.text} text-2xl font-bold `}>Socia</h1>
+            <h1 className={` ${themeClasses.text} text-2xl font-bold `}>
+              Socia
+            </h1>
           </div>
           <div>
             <div className="flex gap-8 items-center min-w-[180px] justify-center">
@@ -122,15 +124,17 @@ const Navbar = () => {
             />
           </div>
           <div>
-            <h1 className={` ${themeClasses.text} text-xl font-bold `}>Socia</h1>
+            <h1 className={` ${themeClasses.text} text-xl font-bold `}>
+              Socia
+            </h1>
           </div>
           <div>
             <NavLink
               to="/search"
               className={`flex flex-col items-center w-full rounded-full p-1 transition ${
                 location.pathname === "/search"
-                  ? "bg-gray-200 text-gray-800"
-                  : "text-gray-700"
+                  ? themeClasses.icon
+                  : themeClasses.icon
               }`}
             >
               <MagnifyingGlass
@@ -144,7 +148,9 @@ const Navbar = () => {
 
         {/* Mobile Sidebar */}
         <div
-          className={`fixed px-2 top-0 left-0 h-full w-[70vw] max-w-md font bg-white shadow-lg z-[102] transition-transform ${
+          className={`fixed px-2 top-0 left-0 h-full w-[70vw] max-w-md font ${
+            themeClasses.background
+          } ${themeClasses.text}  z-[102] transition-transform ${
             menuOpen ? "translate-x-0" : "-translate-x-full"
           } md:hidden flex flex-col items-start pt-5 gap-2 `}
         >
@@ -156,12 +162,14 @@ const Navbar = () => {
                 className="w-9 h-9 rounded-full object-cover border-none"
               />
               <div className="flex flex-col items-start">
-                <span className="font-semibold text-lg">Mykel Akinsade</span>
-                <span className="text-gray-500 text-sm">@mykins1</span>
+                <span className={`font-semibold text-lg ${themeClasses.text}`}>
+                  Mykel Akinsade
+                </span>
+                <span className={`${themeClasses.span} text-sm`}>@mykins1</span>
               </div>
             </div>
           </div>
-          <hr className="block md:hidden border-t border-gray-300 w-full " />
+          <hr className={`block md:hidden border-t ${themeClasses.border} w-full`} />
 
           <nav className="flex flex-col gap-2 w-full ">
             {/* Profile link with user icon */}
@@ -170,9 +178,9 @@ const Navbar = () => {
               onClick={() => setMenuOpen(true)}
               className={({ isActive }) =>
                 `flex items-center gap-3 py-2 px-4 rounded-lg transition duration-300 ease-in-out text-lg ${
-                  isActive ? "bg-gray-300" : "text-black hover:bg-gray-100"
+                  isActive ? "" : themeClasses.hover
                 }
-                  active:bg-gray-200 `
+               ${themeClasses.active}`
               }
             >
               <User size={22} weight="bold" />
@@ -184,38 +192,37 @@ const Navbar = () => {
               onClick={() => setMenuOpen(true)}
               className={({ isActive }) =>
                 `flex items-center gap-3 py-2 px-4 rounded-lg transition duration-300 ease-in-out text-lg ${
-                  isActive ? "bg-gray-200" : "text-black hover:bg-gray-100"
+                  isActive ? "" : themeClasses.hover
                 }
-                  active:bg-gray-200 `
+                  ${themeClasses.active}`
               }
             >
               <BookmarkSimple size={22} weight="bold" />
               <span className="font-medium">Bookmarks</span>
             </NavLink>
-            <hr className="block md:hidden border-t border-gray-300 w-full" />{" "}
+            <hr className={`block md:hidden border-t ${themeClasses.border} w-full`} />{" "}
             {/* Settings link with gear icon */}
             <NavLink
               to="/settings"
               onClick={() => setMenuOpen(true)}
               className={({ isActive }) =>
                 `flex items-center gap-3 py-2 px-4 rounded-lg transition duration-300 ease-in-out text-lg ${
-                  isActive ? "bg-gray-200" : "text-black hover:bg-gray-100"
+                  isActive ? "" : themeClasses.hover
                 }
-                  active:bg-gray-200`
+                  ${themeClasses.active}`
               }
             >
               <Gear size={22} weight="bold" />
               <span className="font-medium">Settings</span>
             </NavLink>
-           
             <NavLink
               to="/sign"
               onClick={() => setMenuOpen(false)}
               className={({ isActive }) =>
                 `flex items-center gap-3 py-2 px-4 transition text-lg ${
-                  isActive ? "" : "text-red-500 hover:bg-gray-100"
+                  isActive ? "" : `${themeClasses.hover} text-red-500`
                 }
-                  active:bg-gray-200`
+                  ${themeClasses.active}`
               }
             >
               <SignOut size={22} weight="bold" />
@@ -230,7 +237,6 @@ const Navbar = () => {
   );
 };
 
-export default Navbar;
 
 // --- Bottom Navigation for Mobile ---
 export const BottomNav = ({ menuOpen, navbarTop }) => {
@@ -239,7 +245,7 @@ export const BottomNav = ({ menuOpen, navbarTop }) => {
 
   return (
     <div
-      className={`fixed ${themeClasses.text}left-0 w-full bg-white border-t  border-gray-200 ${
+      className={`fixed ${themeClasses.text}left-0 w-full ${themeClasses.background} border-t  ${themeClasses.border} ${
         menuOpen ? "z-[99]" : "z-50"
       } md:hidden flex justify-evenly items-center shadow pointer-events-${
         menuOpen ? "none" : "auto"
@@ -250,17 +256,17 @@ export const BottomNav = ({ menuOpen, navbarTop }) => {
     >
       <NavLink
         to="/"
-        className={`flex flex-col items-center w-full    rounded-r-md transition ${
-          location.pathname === "/" ? "bg-gray-300" : ""
+        className={`flex flex-col items-center w-full  rounded-r-md transition ${
+          location.pathname === "/" ? themeClasses.current : ""
         }`}
       >
-        <House size={28} weight={location.pathname === "/" ? "fill" : "bold"} />
+        <House size={28} weight={location.pathname === "/" ? "fill" : "light"} />
         <span className="text-xs">Home</span>
       </NavLink>
       <NavLink
         to="/addpost"
         className={`flex flex-col items-center w-full gap-1 py-2 rounded-l-md transition ${
-          location.pathname === "/addpost" ? "bg-gray-300" : ""
+          location.pathname === "/addpost" ? themeClasses.current : ""
         }`}
       >
         <Plus

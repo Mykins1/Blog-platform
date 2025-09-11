@@ -2,8 +2,10 @@ import { useState, useEffect } from "react";
 import { MagnifyingGlass } from "phosphor-react";
 import blogData from "../../data/db.js";
 import { Link, useSearchParams } from "react-router-dom";
+import { useTheme } from "../context/ThemeContext.js";
 
 export default function SearchPage() {
+  
   const [searchParams, setSearchParams] = useSearchParams();
   const initialQuery = searchParams.get("q") || "";
   const [query, setQuery] = useState(initialQuery);
@@ -56,6 +58,9 @@ export default function SearchPage() {
     setFilteredAuthors(filtered); // Update the state with the filtered blogs
   }, [debouncedQuery]);
 
+   const { themeClasses } = useTheme();
+
+
   return (
     <div className="flex flex-col gap-4 w-full">
       {/* Search Input */}
@@ -66,7 +71,7 @@ export default function SearchPage() {
         />
         <input
           type="text"
-          className="w-full border border-gray-400 bg-gray-50 p-2 pl-10 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 transition"
+          className={`w-full border ${themeClasses.border} ${themeClasses.input} p-2 pl-10 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 transition`}
           placeholder="Search..."
           aria-label="Search authors and professions"
           value={query}
@@ -85,7 +90,7 @@ export default function SearchPage() {
           <Link
             key={blog.id} // Assuming the blog has a unique 'id'
             to={`/profile/${encodeURIComponent(blog.author)}`}
-            className="flex items-center gap-3 p-2 rounded-lg hover:bg-gray-100 transition active:bg-gray-200"
+            className={`flex items-center gap-3 p-2 rounded-lg ${themeClasses.hover} transition ${themeClasses.active}`}
           >
             <img
               src={blog.authorImg}
@@ -94,7 +99,7 @@ export default function SearchPage() {
             />
             <div>
               <div className="font-medium text-md">{blog.author}</div>
-              <div className="text-xs text-gray-500">{blog.profession}</div>
+              <div className={`text-xs font-medium ${themeClasses.span}`}>{blog.profession}</div>
             </div>
           </Link>
         ))}

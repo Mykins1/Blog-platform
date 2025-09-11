@@ -20,21 +20,27 @@ export const ThemeProvider = ({ children }) => {
     theme === "dark"
       ? {
           background: " bg-zinc-900",
-          container: "bg-zinc-800/90 backdrop-blur-lg border-zinc-700",
-          text: "text-zinc-100",
-          icon: "text-zinc-200",
-          hover: "bg-zinc-800",
+          text: "text-white",
+          icon: "text-slate-50",
+          hover: "hover:bg-zinc-700/50",
           span: "text-gray-400",
-          lapItem: "bg-zinc-700/40 border-zinc-600",
+          border: "border-gray-500",
+          dot: "bg-gray-500",
+          active: "active:bg-zinc-700/40",
+          current: "bg-zinc-700/50",
+          input: "bg-zinc-700/50",
         }
       : {
           background: "bg-white",
-          container: "bg-gray-100/80 backdrop-blur-lg border-gray-300",
           text: "text-black",
-          icon: "text-black",
-          hover: "bg-gray-100",
+          icon: " text-zinc-900",
+          hover: "hover:bg-gray-100",
           span: "text-gray-600",
-          lapItem: "bg-gray-100/50 border-gray-200",
+          border: "border-gray-300",
+          dot: "bg-gray-300",
+          active: "active:bg-gray-200",
+          current: "bg-gray-300",
+          input: "bg-gray-100",
         };
 
   useEffect(() => {

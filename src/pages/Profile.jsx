@@ -26,7 +26,7 @@ export default function Profile() {
           className="w-24 h-24 rounded-full"
         />
         <div className="flex flex-col text-left">
-          <h2 className="text-xl font-semibold">{user.author}</h2>
+          <h2 className={`text-xl font-semibold ${themeClasses.text}`}>{user.author}</h2>
           <p className={`text-sm font-medium ${themeClasses.span}`}>{user.profession}</p>
         </div>
       </div>
