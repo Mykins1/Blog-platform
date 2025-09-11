@@ -117,7 +117,9 @@ const BlogItem = ({ blog }) => {
   
 
   return (
-    <div className={`max-w-[350px] flex flex-col gap-2 ${themeClasses.background} ${themeClasses.text} rounded-2xl`}>
+    <div
+      className={`max-w-[350px] flex flex-col gap-2 ${themeClasses.background} ${themeClasses.text} rounded-2xl`}
+    >
       {/* Author info */}
       <Link to={`/profile/${encodeURIComponent(blog.author)}`}>
         <div className="flex items-center gap-2 ">
@@ -162,22 +164,19 @@ const BlogItem = ({ blog }) => {
         >
           {isExpanded ? blog.content : truncated}
         </span>
-        {words.length > maxWords && (
+        <>
           <button
             onClick={toggleReadMore}
-            className="text-sky-600 text-md font-medium ml-1 hover:underline inline-block whitespace-nowrap"
+            className={`text-sky-600 text-md font-medium ml-1 inline-block whitespace-nowrap 
+            ${words.length > maxWords ? "hover:underline" : "invisible"}`}
           >
-            {isExpanded ? "" : "Show more"}
+            {isExpanded ? "Show less" : "Show more"}
           </button>
-        )}
+        </>
       </p>
       {/* Blog Image*/}
       <div className="flex flex-col w-full">
-        <img
-          src={blog.img}
-          alt=""
-          className="rounded-lg w-full object-cover"
-        />
+        <img src={blog.img} alt="" className="rounded-lg w-full object-cover" />
       </div>
       {/* Like and Comment Icons */}
       <div className="flex items-center justify-around gap-1 w-full">
@@ -197,7 +196,9 @@ const BlogItem = ({ blog }) => {
 
         {/* Repost */}
         <button
-          className={`${themeClasses.reaction} flex items-center gap-1 transition ${
+          className={`${
+            themeClasses.reaction
+          } flex items-center gap-1 transition ${
             isReposted ? "text-sky-600" : " hover:text-sky-600"
           }`}
           onClick={handleRepost}
@@ -210,7 +211,9 @@ const BlogItem = ({ blog }) => {
 
         {/* Like */}
         <button
-          className={`${themeClasses.reaction} flex items-center gap-0.2 transition ${
+          className={`${
+            themeClasses.reaction
+          } flex items-center gap-0.2 transition ${
             liked ? "text-red-500" : " hover:text-red-500"
           }`}
           onClick={handleLike}
@@ -221,7 +224,9 @@ const BlogItem = ({ blog }) => {
 
         {/* Save */}
         <button
-          className={`${themeClasses.reaction} flex items-center gap-1 transition ${
+          className={`${
+            themeClasses.reaction
+          } flex items-center gap-1 transition ${
             isSaved ? "text-yellow-500" : " hover:text-yellow-500"
           }`}
           onClick={handleSave}
@@ -229,7 +234,9 @@ const BlogItem = ({ blog }) => {
           <BookmarkSimple size={20} weight={isSaved ? "fill" : "regular"} />
         </button>
       </div>
-      <hr className={`block md:hidden border-t ${themeClasses.border} w-screen -ml-3`} />{" "}
+      <hr
+        className={`block md:hidden border-t ${themeClasses.border} w-screen -ml-3`}
+      />{" "}
     </div>
   );
 };
