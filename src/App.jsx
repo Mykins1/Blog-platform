@@ -39,7 +39,7 @@ export default function App() {
       {!hideNavbar && <Navbar />}
       <div
         className={`body md:items-center md:justify-evenly max-w-auto mx-auto md:mx-0 p-3 ${
-          isProfilePage ? "" : "md:pt-19 pt-19"
+          isProfilePage ? "" : "md:pt-19 pt-17"
         }`}
         style={{
           height: "100%",

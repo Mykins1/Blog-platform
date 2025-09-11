@@ -161,7 +161,7 @@ const BlogItem = ({ blog }) => {
           }`}
         >
           {isExpanded ? blog.content : truncated}
-        </span>{" "}
+        </span>
         {words.length > maxWords && (
           <button
             onClick={toggleReadMore}
@@ -176,14 +176,14 @@ const BlogItem = ({ blog }) => {
         <img
           src={blog.img}
           alt=""
-          className="rounded-2xl w-full object-cover"
+          className="rounded-lg w-full object-cover"
         />
       </div>
       {/* Like and Comment Icons */}
       <div className="flex items-center justify-around gap-1 w-full">
         {/* Comment */}
         <button
-          className={` ${themeClasses.reaction} flex items-center gap-1 hover:text-blue-500 transition`}
+          className={` ${themeClasses.reaction} flex items-center gap-1 hover:text-green-500 transition`}
           onSave={handleComment}
         >
           <ChatCircleText
