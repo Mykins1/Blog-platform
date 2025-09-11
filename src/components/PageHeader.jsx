@@ -13,7 +13,7 @@ export default function Header({title}) {
   return (
     <div>
       <div className="flex items-center justify-between w-full">
-        <div className={`flex ${themeClasses.text} ${themeClasses.hover}  rounded-full p-2 `}>
+        <div className={`flex ${themeClasses.text} ${themeClasses.hover} ${themeClasses.active} rounded-full p-2 `}>
           <ArrowLeft
             size={25}
             onClick={handleGoBack}
