@@ -4,7 +4,6 @@ import { useTheme } from "../context/ThemeContext.js";
 export default function ThemeToggle() {
   const { theme, setTheme } = useTheme();
 
-
   return (
     <div className="button-group">
       <button
