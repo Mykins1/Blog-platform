@@ -1,13 +1,7 @@
-import { useState, useEffect } from "react";
-import {
-  Heart,
-  ChatCircleText,
-  BookmarkSimple,
-  Repeat,
-} from "phosphor-react";
+import { useState } from "react";
+import { Heart, ChatCircleText, BookmarkSimple, Repeat } from "phosphor-react";
 import { Link } from "react-router-dom";
 import { useTheme } from "../context/ThemeContext.js";
-
 
 const BlogCard = ({ blogs }) => {
   return (
@@ -20,8 +14,7 @@ const BlogCard = ({ blogs }) => {
 };
 
 const formatDate = (date) => {
-  const d = new Date(date)
-  console.log(d)
+  const d = new Date(date);
   const months = [
     "Jan",
     "Feb",
@@ -39,88 +32,49 @@ const formatDate = (date) => {
   return `${d.getDate()} ${months[d.getMonth()]} ${d.getUTCFullYear()}`;
 };
 
-
 const BlogItem = ({ blog }) => {
   const [isExpanded, setIsExpanded] = useState(false);
   const [likes, setLikes] = useState(blog.likes || 0);
+  const [isLiked, setIsLiked] = useState(false);
   const [comments, setComments] = useState(blog.comments || 0);
-  const [commented, setCommented] = useState(false)
-  const [saved, setSaved] = useState(false);
-  const [liked, setLiked] = useState(false);
+  const [isCommented, setIsCommented] = useState(false);
   const [isSaved, setIsSaved] = useState(false);
   const [reposts, setReposts] = useState(blog.reposts || 0);
   const [isReposted, setIsReposted] = useState(false);
 
-  const toggleReadMore = () => setIsExpanded(!isExpanded);
-  const [maxWords, setMaxWords] = useState(20);
+  const { themeClasses } = useTheme();
 
-  useEffect(() => {
-    const handleResize = () => {
-      if (window.innerWidth >= 768) {
-        setMaxWords(40); // More words for md and above
-      } else {
-        setMaxWords(17); // Default for small screens
-      }
-    };
-    handleResize(); // Set on mount
-    window.addEventListener("resize", handleResize);
-    return () => window.removeEventListener("resize", handleResize);
-  }, []);
+  // Handlers for interactions
+  const handleLike = () => {
+    setIsLiked((prev) => !prev);
+    setLikes((prev) => (isLiked ? prev - 1 : prev + 1));
+  };
+
+  const handleComment = () => {
+    setIsCommented((prev) => !prev);
+    setComments((prev) => (isCommented ? prev - 1 : prev + 1));
+  };
+
+  const handleSave = () => {
+    setIsSaved((prev) => !prev);
+  };
+
+  const handleRepost = () => {
+    setIsReposted((prev) => !prev);
+    setReposts((prev) => (isReposted ? prev - 1 : prev + 1));
+  };
+
+  const toggleReadMore = () => {
+    setIsExpanded(!isExpanded);
+  };
 
   const words = blog.content.split(" ");
-  const truncated =
-    words.length > maxWords
-      ? words.slice(0, maxWords).join(" ") + ""
-      : blog.content;
-
-  // Like button handler
-  const handleLike = () => {
-    if (liked) {
-      setLikes(likes - 1);
-    } else {
-      setLikes(likes + 1);
-    }
-    setLiked(!liked);
-  };
-
-  //comments handler
-  const handleComment = () =>{
-    if (commented) {
-      setComments(comments-1)
-    } else {
-      setComments( comments + 1)
-    }
-    setCommented(!commented)
-  }
-  // Save button handler
-  const handleSave = () => {
-    if (isSaved) {
-      setSaved(saved);
-    } else {
-      setSaved();
-    }
-    setIsSaved(!isSaved);
-  };
-
-  // Repost button handler
-  const handleRepost = () => {
-    if (isReposted) {
-      setReposts(reposts - 1);
-    } else {
-      setReposts(reposts + 1);
-    }
-    setIsReposted(!isReposted);
-  };
-
-  console.log(blog)
-  const { themeClasses } = useTheme();
-  
+  const shouldTruncate = words.length > 20; // Simplified truncation logic
 
   return (
     <div
       className={`max-w-[350px] flex flex-col gap-2 ${themeClasses.background} ${themeClasses.text} rounded-2xl`}
     >
-      {/* Author info */}
       <Link to={`/profile/${encodeURIComponent(blog.author)}`}>
         <div className="flex items-center gap-2 ">
           <img
@@ -128,11 +82,9 @@ const BlogItem = ({ blog }) => {
             alt="User"
             className="w-8 h-8 rounded-full object-cover"
           />
-
           <div className="leading-tight">
             <div className="flex items-center gap-1">
               <div className={`text-md font-medium `}>{blog.author}</div>
-              {/* Use a fixed size for the dot */}
               <div
                 className=""
                 style={{
@@ -154,47 +106,38 @@ const BlogItem = ({ blog }) => {
           </div>
         </div>
       </Link>
-      {/* <hr className="block md:hidden border-t border-gray-300 mt-2 " /> */}
-      {/* Blog Content with Read More */}
+
       <p className="text-md font-medium leading-snug">
-        <span
-          className={`${
-            !isExpanded ? "truncate whitespace-pre-wrap align-bottom" : ""
-          }`}
-        >
-          {isExpanded ? blog.content : truncated}
+        <span>
+          {isExpanded || !shouldTruncate
+            ? blog.content
+            : `${words.slice(0, 20).join(" ")}`}
         </span>
-        <>
+        {shouldTruncate && (
           <button
             onClick={toggleReadMore}
-            className={`text-sky-600 text-md font-medium ml-1 inline-block whitespace-nowrap 
-            ${words.length > maxWords ? "hover:underline" : "invisible"}`}
+            className="text-sky-600 text-md font-medium ml-1 inline-block hover:underline whitespace-nowrap"
           >
             {isExpanded ? "Show less" : "Show more"}
           </button>
-        </>
+        )}
       </p>
-      {/* Blog Image*/}
+
       <div className="flex flex-col w-full">
         <img src={blog.img} alt="" className="rounded-lg w-full object-cover" />
       </div>
-      {/* Like and Comment Icons */}
+
       <div className="flex items-center justify-around gap-1 w-full">
-        {/* Comment */}
         <button
-          className={` ${themeClasses.reaction} flex items-center gap-1 hover:text-green-500 transition`}
-          onSave={handleComment}
+          className={`${themeClasses.reaction} flex items-center gap-1 hover:text-green-500 transition`}
+          onClick={handleComment}
         >
-          <ChatCircleText
-            size={20}
-            weight={commented ? "text-blue-500" : "regular"}
-          />
+          <ChatCircleText size={20} weight={isCommented ? "fill" : "regular"} />
           <span className="text-sm w-6 text-center inline-block">
             {comments}
           </span>
         </button>
 
-        {/* Repost */}
         <button
           className={`${
             themeClasses.reaction
@@ -209,20 +152,18 @@ const BlogItem = ({ blog }) => {
           </span>
         </button>
 
-        {/* Like */}
         <button
           className={`${
             themeClasses.reaction
           } flex items-center gap-0.2 transition ${
-            liked ? "text-red-500" : " hover:text-red-500"
+            isLiked ? "text-red-500" : " hover:text-red-500"
           }`}
           onClick={handleLike}
         >
-          <Heart size={20} weight={liked ? "fill" : "regular"} />
+          <Heart size={20} weight={isLiked ? "fill" : "regular"} />
           <span className="text-sm w-6 text-center inline-block">{likes}</span>
         </button>
 
-        {/* Save */}
         <button
           className={`${
             themeClasses.reaction
@@ -234,9 +175,10 @@ const BlogItem = ({ blog }) => {
           <BookmarkSimple size={20} weight={isSaved ? "fill" : "regular"} />
         </button>
       </div>
+
       <hr
         className={`block md:hidden border-t ${themeClasses.border} w-screen -ml-3`}
-      />{" "}
+      />
     </div>
   );
 };

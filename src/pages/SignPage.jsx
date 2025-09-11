@@ -65,7 +65,7 @@ const SignPage = () => {
             <>
               Already have an account?{" "}
               <button
-                className="text-blue-500 hover:underline"
+                className="text-sky-600 hover:underline"
                 onClick={() => setShowSignUp(false)}
               >
                 Sign In
@@ -75,7 +75,7 @@ const SignPage = () => {
             <>
               Don't have an account?{" "}
               <button
-                className="text-blue-500 hover:underline"
+                className="text-sky-600 hover:underline"
                 onClick={() => setShowSignUp(true)}
               >
                 Sign Up
