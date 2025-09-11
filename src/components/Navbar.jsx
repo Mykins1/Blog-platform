@@ -75,7 +75,7 @@ export default function Navbar(){
     <>
       {/* Navbar always above BottomNav */}
       <div
-      className={`nav fixed w-full flex flex-col md:flex-row items-center justify-between border-b  ${themeClasses.border} ${themeClasses.background}  px-4 py-2 z-[101] transition-all duration-300`}
+        className={`nav fixed w-full flex flex-col md:flex-row items-center justify-between border-b  ${themeClasses.border} ${themeClasses.background}  px-4 py-2 z-[101] transition-all duration-300`}
         style={{
           top: `${navbarTop}px`, // Apply the dynamic top position
         }}
@@ -112,7 +112,9 @@ export default function Navbar(){
         )}
 
         {/* Mobile Layout */}
-        <div className={`md:hidden w-full flex items-center justify-between ${themeClasses.background}`}>
+        <div
+          className={`md:hidden w-full flex items-center justify-between ${themeClasses.background}`}
+        >
           <div className="flex items-center">
             <img
               src="https://randomuser.me/api/portraits/men/5.jpg"
@@ -169,7 +171,9 @@ export default function Navbar(){
               </div>
             </div>
           </div>
-          <hr className={`block md:hidden border-t ${themeClasses.border} w-full`} />
+          <hr
+            className={`block md:hidden border-t ${themeClasses.border} w-full`}
+          />
 
           <nav className="flex flex-col gap-2 w-full ">
             {/* Profile link with user icon */}
@@ -200,7 +204,9 @@ export default function Navbar(){
               <BookmarkSimple size={22} weight="bold" />
               <span className="font-medium">Bookmarks</span>
             </NavLink>
-            <hr className={`block md:hidden border-t ${themeClasses.border} w-full`} />{" "}
+            <hr
+              className={`block md:hidden border-t ${themeClasses.border} w-full`}
+            />{" "}
             {/* Settings link with gear icon */}
             <NavLink
               to="/settings"
@@ -213,7 +219,10 @@ export default function Navbar(){
               }
             >
               <Gear size={22} weight="bold" />
-              <span className="font-medium">Settings</span>
+              <span className="relative font-medium">
+                Settings
+                <span className="absolute top-0 right-0 h-2 w-2 -mt-0 -mr-4 rounded-full bg-red-500"></span>
+              </span>
             </NavLink>
             <NavLink
               to="/sign"
