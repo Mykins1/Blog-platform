@@ -5,7 +5,7 @@ export default function ThemeToggle() {
   const { theme, setTheme } = useTheme();
 
   return (
-    <div className="button-group">
+    <div className="flex gap-4 button-group">
       <button
         onClick={() => setTheme("light")}
         className={`theme-button ${theme === "light" ? "active" : ""}`}

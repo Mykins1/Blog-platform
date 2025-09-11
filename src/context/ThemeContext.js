@@ -21,7 +21,7 @@ export const ThemeProvider = ({ children }) => {
       ? {
           background: " bg-zinc-900",
           text: "text-white",
-          icon: "text-slate-50",
+          icon: "text-gray-500",
           hover: "hover:bg-zinc-700/50",
           span: "text-gray-400",
           border: "border-gray-500",
@@ -44,7 +44,6 @@ export const ThemeProvider = ({ children }) => {
         };
 
   useEffect(() => {
-    // 2. Apply theme class to the document for styling
     const root = document.documentElement;
 
     if (theme === "system") {
@@ -63,14 +62,11 @@ export const ThemeProvider = ({ children }) => {
       root.className = theme;
     }
 
-    // 3. Save the theme to local storage
     localStorage.setItem("theme", theme);
   }, [theme]);
 
-  // 4. Provide the state, the setter function, and the class object
   const value = { theme, setTheme, themeClasses };
 
-  // 🔹 Pure JS (no JSX)
   return React.createElement(ThemeContext.Provider, { value: value }, children);
 };
 

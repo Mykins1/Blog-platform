@@ -1,13 +1,16 @@
 import { useState } from "react";
 import {Eye, EyeSlash} from "phosphor-react";
+import { useTheme } from "../context/ThemeContext.js";
 
 const SignPage = () => {
   const [showSignUp, setShowSignUp] = useState(false);
   const [showPassword, setShowPassword] = useState(false);
+    const { themeClasses } = useTheme();
+  
 
   return (
     <div className="flex items-center justify-center h-130">
-      <div className="flex flex-col items-center bg-white p-8 w-full rounded-md ">
+      <div className={`flex flex-col items-center bg-white p-8 w-full rounded-md ${themeClasses.background}`}>
         <h1 className="text-2xl text-center font-bold mb-2">
           {showSignUp ? "Welcome to Socia" : "Welcome back"}
         </h1>
@@ -52,12 +55,12 @@ const SignPage = () => {
           </div>
           <button
             type="submit"
-            className="bg-gray-800 text-white font-medium p-2 mt-3 rounded-full"
+            className={`bg-sky-800 font-medium p-2 mt-3 rounded-full text-white`}
           >
             {showSignUp ? "Sign Up" : "Sign In"}
           </button>
         </form>
-        <span className="text-sm font-medium text-gray-500 pt-3">
+        <span className={`text-sm font-medium pt-3 ${themeClasses.span}`}>
           {showSignUp ? (
             <>
               Already have an account?{" "}

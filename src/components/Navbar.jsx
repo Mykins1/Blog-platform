@@ -75,7 +75,7 @@ export default function Navbar(){
     <>
       {/* Navbar always above BottomNav */}
       <div
-      className={`nav fixed w-full flex flex-col md:flex-row items-center justify-between border-b ${themeClasses.border}  px-4 py-2 z-[101] transition-all duration-300`}
+      className={`nav fixed w-full flex flex-col md:flex-row items-center justify-between border-b  ${themeClasses.border} ${themeClasses.background}  px-4 py-2 z-[101] transition-all duration-300`}
         style={{
           top: `${navbarTop}px`, // Apply the dynamic top position
         }}
@@ -112,7 +112,7 @@ export default function Navbar(){
         )}
 
         {/* Mobile Layout */}
-        <div className="md:hidden w-full flex items-center justify-between ">
+        <div className={`md:hidden w-full flex items-center justify-between ${themeClasses.background}`}>
           <div className="flex items-center">
             <img
               src="https://randomuser.me/api/portraits/men/5.jpg"
@@ -260,7 +260,7 @@ export const BottomNav = ({ menuOpen, navbarTop }) => {
           location.pathname === "/" ? themeClasses.current : ""
         }`}
       >
-        <House size={28} weight={location.pathname === "/" ? "fill" : "light"} />
+        <House size={28} className={`${themeClasses.icon}`} weight={location.pathname === "/" ? "fill" : "bold"} />
         <span className="text-xs">Home</span>
       </NavLink>
       <NavLink
@@ -270,7 +270,7 @@ export const BottomNav = ({ menuOpen, navbarTop }) => {
         }`}
       >
         <Plus
-          className=" bg-gray-200 rounded-full p-1"
+          className={`bg-gray-200 rounded-full p-1 ${themeClasses.icon}`}
           size={28}
           weight={location.pathname === "/addpost" ? "bold" : "bold"}
           strokeWidth={location.pathname === "/addpost" ? 3 : 1.5}

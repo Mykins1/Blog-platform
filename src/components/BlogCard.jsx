@@ -113,7 +113,7 @@ const BlogItem = ({ blog }) => {
   };
 
   console.log(blog)
-    const { themeClasses } = useTheme();
+  const { themeClasses } = useTheme();
   
 
   return (
@@ -183,7 +183,7 @@ const BlogItem = ({ blog }) => {
       <div className="flex items-center justify-around gap-1 w-full">
         {/* Comment */}
         <button
-          className="flex items-center gap-1 hover:text-blue-500 transition"
+          className={` ${themeClasses.icon} flex items-center gap-1 hover:text-blue-500 transition`}
           onSave={handleComment}
         >
           <ChatCircleText
@@ -197,8 +197,8 @@ const BlogItem = ({ blog }) => {
 
         {/* Repost */}
         <button
-          className={`flex items-center gap-1 transition ${
-            isReposted ? "text-green-600" : " hover:text-green-600"
+          className={`${themeClasses.icon} flex items-center gap-1 transition ${
+            isReposted ? "text-sky-600" : " hover:text-sky-600"
           }`}
           onClick={handleRepost}
         >
@@ -210,7 +210,7 @@ const BlogItem = ({ blog }) => {
 
         {/* Like */}
         <button
-          className={`flex items-center gap-0.2 transition ${
+          className={`${themeClasses.icon} flex items-center gap-0.2 transition ${
             liked ? "text-red-500" : " hover:text-red-500"
           }`}
           onClick={handleLike}
@@ -221,7 +221,7 @@ const BlogItem = ({ blog }) => {
 
         {/* Save */}
         <button
-          className={`flex items-center gap-1 transition ${
+          className={`${themeClasses.icon} flex items-center gap-1 transition ${
             isSaved ? "text-yellow-500" : " hover:text-yellow-500"
           }`}
           onClick={handleSave}
