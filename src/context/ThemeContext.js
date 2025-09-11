@@ -29,6 +29,7 @@ export const ThemeProvider = ({ children }) => {
           active: "active:bg-zinc-700/40",
           current: "bg-zinc-700/50",
           input: "bg-zinc-700/50",
+          reaction:"text-gray-500",
         }
       : {
           background: "bg-white",
@@ -38,9 +39,10 @@ export const ThemeProvider = ({ children }) => {
           span: "text-gray-600",
           border: "border-gray-300",
           dot: "bg-gray-300",
-          active: "active:bg-gray-200",
+          active: "active:bg-gray-300",
           current: "bg-gray-300",
           input: "bg-gray-100",
+          reaction:"",
         };
 
   useEffect(() => {
