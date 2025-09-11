@@ -1,7 +1,7 @@
 
 import { useTheme } from "../context/ThemeContext.js";
 
-export default function ThemeToggle() {
+export default function ThemeButton() {
   const { theme, setTheme } = useTheme();
 
   return (

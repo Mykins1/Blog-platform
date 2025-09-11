@@ -1,5 +1,5 @@
 import Header from "../components/PageHeader";
-import ThemeToggle from "../components/ThemeToggle";
+import ThemeButton from "../components/ThemeToggle";
 
 export default function Settings() {
   return (
@@ -7,7 +7,7 @@ export default function Settings() {
       <Header title="Settings" />
       <div className="flex flex-col items-center justify-center py-5 w-full">
         <h2 className="font-medium animate-bounce">Theme</h2>
-        <ThemeToggle />
+        <ThemeButton />
       </div>
       <div className="flex flex-col items-center justify-center ">
         Coming soon...
