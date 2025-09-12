@@ -1,12 +1,11 @@
 // src/context/ThemeContext.js
-
 import React, { createContext, useState, useEffect, useContext } from "react";
 
 const ThemeContext = createContext();
 
 export const ThemeProvider = ({ children }) => {
   const [theme, setTheme] = useState(() => {
-    // 1. Initial state check: local storage or system preference
+    // Initial state check: local storage or system preference
     const savedTheme = localStorage.getItem("theme");
     if (savedTheme) {
       return savedTheme;
@@ -29,7 +28,7 @@ export const ThemeProvider = ({ children }) => {
           active: "active:bg-zinc-700/40",
           current: "bg-zinc-700/50",
           input: "bg-zinc-700/50",
-          reaction:"text-gray-500",
+          reaction: "text-gray-500",
         }
       : {
           background: "bg-white",
@@ -42,29 +41,36 @@ export const ThemeProvider = ({ children }) => {
           active: "active:bg-gray-300",
           current: "bg-gray-300",
           input: "bg-gray-100",
-          reaction:"",
+          reaction: "",
         };
 
   useEffect(() => {
     const root = document.documentElement;
+    const mediaQuery = window.matchMedia("(prefers-color-scheme: dark)");
 
-    if (theme === "system") {
-      const mediaQuery = window.matchMedia("(prefers-color-scheme: dark)");
-
-      const handleSystemThemeChange = (e) => {
+    // This is the function that runs when the system theme changes
+    const handleSystemThemeChange = (e) => {
+      if (theme === "system") {
         root.className = e.matches ? "dark" : "light";
-      };
+      }
+    };
 
+    // Add the listener for system theme changes
+    mediaQuery.addEventListener("change", handleSystemThemeChange);
+
+    // Set the initial class based on the current theme state
+    if (theme === "system") {
       root.className = mediaQuery.matches ? "dark" : "light";
-      mediaQuery.addEventListener("change", handleSystemThemeChange);
-
-      return () =>
-        mediaQuery.removeEventListener("change", handleSystemThemeChange);
     } else {
       root.className = theme;
     }
 
     localStorage.setItem("theme", theme);
+
+    // Cleanup function to remove the listener
+    return () => {
+      mediaQuery.removeEventListener("change", handleSystemThemeChange);
+    };
   }, [theme]);
 
   const value = { theme, setTheme, themeClasses };
