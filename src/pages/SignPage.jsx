@@ -10,7 +10,7 @@ const SignPage = () => {
 
   return (
     <div className="flex items-center justify-center h-130">
-      <div className={`flex flex-col items-center bg-white p-8 w-full rounded-md ${themeClasses.background}`}>
+      <div className={`flex flex-col items-center p-8 w-full rounded-md ${themeClasses.background}`}>
         <h1 className="text-2xl text-center font-bold mb-2">
           {showSignUp ? "Welcome to Socia" : "Welcome back"}
         </h1>
