@@ -19,7 +19,7 @@ export const ThemeProvider = ({ children }) => {
   const themeClasses =
     theme === "dark"
       ? {
-          background: " bg-slate-700",
+          background: " bg-sky-950",
           text: "text-white",
           icon: "text-gray-500",
           hover: "hover:bg-zinc-700/50",
