@@ -8,7 +8,7 @@ export default function Header({title}) {
   const handleGoBack = () => {
     navigate(-1); // This navigates back one step in the history stack
   };
-    const { themeClasses } = useTheme();
+  const { themeClasses } = useTheme();
 
   return (
     <div>
