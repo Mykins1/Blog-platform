@@ -34,7 +34,6 @@ const BlogItem = ({ blog }) => {
 
   // Interaction state using a single useState hook for cleaner state management
   const [interactionState, setInteractionState] = useState({
-    isExpanded: false,
     likes: blog.likes || 0,
     isLiked: false,
     comments: blog.comments || 0,
