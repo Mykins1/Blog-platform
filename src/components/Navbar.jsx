@@ -71,7 +71,7 @@ export default function Navbar() {
   return (
     <>
       {/* Navbar wrapper: fixed top bar on mobile, sidebar content inside parent on md+ */}
-      <div
+      <header
         className={`nav fixed md:static w-full md:w-full flex flex-col md:flex-col items-center md:items-start border-b md:border-none ${themeClasses.border} ${themeClasses.background} px-4 py-2 md:py-6 z-[101]`}
         style={{
           top: `${navbarTop}px`, // used on mobile (fixed)
@@ -194,12 +194,13 @@ export default function Navbar() {
         )}
 
         {/* Mobile Sliding Sidebar */}
-        <div
+        <aside
           className={`fixed left-0 top-0 h-full w-[70vw] max-w-md z-[102] md:hidden ${
             themeClasses.background
           } ${themeClasses.text} transform transition-transform ${
             menuOpen ? "translate-x-0" : "-translate-x-full"
           }`}
+          aria-hidden={!menuOpen}
         >
           <div className="p-4">
             <div className="flex flex-col items-center px-3 mb-4">
@@ -286,8 +287,8 @@ export default function Navbar() {
               </NavLink>
             </nav>
           </div>
-        </div>
-      </div>
+        </aside>
+      </header>
 
       {/* BottomNav always below Navbar and Sidebar (mobile only) */}
       <BottomNav menuOpen={menuOpen} navbarTop={navbarTop} />

@@ -36,13 +36,16 @@ export default function App() {
       }}
     >
       <div className="md:grid md:grid-cols-[280px_1fr_320px] md:gap-4">
-        <div className="hidden md:block md:fixed md:left-0 md:top-0 md:h-screen md:w-[280px] md:border-r border-gray-200 dark:border-gray-800">
+        <aside
+          className="hidden md:block md:fixed md:left-0 md:top-0 md:h-screen md:w-[280px] md:border-r border-gray-200 dark:border-gray-800"
+          aria-label="Primary sidebar"
+        >
           <Navbar />
-        </div>
+        </aside>
 
-        <div className="md:col-start-2">
+        <main className="md:col-start-2" role="main">
           <div className="block md:hidden">{!hideNavbar && <Navbar />}</div>
-          <div
+          <section
             className={`body max-w-auto mx-auto p-3 ${
               isProfilePage ? "" : "md:pt-6 pt-17"
             }`}
@@ -58,14 +61,17 @@ export default function App() {
               <Route path="/sign" element={<SignIn />} />
               <Route path="/bookmarks" element={<Bookmarks />} />
             </Routes>
-          </div>
-        </div>
+          </section>
+        </main>
 
-        <div className="hidden md:block md:fixed md:right-0 md:top-0 md:h-screen md:w-[320px] md:border-l border-gray-200 dark:border-gray-800">
+        <aside
+          className="hidden md:block md:fixed md:right-0 md:top-0 md:h-screen md:w-[320px] md:border-l border-gray-200 dark:border-gray-800"
+          aria-label="Secondary sidebar"
+        >
           <div className="h-full p-4 overflow-y-auto">
             <SearchPage />
           </div>
-        </div>
+        </aside>
       </div>
       <div className="md:hidden">
         <BottomNav />

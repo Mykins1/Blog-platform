@@ -13,11 +13,11 @@ export default function Profile() {
   const { themeClasses } = useTheme();
 
   if (!user) {
-    return <div className="p-8 text-center">User not found.</div>;
+    return <main className="p-8 text-center">User not found.</main>;
   }
 
   return (
-    <div>
+    <main>
       <Header title="Profile" />
       <div className="flex items-center gap-4 px-4 leading-tight mb-8 mt-6">
         <img
@@ -35,7 +35,7 @@ export default function Profile() {
         </div>
       </div>
 
-      <div className="flex flex-col gap-2">
+      <section className="flex flex-col gap-2">
         <h3 className="flex flex-col gap-2 text-left text-lg font-bold px-4">
           Posts
           <hr
@@ -49,7 +49,7 @@ export default function Profile() {
             </div>
           ) : (
             userPosts.map((post, index) => (
-              <div
+              <article
                 key={post.id}
                 className={`rounded px-4 ${themeClasses.background}`}
               >
@@ -66,12 +66,11 @@ export default function Profile() {
                 {index < userPosts.length - 1 && (
                   <hr className="block md:hidden border-t border-gray-300 w-full mx-auto" />
                 )}
-              </div>
+              </article>
             ))
           )}
         </div>
-      </div>
-    </div>
+      </section>
+    </main>
   );
-};
-
+}

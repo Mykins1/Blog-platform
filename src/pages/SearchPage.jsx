@@ -60,7 +60,13 @@ export default function SearchPage() {
   const { themeClasses } = useTheme();
 
   return (
-    <div className="z-[102] flex flex-col gap-4 w-full md:pt-6">
+    <section
+      aria-labelledby="search-heading"
+      className="z-[102] flex flex-col gap-4 w-full md:pt-6"
+    >
+      <h2 id="search-heading" className="sr-only">
+        Search
+      </h2>
       {/* Search Bar */}
       <div className="relative w-full">
         <MagnifyingGlass
@@ -80,30 +86,33 @@ export default function SearchPage() {
       {/* Live Search Results */}
       <div className="flex flex-col gap-2">
         {query && filteredAuthors.length === 0 && (
-          <div className="text-gray-400 text-sm px-2">No results found.</div>
+          <p className="text-gray-400 text-sm px-2">No results found.</p>
         )}
 
-        {/* Display filtered blogs */}
-        {filteredAuthors.map((blog) => (
-          <Link
-            key={blog.id} // Assuming the blog has a unique 'id'
-            to={`/profile/${encodeURIComponent(blog.author)}`}
-            className={`flex items-center gap-3 p-2 rounded-lg ${themeClasses.hover} transition ${themeClasses.active}`}
-          >
-            <img
-              src={blog.authorImg}
-              alt={blog.author}
-              className="w-8 h-8 rounded-full object-cover"
-            />
-            <div>
-              <div className="font-medium text-md">{blog.author}</div>
-              <div className={`text-xs font-medium ${themeClasses.span}`}>
-                {blog.profession}
-              </div>
-            </div>
-          </Link>
-        ))}
+        {/* Display filtered blogs as a list */}
+        <ul className="flex flex-col gap-2">
+          {filteredAuthors.map((blog) => (
+            <li key={blog.id}>
+              <Link
+                to={`/profile/${encodeURIComponent(blog.author)}`}
+                className={`flex items-center gap-3 p-2 rounded-lg ${themeClasses.hover} ${themeClasses.active}`}
+              >
+                <img
+                  src={blog.authorImg}
+                  alt={blog.author}
+                  className="w-8 h-8 rounded-full object-cover"
+                />
+                <div>
+                  <div className="font-medium text-md">{blog.author}</div>
+                  <div className={`text-xs font-medium ${themeClasses.span}`}>
+                    {blog.profession}
+                  </div>
+                </div>
+              </Link>
+            </li>
+          ))}
+        </ul>
       </div>
-    </div>
+    </section>
   );
 }

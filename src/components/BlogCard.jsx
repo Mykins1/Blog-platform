@@ -76,41 +76,45 @@ const BlogItem = ({ blog }) => {
   };
 
   return (
-    <div
+    <article
       className={`max-w-[350px] flex flex-col gap-2 ${themeClasses.background} ${themeClasses.text} rounded-2xl`}
     >
       {/* Blog Author and Date */}
-      <Link to={`/profile/${encodeURIComponent(blog.author)}`}>
-        <div className="flex items-center gap-2 ">
-          <img
-            src={blog.authorImg}
-            alt="User"
-            className="w-8 h-8 rounded-full object-cover"
-          />
-          <div className="leading-tight">
-            <div className="flex items-center gap-1">
-              <div className={`text-md font-medium `}>{blog.author}</div>
+      <header>
+        <Link to={`/profile/${encodeURIComponent(blog.author)}`}>
+          <div className="flex items-center gap-2 ">
+            <img
+              src={blog.authorImg}
+              alt="User"
+              className="w-8 h-8 rounded-full object-cover"
+            />
+            <div className="leading-tight">
+              <div className="flex items-center gap-1">
+                <div className={`text-md font-medium `}>{blog.author}</div>
+                <div
+                  className=""
+                  style={{
+                    backgroundColor: "#6B7280",
+                    borderRadius: "50%",
+                    width: "3px",
+                    height: "3px",
+                    minWidth: "2px",
+                    minHeight: "2px",
+                  }}
+                ></div>
+                <div className="text-sm font-normal ">
+                  {blog.date ? formatDate(blog.date) : "No date"}
+                </div>
+              </div>
               <div
-                className=""
-                style={{
-                  backgroundColor: "#6B7280",
-                  borderRadius: "50%",
-                  width: "3px",
-                  height: "3px",
-                  minWidth: "2px",
-                  minHeight: "2px",
-                }}
-              ></div>
-              <div className="text-sm font-normal ">
-                {blog.date ? formatDate(blog.date) : "No date"}
+                className={`text-xs font-normal italic ${themeClasses.span}`}
+              >
+                {blog.profession}
               </div>
             </div>
-            <div className={`text-xs font-normal italic ${themeClasses.span}`}>
-              {blog.profession}
-            </div>
           </div>
-        </div>
-      </Link>
+        </Link>
+      </header>
 
       {/* Blog Content with Read More/Show Less */}
       <p className="text-md font-medium leading-snug">
@@ -133,7 +137,7 @@ const BlogItem = ({ blog }) => {
       </div>
 
       {/* Interactive Buttons */}
-      <div className="flex items-center justify-around gap-1 w-full">
+      <footer className="flex items-center justify-around gap-1 w-full">
         <button
           className={`${themeClasses.reaction} flex items-center gap-1 hover:text-green-500 transition`}
           onClick={() => handleInteraction("comment")}
@@ -196,22 +200,25 @@ const BlogItem = ({ blog }) => {
             weight={interactionState.isSaved ? "fill" : "regular"}
           />
         </button>
-      </div>
+      </footer>
 
       <hr
         className={`block md:hidden border-t ${themeClasses.border}  w-auto `}
       />
-    </div>
+    </article>
   );
 };
 
 // Wrapper component to render a list of blog posts
 export default function BlogCard({ blogs }) {
   return (
-    <div className="grid grid-cols-1 md:grid-cols-1 gap-4">
+    <section
+      aria-label="Blog posts"
+      className="grid grid-cols-1 md:grid-cols-1 gap-4"
+    >
       {blogs.map((blog) => (
         <BlogItem key={blog.id} blog={blog} />
       ))}
-    </div>
+    </section>
   );
 }
