@@ -26,7 +26,6 @@ export default function App() {
     location.pathname === "/bookmarks" ||
     location.pathname === "/settings";
 
-
   return (
     <div
       className={`min-h-screen ${themeClasses.background} ${themeClasses.text}`}
@@ -36,27 +35,42 @@ export default function App() {
         overflow: "auto",
       }}
     >
-      {!hideNavbar && <Navbar />}
-      <div
-        className={`body md:items-center md:justify-evenly max-w-auto mx-auto md:mx-0 p-3 ${
-          isProfilePage ? "" : "md:pt-19 pt-17"
-        }`}
-        style={{
-          height: "100%",
-          overflowY: "auto",
-        }}
-      >
-        <Routes>
-          <Route path="/" element={<Home />} />
-          <Route path="/profile/:author" element={<Profile />} />
-          <Route path="/search" element={<SearchPage />} />
-          <Route path="/settings" element={<Settings />} />
-          <Route path="/sign" element={<SignIn />} />
-          <Route path="/bookmarks" element={<Bookmarks />} />
-        </Routes>
+      <div className="md:grid md:grid-cols-[280px_1fr_320px] md:gap-4">
+        <div className="hidden md:block md:fixed md:left-0 md:top-0 md:h-screen md:w-[280px] md:border-r border-gray-200 dark:border-gray-800">
+          <Navbar />
+        </div>
+
+        <div className="md:col-start-2">
+          <div className="block md:hidden">{!hideNavbar && <Navbar />}</div>
+          <div
+            className={`body max-w-auto mx-auto p-3 ${
+              isProfilePage ? "" : "md:pt-6 pt-17"
+            }`}
+            style={{
+              height: "100%",
+              overflowY: "auto",
+            }}
+          >
+            <Routes>
+              <Route path="/" element={<Home />} />
+              <Route path="/profile/:author" element={<Profile />} />
+              <Route path="/settings" element={<Settings />} />
+              <Route path="/sign" element={<SignIn />} />
+              <Route path="/bookmarks" element={<Bookmarks />} />
+            </Routes>
+          </div>
+        </div>
+
+        <div className="hidden md:block md:fixed md:right-0 md:top-0 md:h-screen md:w-[320px] md:border-l border-gray-200 dark:border-gray-800">
+          <div className="h-full p-4 overflow-y-auto">
+            <SearchPage />
+          </div>
+        </div>
       </div>
-      <BottomNav />
-      {!hideFooter && <Footer />}
+      <div className="md:hidden">
+        <BottomNav />
+        {!hideFooter && <Footer />}
+      </div>
     </div>
   );
 }

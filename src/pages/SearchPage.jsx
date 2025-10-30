@@ -5,7 +5,6 @@ import { Link, useSearchParams } from "react-router-dom";
 import { useTheme } from "../context/ThemeContext.js";
 
 export default function SearchPage() {
-  
   const [searchParams, setSearchParams] = useSearchParams();
   const initialQuery = searchParams.get("q") || "";
   const [query, setQuery] = useState(initialQuery);
@@ -58,12 +57,11 @@ export default function SearchPage() {
     setFilteredAuthors(filtered); // Update the state with the filtered blogs
   }, [debouncedQuery]);
 
-   const { themeClasses } = useTheme();
-
+  const { themeClasses } = useTheme();
 
   return (
-    <div className="flex flex-col gap-4 w-full">
-      {/* Search Input */}
+    <div className="z-[102] flex flex-col gap-4 w-full md:pt-6">
+      {/* Search Bar */}
       <div className="relative w-full">
         <MagnifyingGlass
           className="absolute left-3 top-1/2 -translate-y-1/2 text-gray-400"
@@ -99,7 +97,9 @@ export default function SearchPage() {
             />
             <div>
               <div className="font-medium text-md">{blog.author}</div>
-              <div className={`text-xs font-medium ${themeClasses.span}`}>{blog.profession}</div>
+              <div className={`text-xs font-medium ${themeClasses.span}`}>
+                {blog.profession}
+              </div>
             </div>
           </Link>
         ))}
