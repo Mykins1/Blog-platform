@@ -36,8 +36,8 @@ const BlogItem = ({ blog }) => {
   const [interactionState, setInteractionState] = useState({
     likes: blog.likes || 0,
     isLiked: false,
-    comments: blog.comments || 0,
-    isCommented: false,
+    // comments: blog.comments || 0,
+    // isCommented: false,
     isSaved: false,
     reposts: blog.reposts || 0,
     isReposted: false,
@@ -54,10 +54,10 @@ const BlogItem = ({ blog }) => {
           newState.isLiked = !prevState.isLiked;
           newState.likes += newState.isLiked ? 1 : -1;
           break;
-        case "comment":
-          newState.isCommented = !prevState.isCommented;
-          newState.comments += newState.isCommented ? 1 : -1;
-          break;
+        // case "comment":
+        //   newState.isCommented = !prevState.isCommented;
+        //   newState.comments += newState.isCommented ? 1 : -1;
+        //   break;
         case "save":
           newState.isSaved = !prevState.isSaved;
           break;
@@ -139,36 +139,6 @@ const BlogItem = ({ blog }) => {
       {/* Interactive Buttons */}
       <footer className="flex items-center justify-around gap-1 w-full">
         <button
-          className={`${themeClasses.reaction} flex items-center gap-1 hover:text-green-500 transition`}
-          onClick={() => handleInteraction("comment")}
-        >
-          <ChatCircleText
-            size={20}
-            weight={interactionState.isCommented ? "fill" : "regular"}
-          />
-          <span className="text-sm w-6 text-center inline-block">
-            {interactionState.comments}
-          </span>
-        </button>
-
-        <button
-          className={`${
-            themeClasses.reaction
-          } flex items-center gap-1 transition ${
-            interactionState.isReposted ? "text-sky-600" : " hover:text-sky-600"
-          }`}
-          onClick={() => handleInteraction("repost")}
-        >
-          <Repeat
-            size={20}
-            weight={interactionState.isReposted ? "fill" : "regular"}
-          />
-          <span className="text-sm w-6 text-center inline-block">
-            {interactionState.reposts}
-          </span>
-        </button>
-
-        <button
           className={`${
             themeClasses.reaction
           } flex items-center gap-0.2 transition ${
@@ -182,6 +152,19 @@ const BlogItem = ({ blog }) => {
           />
           <span className="text-sm w-6 text-center inline-block">
             {interactionState.likes}
+          </span>
+        </button>
+
+        <button
+          className={`${themeClasses.reaction} flex items-center gap-1 hover:text-green-500 transition`}
+          onClick={""}
+        >
+          <ChatCircleText
+            size={20}
+            weight={interactionState.isCommented ? "fill" : "regular"}
+          />
+          <span className="text-sm w-6 text-center inline-block">
+            {interactionState.comments}
           </span>
         </button>
 
