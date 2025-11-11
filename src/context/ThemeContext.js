@@ -23,11 +23,11 @@ export const ThemeProvider = ({ children }) => {
           icon: "text-gray-500",
           hover: "hover:bg-zinc-700/50",
           span: "text-gray-400",
-          border: "border-gray-500",
+          border: "border-[#3f3f3f]",
           dot: "bg-gray-500",
           active: "active:bg-zinc-700/40",
           current: "bg-zinc-700/50",
-          input: "bg-zinc-700/50",
+          input: "bg-[#2a2a2a]",
           reaction: "text-gray-500",
         }
       : {
