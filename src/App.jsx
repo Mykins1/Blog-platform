@@ -37,7 +37,7 @@ export default function App() {
     >
       <div className="md:grid md:grid-cols-[280px_1fr_320px] md:gap-4">
         <aside
-          className="hidden md:block md:fixed md:left-0 md:top-0 md:h-screen md:w-[280px] md:border-r border-gray-200 dark:border-gray-800"
+          className={`hidden md:block md:fixed md:left-0 md:top-0 md:h-screen md:w-[280px] md:border-r ${themeClasses.border}`}
           aria-label="Primary sidebar"
         >
           <Navbar />
@@ -65,7 +65,7 @@ export default function App() {
         </main>
 
         <aside
-          className="hidden md:block md:fixed md:right-0 md:top-0 md:h-screen md:w-[320px] md:border-l border-gray-200 dark:border-gray-800"
+          className={`hidden md:block md:fixed md:right-0 md:top-0 md:h-screen md:w-[320px] md:border-l ${themeClasses.border}"`}
           aria-label="Secondary sidebar"
         >
           <div className="h-full p-4 overflow-y-auto">
