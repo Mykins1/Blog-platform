@@ -21,7 +21,7 @@ export const ThemeProvider = ({ children }) => {
           background: "bg-[#121212]",
           text: "text-white",
           icon: "text-gray-500",
-          hover: "hover:bg-zinc-700/50",
+          hover: "hover:bg-[#2d2d2d]",
           span: "text-gray-400",
           border: "border-[#3f3f3f]",
           dot: "bg-gray-500",

@@ -5,7 +5,7 @@ import { useTheme } from "../context/ThemeContext.js";
 export default function Header({ title }) {
   const navigate = useNavigate();
   const handleGoBack = () => {
-    navigate(-1); // This navigates back one step in the history stack
+    navigate("/"); // This navigates back one step in the history stack
   };
   const { themeClasses } = useTheme();
 
