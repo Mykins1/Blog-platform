@@ -65,7 +65,7 @@ export default function App() {
         </main>
 
         <aside
-          className={`hidden md:block md:fixed md:right-0 md:top-0 md:h-screen md:w-[320px] md:border-l ${themeClasses.border}"`}
+          className={`hidden md:block md:fixed md:right-0 md:top-0 md:h-screen md:w-[320px] md:border-l ${themeClasses.border}`}
           aria-label="Secondary sidebar"
         >
           <div className="h-full p-4 overflow-y-auto">
