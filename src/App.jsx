@@ -4,6 +4,7 @@ import Navbar, { BottomNav } from "./components/Navbar";
 import Footer from "./components/Footer";
 import Home from "./pages/Home";
 import Settings from "./pages/Settings";
+import AddPost from "./pages/AddPost";
 import "./App.css";
 import SearchPage from "./pages/SearchPage";
 import SignIn from "./pages/SignPage";
@@ -17,10 +18,12 @@ export default function App() {
   const location = useLocation();
   const hideNavbar =
     location.pathname === "/sign" ||
+    location.pathname === "/addpost" ||
     location.pathname.startsWith("/profile/") ||
     location.pathname === "/bookmarks" ||
     location.pathname === "/settings";
   const hideFooter = location.pathname.startsWith("/profile/");
+  const hideSearch = location.pathname === "/sign" || location.pathname === "/addpost";
   const isProfilePage =
     location.pathname.startsWith("/profile/") ||
     location.pathname === "/bookmarks" ||
@@ -56,6 +59,7 @@ export default function App() {
           >
             <Routes>
               <Route path="/" element={<Home />} />
+              <Route path="/addpost" element={<AddPost />} />
               <Route path="/profile/:author" element={<Profile />} />
               <Route path="/settings" element={<Settings />} />
               <Route path="/sign" element={<SignIn />} />
@@ -69,10 +73,15 @@ export default function App() {
           aria-label="Secondary sidebar"
         >
           <div className="h-full p-4 overflow-y-auto">
-            <SearchPage />
+            {!hideSearch && <SearchPage />}
           </div>
         </aside>
       </div>
+      {!hideSearch && (
+        <div className={`md:hidden px-4 ${themeClasses.border}`}>
+          <SearchPage />
+        </div>
+      )}
       <div className="md:hidden">
         <BottomNav />
         {!hideFooter && <Footer />}
