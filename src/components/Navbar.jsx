@@ -121,10 +121,10 @@ export default function Navbar() {
             </div>
           </div>
           <hr
-            className={`block md:hidden border-t ${themeClasses.border} w-full`}
+            className={`block md:hidden border-t  ${themeClasses.border} w-full`}
           />
 
-          <nav className="flex flex-col gap-2 w-full ">
+          <nav className="flex flex-col gap-2 w-full mt-2">
             {/* Profile link with user icon */}
             <NavLink
               to={`/profile/${encodeURIComponent("Mykel Akinsade")}`}
@@ -222,9 +222,7 @@ export default function Navbar() {
                 </div>
               </div>
             </div>
-            <hr
-              className={`block md:hidden border-t ${themeClasses.border} w-full`}
-            />
+            <hr className={`block md:hidden  ${themeClasses.border} w-full`} />
 
             <nav className="flex flex-col gap-2 w-full ">
               <NavLink
@@ -253,9 +251,7 @@ export default function Navbar() {
                 <span className="font-medium">Bookmarks</span>
               </NavLink>
 
-              <hr
-                className={`block md:hidden border-t ${themeClasses.border} w-full`}
-              />
+              <hr className={`block md:hidden ${themeClasses.border} w-full`} />
 
               <NavLink
                 to="/settings"

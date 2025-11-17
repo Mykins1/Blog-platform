@@ -12,7 +12,7 @@ export default function AddPost() {
   const [formData, setFormData] = useState({
     title: "",
     content: "",
-    profession: localStorage.getItem("userProfession") || "",
+    profession: localStorage.getItem("userProfession") || "Frontend Developer",
     img: "",
   });
 
@@ -105,7 +105,9 @@ export default function AddPost() {
     <main>
       <Header title="Create Post" />
 
-      <section className={`max-w-2xl mx-auto px-4 md:px-6 py-5 ${themeClasses.background}`}>
+      <section
+        className={`max-w-2xl mx-auto md:px-6 py-5 ${themeClasses.background}`}
+      >
         <form onSubmit={handleSubmit} className="flex flex-col gap-6">
           {/* Error Message */}
           {error && (
@@ -116,7 +118,10 @@ export default function AddPost() {
 
           {/* Title Input */}
           <div className="flex flex-col gap-2">
-            <label htmlFor="title" className={`font-semibold ${themeClasses.text}`}>
+            <label
+              htmlFor="title"
+              className={`font-semibold ${themeClasses.text}`}
+            >
               Title
             </label>
             <input
@@ -130,13 +135,16 @@ export default function AddPost() {
               className={`w-full p-3 border ${themeClasses.border} ${themeClasses.input} rounded-lg outline-none focus:ring-2 focus:ring-blue-500`}
             />
             <p className={`text-xs ${themeClasses.span}`}>
-              {formData.title.length}/280
+              {formData.title.length}/50
             </p>
           </div>
 
           {/* Content Textarea */}
           <div className="flex flex-col gap-2">
-            <label htmlFor="content" className={`font-semibold ${themeClasses.text}`}>
+            <label
+              htmlFor="content"
+              className={`font-semibold ${themeClasses.text}`}
+            >
               Content
             </label>
             <textarea
@@ -152,7 +160,10 @@ export default function AddPost() {
 
           {/* Profession/Tag Input */}
           <div className="flex flex-col gap-2">
-            <label htmlFor="profession" className={`font-semibold ${themeClasses.text}`}>
+            <label
+              htmlFor="profession"
+              className={`font-semibold ${themeClasses.text}`}
+            >
               Profession/Tag
             </label>
             <input
@@ -163,9 +174,6 @@ export default function AddPost() {
               readOnly
               className={`w-full p-3 border ${themeClasses.border} ${themeClasses.input} rounded-lg outline-none opacity-75 cursor-not-allowed`}
             />
-            <p className={`text-xs ${themeClasses.span}`}>
-              Your profession is set to: <strong>{formData.profession}</strong>
-            </p>
           </div>
 
           {/* Image Upload */}

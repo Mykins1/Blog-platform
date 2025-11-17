@@ -6,7 +6,7 @@
         content:
           "React Hooks are function components that let you use state and other React features without writing a class. They were introduced in React 16.8 and have since become the standard way to manage state and side effects in React applications.",
         id: 1,
-        author: "Aina Rita",
+        author: "Dua Lipa",
         authorImg: "https://randomuser.me/api/portraits/women/1.jpg",
         profession: "Software Engineer",
       },

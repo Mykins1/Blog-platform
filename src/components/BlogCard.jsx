@@ -25,7 +25,7 @@ const formatDate = (date) => {
 // Main BlogItem component
 const BlogItem = ({ blog }) => {
   const words = blog.content.split(" ");
-  const shouldTruncate = words.length > 20;
+  const shouldTruncate = words.length > 40;
 
   // Use useMemo to cache the truncated content and avoid re-calculating on every render
   const truncatedContent = useMemo(() => {

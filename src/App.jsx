@@ -14,7 +14,6 @@ import { useTheme } from "./context/ThemeContext.js";
 
 export default function App() {
   const { themeClasses } = useTheme();
-  // Routing logic
   const location = useLocation();
   const hideNavbar =
     location.pathname === "/sign" ||
@@ -24,11 +23,11 @@ export default function App() {
     location.pathname === "/settings";
   const hideFooter = location.pathname.startsWith("/profile/");
   const hideSearch = location.pathname !== "/";
-  const isProfilePage =
+  const isNotHomePage =
     location.pathname.startsWith("/profile/") ||
     location.pathname === "/bookmarks" ||
-    location.pathname === "/settings";
-
+    location.pathname === "/settings" ||
+    location.pathname === "/addpost" 
   return (
     <div
       className={`min-h-screen ${themeClasses.background} ${themeClasses.text}`}
@@ -49,8 +48,8 @@ export default function App() {
         <main className="md:col-start-2" role="main">
           <div className="block md:hidden">{!hideNavbar && <Navbar />}</div>
           <section
-            className={`body max-w-auto mx-auto p-3 ${
-              isProfilePage ? "" : "md:pt-6 pt-17"
+            className={`body max-w-auto mx-auto px-4 ${
+              isNotHomePage ? "" : "md:pt-6 pt-17"
             }`}
             style={{
               height: "100%",
@@ -77,11 +76,7 @@ export default function App() {
           </div>
         </aside>
       </div>
-      {!hideSearch && (
-        <div className={`md:hidden px-4 ${themeClasses.border}`}>
-          <SearchPage />
-        </div>
-      )}
+      
       <div className="md:hidden">
         <BottomNav />
         {!hideFooter && <Footer />}
