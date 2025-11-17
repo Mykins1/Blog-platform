@@ -59,10 +59,13 @@ export default function Profile() {
                 <p className={`text-sm font-medium ${themeClasses.text} mb-2`}>
                   {post.content}
                 </p>
-                <img
-                  src={post.img}
-                  className="w-full mb-2 h-40 object-cover rounded"
-                />
+                {post.img && !post.img.includes("placeholder") && (
+                  <img
+                    src={post.img}
+                    className="w-full mb-2 h-40 object-cover rounded"
+                    alt={post.title}
+                  />
+                )}
                 {index < userPosts.length - 1 && (
                   <hr className="block md:hidden border-t border-gray-300 w-full mx-auto" />
                 )}

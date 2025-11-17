@@ -23,7 +23,7 @@ export default function App() {
     location.pathname === "/bookmarks" ||
     location.pathname === "/settings";
   const hideFooter = location.pathname.startsWith("/profile/");
-  const hideSearch = location.pathname === "/sign" || location.pathname === "/addpost";
+  const hideSearch = location.pathname !== "/";
   const isProfilePage =
     location.pathname.startsWith("/profile/") ||
     location.pathname === "/bookmarks" ||
