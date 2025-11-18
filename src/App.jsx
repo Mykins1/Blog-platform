@@ -49,7 +49,7 @@ export default function App() {
         <main className="md:col-start-2" role="main">
           <div className="block md:hidden">{!hideNavbar && <Navbar />}</div>
           <section
-            className={`body max-w-auto mx-auto px-4 ${
+            className={`body max-w-auto mx-auto p-4 ${
               isNotHomePage ? "" : "md:pt-6 pt-17"
             }`}
             style={{

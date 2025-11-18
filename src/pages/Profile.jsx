@@ -67,7 +67,7 @@ export default function Profile() {
                   />
                 )}
                 {index < userPosts.length - 1 && (
-                  <hr className="block md:hidden border-t border-gray-300 w-full mx-auto" />
+                  <hr className={`block md:hidden border-t ${themeClasses.border} w-full mx-auto`} />
                 )}
               </article>
             ))
