@@ -27,7 +27,8 @@ export default function App() {
     location.pathname.startsWith("/profile/") ||
     location.pathname === "/bookmarks" ||
     location.pathname === "/settings" ||
-    location.pathname === "/addpost" 
+    location.pathname === "/addpost" ||
+    location.pathname === "/sign"; 
   return (
     <div
       className={`min-h-screen ${themeClasses.background} ${themeClasses.text}`}
