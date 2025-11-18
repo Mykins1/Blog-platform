@@ -64,6 +64,7 @@ export default function App() {
               <Route path="/settings" element={<Settings />} />
               <Route path="/sign" element={<SignIn />} />
               <Route path="/bookmarks" element={<Bookmarks />} />
+              <Route path="/search" element={<SearchPage />} />
             </Routes>
           </section>
         </main>
