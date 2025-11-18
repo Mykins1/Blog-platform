@@ -87,7 +87,7 @@ const SignPage = () => {
 
               <button
                 type="button"
-                className="text-white"
+                className={`${themeClasses.border}`}
                 onClick={() => setShowPassword((prev) => !prev)}
                 aria-label={showPassword ? "Hide password" : "Show password"}
               >
