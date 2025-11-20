@@ -14,6 +14,7 @@ import { useTheme } from "../context/ThemeContext.js";
 export default function Navbar() {
   const [menuOpen, setMenuOpen] = useState(false);
   const [navbarTop, setNavbarTop] = useState(0);
+  const [userMenuOpen, setUserMenuOpen] = useState(false);
   const location = useLocation();
   const { themeClasses } = useTheme();
 
@@ -72,7 +73,7 @@ export default function Navbar() {
     <>
       {/* Navbar wrapper: fixed top bar on mobile, sidebar content inside parent on md+ */}
       <header
-        className={`nav fixed md:static w-full md:w-full flex flex-col md:flex-col items-center md:items-start border-b md:border-none ${themeClasses.border} ${themeClasses.background} px-4 py-2 md:py-6 z-[101]`}
+        className={`nav fixed md:static w-full md:w-full md:h-full flex flex-col md:flex-col items-center md:items-start border-b md:border-none ${themeClasses.border} ${themeClasses.background} px-4 py-2 md:py-4 z-[101]`}
         style={{
           top: `${navbarTop}px`, // used on mobile (fixed)
         }}
@@ -100,98 +101,139 @@ export default function Navbar() {
         </div>
 
         {/* Desktop Sidebar content (rendered inside fixed left column from App.jsx) */}
-        <div
-          className={`${themeClasses.background} hidden md:flex md:flex-col md:items-start md:w-full md:h-full md:px-4 md:gap-6`}
-        >
-          <h1 className={`${themeClasses.text} text-2xl font-bold`}>Socia</h1>
 
-          <div className="flex flex-col items-center px-3">
-            <div className="flex items-center shrink-1  gap-2 w-full ">
-              <img
-                src="https://randomuser.me/api/portraits/men/5.jpg"
-                alt="User"
-                className="w-9 h-9 rounded-full object-cover border-none"
-              />
-              <div className="flex flex-col items-start">
-                <span className={`font-semibold text-lg ${themeClasses.text}`}>
-                  Mykel Akinsade
-                </span>
-                <span className={`${themeClasses.span} text-sm`}>@mykins1</span>
+        <div
+          className={`${themeClasses.background} hidden md:flex md:flex-col md:items-start md:w-full md:h-full md:px-4 md:gap-6 pb-7`}
+        >
+          <h1
+            className={`${themeClasses.text} hidden px-4 md:block text-2xl font-bold`}
+          >
+            Socia
+          </h1>
+
+          <div className="flex flex-col justify-between w-full flex-grow">
+            <div>
+              <nav className="flex flex-col gap-2 w-full mt-2">
+                {/* Profile link with user icon */}
+                <NavLink
+                  to={`/profile/${encodeURIComponent("Mykel Akinsade")}`}
+                  onClick={() => setMenuOpen(true)}
+                  className={({ isActive }) =>
+                    `flex items-center gap-3 py-2 px-4 rounded-lg text-lg ${
+                      isActive ? "" : themeClasses.hover
+                    } ${themeClasses.active}`
+                  }
+                >
+                  <User size={22} weight="bold" />
+                  <span className="font-medium">Profile</span>
+                </NavLink>
+                {/* Bookmarks link with bookmark icon */}
+                <NavLink
+                  to="/bookmarks"
+                  onClick={() => setMenuOpen(true)}
+                  className={({ isActive }) =>
+                    `flex items-center gap-3 py-2 px-4 rounded-lg text-lg ${
+                      isActive ? "" : themeClasses.hover
+                    } ${themeClasses.active}`
+                  }
+                >
+                  <BookmarkSimple size={22} weight="bold" />
+                  <span className="font-medium">Bookmarks</span>
+                </NavLink>
+
+                {/* Settings link with gear icon */}
+                <NavLink
+                  to="/settings"
+                  onClick={() => setMenuOpen(true)}
+                  className={({ isActive }) =>
+                    `flex items-center gap-3 py-2 px-4 rounded-lg text-lg ${
+                      isActive ? "" : themeClasses.hover
+                    } ${themeClasses.active}`
+                  }
+                >
+                  <Gear size={22} weight="bold" />
+                  <span className="relative font-medium">
+                    Settings
+                    <span className="absolute top-0 right-0 h-2 w-2 -mt-0 -mr-4 rounded-full bg-red-500"></span>
+                  </span>
+                </NavLink>
+              </nav>
+            </div>
+            <div>
+              {/* Add Post Button - positioned above user profile */}
+              <NavLink
+                to="/addpost"
+                className={({ isActive }) =>
+                  `flex items-center justify-center gap-2 py-3 px-6 rounded-full font-medium text-white transition ${
+                    isActive ? "bg-sky-700" : "bg-sky-600 hover:bg-sky-700"
+                  }`
+                }
+              >
+                <Plus size={20} weight="bold" />
+                <span>Add Post</span>
+              </NavLink>
+            </div>
+
+            <div className="flex flex-col w-full items-center">
+              {/* User Profile Section - at bottom with dropdown menu */}
+              <div className="relative w-full flex justify-center">
+                <button
+                  onClick={() => setUserMenuOpen(!userMenuOpen)}
+                  className="flex items-center shrink-1 gap-2 w-full justify-center"
+                >
+                  <img
+                    src="https://randomuser.me/api/portraits/men/5.jpg"
+                    alt="User"
+                    className="w-9 h-9 rounded-full object-cover border-none"
+                  />
+                  <div className="flex flex-col items-start">
+                    <span
+                      className={`font-semibold text-lg ${themeClasses.text} cursor-pointer hover:opacity-70`}
+                    >
+                      Mykel Akinsade
+                    </span>
+                    <span className={`${themeClasses.span} text-sm`}>
+                      @mykins1
+                    </span>
+                  </div>
+                </button>
+
+                {/* Dropdown Menu - appears on click */}
+                {userMenuOpen && (
+                  <div
+                    className={`absolute bottom-full mb-2 w-full left-1/2 transform -translate-x-1/2 ${themeClasses.background} border ${themeClasses.border} rounded-lg shadow-lg z-50`}
+                    onClick={(e) => e.stopPropagation()}
+                  >
+                    <NavLink
+                      to="/sign"
+                      onClick={() => {
+                        setUserMenuOpen(false);
+                        setMenuOpen(false);
+                      }}
+                      className={({ isActive }) =>
+                        `flex items-center gap-3 py-3 px-4 text-lg whitespace-nowrap ${
+                          isActive ? "" : `${themeClasses.hover}`
+                        } ${themeClasses.active}`
+                      }
+                    >
+                      <SignOut size={20} weight="bold" />
+                      <span className="font-medium">Logout</span>
+                    </NavLink>
+                  </div>
+                )}
               </div>
             </div>
           </div>
-          <hr
-            className={`block md:hidden border-t  ${themeClasses.border} w-full`}
-          />
-
-          <nav className="flex flex-col gap-2 w-full mt-2">
-            {/* Profile link with user icon */}
-            <NavLink
-              to={`/profile/${encodeURIComponent("Mykel Akinsade")}`}
-              onClick={() => setMenuOpen(true)}
-              className={({ isActive }) =>
-                `flex items-center gap-3 py-2 px-4 rounded-lg text-lg ${
-                  isActive ? "" : themeClasses.hover
-                } ${themeClasses.active}`
-              }
-            >
-              <User size={22} weight="bold" />
-              <span className="font-medium">Profile</span>
-            </NavLink>
-            {/* Bookmarks link with bookmark icon */}
-            <NavLink
-              to="/bookmarks"
-              onClick={() => setMenuOpen(true)}
-              className={({ isActive }) =>
-                `flex items-center gap-3 py-2 px-4 rounded-lg text-lg ${
-                  isActive ? "" : themeClasses.hover
-                } ${themeClasses.active}`
-              }
-            >
-              <BookmarkSimple size={22} weight="bold" />
-              <span className="font-medium">Bookmarks</span>
-            </NavLink>
-            <hr
-              className={`block md:hidden border-t ${themeClasses.border} w-full`}
-            />{" "}
-            {/* Settings link with gear icon */}
-            <NavLink
-              to="/settings"
-              onClick={() => setMenuOpen(true)}
-              className={({ isActive }) =>
-                `flex items-center gap-3 py-2 px-4 rounded-lg text-lg ${
-                  isActive ? "" : themeClasses.hover
-                } ${themeClasses.active}`
-              }
-            >
-              <Gear size={22} weight="bold" />
-              <span className="relative font-medium">
-                Settings
-                <span className="absolute top-0 right-0 h-2 w-2 -mt-0 -mr-4 rounded-full bg-red-500"></span>
-              </span>
-            </NavLink>
-            <NavLink
-              to="/sign"
-              onClick={() => setMenuOpen(false)}
-              className={({ isActive }) =>
-                `flex items-center gap-3 py-2 px-4 text-lg ${
-                  isActive ? "" : `${themeClasses.hover} text-red-500`
-                } ${themeClasses.active}`
-              }
-            >
-              <SignOut size={22} weight="bold" />
-              <span className="font-medium">Logout</span>
-            </NavLink>
-          </nav>
         </div>
 
-        {/* Blurred Overlay when mobile menu is open */}
-        {menuOpen && (
+        {userMenuOpen && (
           <div
-            className="fixed inset-0 z-[100] bg-black/50 backdrop-gray-500 md:hidden"
-            onClick={() => setMenuOpen(false)}
+            className="fixed inset-0"
+            onClick={() => setUserMenuOpen(false)}
           />
         )}
+
+       
 
         {/* Mobile Sliding Sidebar */}
         <aside
@@ -251,8 +293,6 @@ export default function Navbar() {
                 <span className="font-medium">Bookmarks</span>
               </NavLink>
 
-              <hr className={`block md:hidden ${themeClasses.border} w-full`} />
-
               <NavLink
                 to="/settings"
                 onClick={() => setMenuOpen(false)}
@@ -268,13 +308,14 @@ export default function Navbar() {
                   <span className="absolute top-0 right-0 h-2 w-2 -mt-0 -mr-4 rounded-full bg-red-500"></span>
                 </span>
               </NavLink>
+              <hr className={`block md:hidden ${themeClasses.border} w-full`} />
 
               <NavLink
                 to="/sign"
                 onClick={() => setMenuOpen(false)}
                 className={({ isActive }) =>
                   `flex items-center gap-3 py-2 px-4 text-lg ${
-                    isActive ? "" : `${themeClasses.hover} text-red-500`
+                    isActive ? "" : `${themeClasses.hover} `
                   } ${themeClasses.active}`
                 }
               >

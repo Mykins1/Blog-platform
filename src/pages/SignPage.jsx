@@ -18,7 +18,7 @@ const SignPage = () => {
         className={`flex flex-col items-center  rounded-md ${themeClasses.background} ${themeClasses.text}`}
       >
         <h1 className="text-2xl text-center font-bold mb-2">
-          {showSignUp ? "Welcome to Socia" : "Welcome back"}
+          {showSignUp ? "Welcome to Socia" : "Sign In to Socia"}
         </h1>
 
         <form

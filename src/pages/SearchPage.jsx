@@ -62,7 +62,7 @@ export default function SearchPage() {
   return (
     <section
       aria-labelledby="search-heading"
-      className="z-[102] flex flex-col gap-4 w-full md:pt-6"
+      className="z-[102] flex flex-col gap-4 w-full "
     >
       <h2 id="search-heading" className="sr-only">
         Search

@@ -50,7 +50,7 @@ export default function App() {
           <div className="block md:hidden">{!hideNavbar && <Navbar />}</div>
           <section
             className={`body max-w-auto mx-auto p-4 ${
-              isNotHomePage ? "" : "md:pt-6 pt-17"
+              isNotHomePage ? "" : "md:pt-4 pt-17"
             }`}
             style={{
               height: "100%",
