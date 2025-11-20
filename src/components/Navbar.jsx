@@ -32,50 +32,39 @@ export default function Navbar() {
   useEffect(() => {
     let lastScrollY = window.scrollY;
     let ticking = false;
-    const navbarHeight = 70; // Adjust if your navbar height changes
+    const navbarHeight = 70;
     const hideThreshold = 60;
 
     const handleScroll = () => {
-      // Use requestAnimationFrame to optimize performance
       if (!ticking) {
         window.requestAnimationFrame(() => {
           const currentScrollY = window.scrollY;
-
-          // Only hide if scrolled more than 1 inch (96px)
           if (currentScrollY < lastScrollY) {
-            setNavbarTop(0); // Show navbar flush with the top
+            setNavbarTop(0);
           } else if (currentScrollY <= hideThreshold) {
-            setNavbarTop(0); // Show navbar if not past threshold
-          }
-          // If scrolling down and past threshold, hide the navbar.
-          else if (
+            setNavbarTop(0);
+          } else if (
             currentScrollY > lastScrollY &&
             currentScrollY > hideThreshold
           ) {
-            setNavbarTop(-navbarHeight); // Hide the navbar by moving it up
+            setNavbarTop(-navbarHeight);
           }
-
           lastScrollY = currentScrollY;
           ticking = false;
         });
         ticking = true;
       }
     };
-
-    // Add the scroll event listener
     window.addEventListener("scroll", handleScroll);
-
-    // Cleanup function to remove the event listener
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
   return (
     <>
-      {/* Navbar wrapper: fixed top bar on mobile, sidebar content inside parent on md+ */}
       <header
         className={`nav fixed md:static w-full md:w-full md:h-full flex flex-col md:flex-col items-center md:items-start border-b md:border-none ${themeClasses.border} ${themeClasses.background} px-4 py-2 md:py-4 z-[101]`}
         style={{
-          top: `${navbarTop}px`, // used on mobile (fixed)
+          top: `${navbarTop}px`,
         }}
       >
         {/* Mobile Top Bar */}
@@ -100,21 +89,20 @@ export default function Navbar() {
           </NavLink>
         </div>
 
-        {/* Desktop Sidebar content (rendered inside fixed left column from App.jsx) */}
-
+        {/* Desktop Sidebar content */}
         <div
           className={`${themeClasses.background} hidden md:flex md:flex-col md:items-start md:w-full md:h-full md:px-4 md:gap-6 pb-7`}
         >
-          <h1
+          <NavLink
             className={`${themeClasses.text} hidden px-4 md:block text-2xl font-bold`}
+            to="/"
           >
             Socia
-          </h1>
+          </NavLink>
 
           <div className="flex flex-col justify-between w-full flex-grow">
             <div>
               <nav className="flex flex-col gap-2 w-full mt-2">
-                {/* Profile link with user icon */}
                 <NavLink
                   to={`/profile/${encodeURIComponent("Mykel Akinsade")}`}
                   onClick={() => setMenuOpen(true)}
@@ -127,7 +115,7 @@ export default function Navbar() {
                   <User size={22} weight="bold" />
                   <span className="font-medium">Profile</span>
                 </NavLink>
-                {/* Bookmarks link with bookmark icon */}
+
                 <NavLink
                   to="/bookmarks"
                   onClick={() => setMenuOpen(true)}
@@ -141,7 +129,6 @@ export default function Navbar() {
                   <span className="font-medium">Bookmarks</span>
                 </NavLink>
 
-                {/* Settings link with gear icon */}
                 <NavLink
                   to="/settings"
                   onClick={() => setMenuOpen(true)}
@@ -160,7 +147,6 @@ export default function Navbar() {
               </nav>
             </div>
             <div>
-              {/* Add Post Button - positioned above user profile */}
               <NavLink
                 to="/addpost"
                 className={({ isActive }) =>
@@ -179,7 +165,7 @@ export default function Navbar() {
               <div className="relative w-full flex justify-center">
                 <button
                   onClick={() => setUserMenuOpen(!userMenuOpen)}
-                  className="flex items-center shrink-1 gap-2 w-full justify-center"
+                  className="flex items-center shrink-1 gap-2 w-full justify-center relative z-50" // Added z-50
                 >
                   <img
                     src="https://randomuser.me/api/portraits/men/5.jpg"
@@ -198,10 +184,10 @@ export default function Navbar() {
                   </div>
                 </button>
 
-                {/* Dropdown Menu - appears on click */}
+                {/* Dropdown Menu */}
                 {userMenuOpen && (
                   <div
-                    className={`absolute bottom-full mb-2 w-full left-1/2 transform -translate-x-1/2 ${themeClasses.background} border ${themeClasses.border} rounded-lg shadow-lg z-50`}
+                    className={`absolute bottom-full mb-2 w-full left-1/2 transform -translate-x-1/2 ${themeClasses.background} border ${themeClasses.border} rounded-lg shadow-lg z-[51]`} // Changed to z-[51]
                     onClick={(e) => e.stopPropagation()}
                   >
                     <NavLink
@@ -226,14 +212,22 @@ export default function Navbar() {
           </div>
         </div>
 
+        {/* FIXED: Overlay for Desktop User Menu (Click outside to close) */}
         {userMenuOpen && (
           <div
-            className="fixed inset-0"
+            className="fixed inset-0 z-[49] cursor-default"
             onClick={() => setUserMenuOpen(false)}
           />
         )}
 
-       
+        {/* FIXED: Overlay for Mobile Sidebar (Click outside to close) */}
+        {menuOpen && (
+          <div
+            className="fixed inset-0 bg-black/50 z-[101] md:hidden"
+            onClick={() => setMenuOpen(false)}
+            aria-hidden="true"
+          />
+        )}
 
         {/* Mobile Sliding Sidebar */}
         <aside
@@ -327,13 +321,11 @@ export default function Navbar() {
         </aside>
       </header>
 
-      {/* BottomNav always below Navbar and Sidebar (mobile only) */}
       <BottomNav menuOpen={menuOpen} navbarTop={navbarTop} />
     </>
   );
 }
 
-// --- Bottom Navigation for Mobile ---
 export const BottomNav = ({ menuOpen, navbarTop }) => {
   const location = useLocation();
   const { themeClasses } = useTheme();
@@ -348,7 +340,7 @@ export const BottomNav = ({ menuOpen, navbarTop }) => {
         menuOpen ? "none" : "auto"
       } opacity-${menuOpen ? "50" : "100"} transition-all duration-300`}
       style={{
-        bottom: navbarTop === 0 ? 0 : "-70px", // Hide/show bottom nav in sync with top nav
+        bottom: navbarTop === 0 ? 0 : "-70px",
       }}
     >
       <NavLink
@@ -377,20 +369,6 @@ export const BottomNav = ({ menuOpen, navbarTop }) => {
           strokeWidth={location.pathname === "/addpost" ? 3 : 1.5}
         />
       </NavLink>
-      {/* <NavLink
-        to="/search"
-        className={`flex flex-col items-center w-full rounded-md transition ${
-          location.pathname === "/search"
-            ? "bg-gray-200 text-gray-800"
-            : "text-gray-700"
-        }`}
-      >
-        <ChatsCircle
-          size={28}
-          weight={location.pathname === "/search" ? "fill" : "bold"}
-        />
-        <span className="text-xs">Chats</span>
-      </NavLink> */}
     </div>
   );
 };
