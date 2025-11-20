@@ -19,6 +19,7 @@ export const ThemeProvider = ({ children }) => {
     theme === "dark"
       ? {
           background: "bg-[#121212]",
+          button: "bg-white text-black hover:bg-[#F5F5F5]",
           text: "text-white",
           icon: "text-gray-500",
           hover: "hover:bg-[#2d2d2d]",
@@ -32,6 +33,7 @@ export const ThemeProvider = ({ children }) => {
         }
       : {
           background: "bg-white",
+          button: "bg-[#121212] text-white hover:bg-[#1C1C1E]",
           text: "text-black",
           icon: " text-zinc-900",
           hover: "hover:bg-gray-100",

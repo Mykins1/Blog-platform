@@ -104,10 +104,9 @@ export default function AddPost() {
 
   return (
     <main>
-      <Header title="Create Post" />
-
+      {/* <h1 className="flex items-center justify-center text-xl font-medium">Create Post</h1> */}
       <section
-        className={`max-w-2xl mx-auto md:px-6 py-5 ${themeClasses.background}`}
+        className={`max-w-2xl mx-auto md:px-6 ${themeClasses.background}`}
       >
         <form onSubmit={handleSubmit} className="flex flex-col gap-6">
           {/* Error Message */}
@@ -154,7 +153,7 @@ export default function AddPost() {
               placeholder="Write your post here..."
               value={formData.content}
               onChange={handleInputChange}
-              rows={8}
+              rows={5}
               className={`w-full p-3 border ${themeClasses.border} ${themeClasses.input} rounded-lg outline-none focus:ring-2 focus:ring-blue-500 resize-none`}
             />
           </div>

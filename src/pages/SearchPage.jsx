@@ -62,20 +62,20 @@ export default function SearchPage() {
   return (
     <section
       aria-labelledby="search-heading"
-      className="z-[102] flex flex-col gap-4 w-full "
+      className="z-[50] flex flex-col gap-4 w-full "
     >
       <h2 id="search-heading" className="sr-only">
         Search
       </h2>
       {/* Search Bar */}
-      <div className="relative w-full ml-4">
+      <div className="relative w-full md:ml-4">
         <MagnifyingGlass
           className="absolute left-3 top-1/2 -translate-y-1/2 text-gray-400"
           size={20}
         />
         <input
           type="text"
-          className={`w-full border ${themeClasses.border} ${themeClasses.input} p-2 pl-10 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 transition`}
+          className={`w-full border ${themeClasses.border} ${themeClasses.input} p-2 pl-10 rounded-lg focus:outline-none transition`}
           placeholder="Search..."
           aria-label="Search authors and professions"
           value={query}

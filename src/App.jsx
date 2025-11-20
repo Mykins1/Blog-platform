@@ -21,7 +21,8 @@ export default function App() {
     location.pathname.startsWith("/profile/") ||
     location.pathname === "/bookmarks" ||
     location.pathname === "/settings";
-  const hideFooter = location.pathname.startsWith("/profile/");
+  const hideFooter = location.pathname.startsWith("/profile/") ||
+    location.pathname === "/addpost";
   // const hideSearch = location.pathname !== "/";
   const isNotHomePage =
     location.pathname.startsWith("/profile/") ||
@@ -70,7 +71,7 @@ export default function App() {
         </main>
 
         <aside
-          className={`hidden md:block md:fixed md:right-0 md:top-0 md:h-screen md:w-[430px] md:border-l pr-20 ${themeClasses.border}`}
+          className={`hidden md:block md:fixed md:right-0 md:top-0 md:h-screen md:w-[430px] md:border-l md:pr-20 ${themeClasses.border}`}
           aria-label="Secondary sidebar"
         >
           <div className="h-full p-4 overflow-y-auto">

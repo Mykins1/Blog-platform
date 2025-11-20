@@ -149,10 +149,8 @@ export default function Navbar() {
             <div className="px-4">
               <NavLink
                 to="/addpost"
-                className={({ isActive }) =>
-                  `flex items-center justify-center gap-2 py-3 px-6  rounded-full font-medium text-white transition ${
-                    isActive ? "bg-sky-700" : "bg-sky-600 hover:bg-sky-700"
-                  }`
+                className={
+                  `flex items-center justify-center gap-2 py-3 px-6  rounded-full font-medium transition ${themeClasses.button}`
                 }
               >
                 <Plus size={20} weight="bold" />
