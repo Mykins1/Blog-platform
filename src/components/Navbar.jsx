@@ -91,7 +91,7 @@ export default function Navbar() {
 
         {/* Desktop Sidebar content */}
         <div
-          className={`${themeClasses.background} hidden md:flex md:flex-col md:items-start md:w-full md:h-full md:px-4 md:gap-6 pb-7`}
+          className={`${themeClasses.background} hidden md:flex md:flex-col md:items-start md:w-full md:h-full md:gap-6 pb-7`}
         >
           <NavLink
             className={`${themeClasses.text} hidden px-4 md:block text-2xl font-bold`}
@@ -107,65 +107,65 @@ export default function Navbar() {
                   to={`/profile/${encodeURIComponent("Mykel Akinsade")}`}
                   onClick={() => setMenuOpen(true)}
                   className={({ isActive }) =>
-                    `flex items-center gap-3 py-2 px-4 rounded-lg text-lg ${
+                    `flex items-center gap-3 py-2 px-4 rounded-lg text-xl ${
                       isActive ? "" : themeClasses.hover
                     } ${themeClasses.active}`
                   }
                 >
                   <User size={22} weight="bold" />
-                  <span className="font-medium">Profile</span>
+                  <span className="font-bold">Profile</span>
                 </NavLink>
 
                 <NavLink
                   to="/bookmarks"
                   onClick={() => setMenuOpen(true)}
                   className={({ isActive }) =>
-                    `flex items-center gap-3 py-2 px-4 rounded-lg text-lg ${
+                    `flex items-center gap-3 py-2 px-4 rounded-lg text-xl ${
                       isActive ? "" : themeClasses.hover
                     } ${themeClasses.active}`
                   }
                 >
                   <BookmarkSimple size={22} weight="bold" />
-                  <span className="font-medium">Bookmarks</span>
+                  <span className="font-bold">Bookmarks</span>
                 </NavLink>
 
                 <NavLink
                   to="/settings"
                   onClick={() => setMenuOpen(true)}
                   className={({ isActive }) =>
-                    `flex items-center gap-3 py-2 px-4 rounded-lg text-lg ${
+                    `flex items-center gap-3 py-2 px-4 rounded-lg text-xl ${
                       isActive ? "" : themeClasses.hover
                     } ${themeClasses.active}`
                   }
                 >
                   <Gear size={22} weight="bold" />
-                  <span className="relative font-medium">
+                  <span className="relative font-bold">
                     Settings
                     <span className="absolute top-0 right-0 h-2 w-2 -mt-0 -mr-4 rounded-full bg-red-500"></span>
                   </span>
                 </NavLink>
               </nav>
             </div>
-            <div>
+            <div className="px-4">
               <NavLink
                 to="/addpost"
                 className={({ isActive }) =>
-                  `flex items-center justify-center gap-2 py-3 px-6 rounded-full font-medium text-white transition ${
+                  `flex items-center justify-center gap-2 py-3 px-6  rounded-full font-medium text-white transition ${
                     isActive ? "bg-sky-700" : "bg-sky-600 hover:bg-sky-700"
                   }`
                 }
               >
                 <Plus size={20} weight="bold" />
-                <span>Add Post</span>
+                <span className="font-bold text-md">Post</span>
               </NavLink>
             </div>
 
-            <div className="flex flex-col w-full items-center">
+            <div className="flex items-start flex-col w-full">
               {/* User Profile Section - at bottom with dropdown menu */}
-              <div className="relative w-full flex justify-center">
+              <div className="relative w-full px-4">
                 <button
                   onClick={() => setUserMenuOpen(!userMenuOpen)}
-                  className="flex items-center shrink-1 gap-2 w-full justify-center relative z-50" // Added z-50
+                  className="flex items-center shrink-1 gap-2 w-full relative z-50" // Added z-50
                 >
                   <img
                     src="https://randomuser.me/api/portraits/men/5.jpg"
@@ -212,7 +212,7 @@ export default function Navbar() {
           </div>
         </div>
 
-        {/* FIXED: Overlay for Desktop User Menu (Click outside to close) */}
+        {/* Overlay for Desktop User Menu */}
         {userMenuOpen && (
           <div
             className="fixed inset-0 z-[49] cursor-default"
@@ -220,7 +220,7 @@ export default function Navbar() {
           />
         )}
 
-        {/* FIXED: Overlay for Mobile Sidebar (Click outside to close) */}
+        {/* Overlay for Mobile Sidebar */}
         {menuOpen && (
           <div
             className="fixed inset-0 bg-black/50 z-[101] md:hidden"

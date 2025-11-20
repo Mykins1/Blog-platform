@@ -68,7 +68,7 @@ export default function SearchPage() {
         Search
       </h2>
       {/* Search Bar */}
-      <div className="relative w-full">
+      <div className="relative w-full ml-4">
         <MagnifyingGlass
           className="absolute left-3 top-1/2 -translate-y-1/2 text-gray-400"
           size={20}

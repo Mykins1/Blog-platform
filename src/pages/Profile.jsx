@@ -116,155 +116,161 @@ export default function Profile() {
       {/* Page header with title and back button */}
       <Header title="Profile" />
 
-      {/* User Profile Section - Displays user avatar, name, and profession */}
-      <div className="flex items-center gap-4 px-4 leading-tight mb-8 mt-6">
-        {/* User avatar image */}
-        <img
-          src={user.authorImg}
-          alt={user.author}
-          className="w-24 h-24 rounded-full"
-        />
-        {/* User information (name and profession) */}
-        <div className="flex flex-col text-left">
-          {/* Username/Author name */}
-          <h2 className={`text-xl font-semibold ${themeClasses.text}`}>
-            {user.author}
-          </h2>
-          {/* User's profession/title */}
-          <p className={`text-sm font-medium ${themeClasses.span}`}>
-            {user.profession}
-          </p>
-        </div>
-      </div>
-
-      {/* Posts Section */}
-      <section className="flex flex-col gap-2">
-        {/* Section header with "Posts" title and divider line */}
-        <h3 className="flex flex-col gap-2 text-left text-lg font-bold px-4">
-          Posts
-          {/* Horizontal divider (visible only on mobile) */}
-          <hr
-            className={`block md:hidden border-t ${themeClasses.border} w-screen -ml-7`}
-          />
-        </h3>
-
-        {/* Container for all user posts */}
-        <div className={`flex flex-col ${themeClasses.background} gap-4 mb-5`}>
-          {/* Show "No posts yet" message if user has no posts */}
-          {userPosts.length === 0 ? (
-            <div className={`text-center ${themeClasses.text}`}>
-              No posts yet.
+      {/* Centered content container */}
+      <div className="flex flex-col items-center w-full">
+        {/* User Profile Section and Posts Header Container */}
+        <div className="flex items-start gap-8 leading-tight mb-8 mt-6 w-full max-w-[350px]">
+          {/* User Profile Section - Displays user avatar, name, and profession */}
+          <div className="flex items-center gap-4">
+            {/* User avatar image */}
+            <img
+              src={user.authorImg}
+              alt={user.author}
+              className="w-24 h-24 rounded-full"
+            />
+            {/* User information (name and profession) */}
+            <div className="flex flex-col text-left">
+              {/* Username/Author name */}
+              <h2 className={`text-xl font-semibold ${themeClasses.text}`}>
+                {user.author}
+              </h2>
+              {/* User's profession/title */}
+              <p className={`text-sm font-medium ${themeClasses.span}`}>
+                {user.profession}
+              </p>
             </div>
-          ) : (
-            // Map through all user posts and render each one
-            userPosts.map((post, index) => (
-              <article
-                // Unique key combining post ID and refresh key for proper re-rendering
-                key={`${post.id}-${refreshKey}`}
-                className={`rounded px-4 py-3 ${themeClasses.background}`}
-              >
-                {/* Conditional rendering: Show edit form if this post is being edited */}
-                {editingId === post.id ? (
-                  <div className="flex flex-col gap-3">
-                    {/* Edit form - Title input field */}
-                    <input
-                      type="text"
-                      value={editData.title}
-                      onChange={(e) =>
-                        setEditData({ ...editData, title: e.target.value })
-                      }
-                      className={`w-full p-2 border ${themeClasses.border} ${themeClasses.input} rounded outline-none focus:ring-2 focus:ring-blue-500`}
-                      placeholder="Post title"
-                    />
-                    {/* Edit form - Content textarea field */}
-                    <textarea
-                      value={editData.content}
-                      onChange={(e) =>
-                        setEditData({ ...editData, content: e.target.value })
-                      }
-                      rows={4}
-                      className={`w-full p-2 border ${themeClasses.border} ${themeClasses.input} rounded outline-none focus:ring-2 focus:ring-blue-500 resize-none`}
-                      placeholder="Post content"
-                    />
-                    {/* Action buttons for save and cancel */}
-                    <div className="flex gap-2">
-                      {/* Save button - commits changes */}
-                      <button
-                        onClick={() => handleSaveEdit(post.id)}
-                        className="flex-1 px-3 py-2 bg-blue-500 hover:bg-blue-600 text-white rounded font-medium text-sm"
-                      >
-                        Save
-                      </button>
-                      {/* Cancel button - exits edit mode without saving */}
-                      <button
-                        onClick={() => setEditingId(null)}
-                        className={`flex-1 px-3 py-2 border ${themeClasses.border} rounded font-medium text-sm`}
-                      >
-                        Cancel
-                      </button>
-                    </div>
-                  </div>
-                ) : (
-                  // Show post content if not in edit mode
-                  <>
-                    {/* Post title and content display */}
-                    <div>
-                      {/* Post title */}
-                      <h4 className={`font-semibold ${themeClasses.text}`}>
-                        {post.title}
-                      </h4>
-                      {/* Post content/body */}
-                      <p
-                        className={`text-sm font-medium ${themeClasses.text} mb-2`}
-                      >
-                        {post.content}
-                      </p>
-                    </div>
+          </div>
+        </div>
 
-                    {/* Display post image only if it exists and is not a placeholder */}
-                    {post.img && !post.img.includes("placeholder") && (
-                      <img
-                        src={post.img}
-                        className="w-full mb-3 h-40 object-cover rounded"
-                        alt={post.title}
+        {/* Posts Section */}
+        <section className="flex flex-col gap-4 items-center w-full">
+          {/* Section header with "Posts" title and divider line */}
+          <h3 className="flex flex-col gap-2 text-left text-lg font-bold w-full max-w-[350px]">
+            Posts
+            {/* Horizontal divider (visible only on mobile) */}
+            <hr
+              className={`block md:hidden border-t ${themeClasses.border} w-screen -ml-7`}
+            />
+          </h3>
+
+          {/* Container for all user posts - using flex layout similar to BlogCard */}
+          <div className={`flex flex-col items-center w-full gap-4 mb-5`}>
+            {/* Show "No posts yet" message if user has no posts */}
+            {userPosts.length === 0 ? (
+              <div className={`text-center ${themeClasses.text}`}>
+                No posts yet.
+              </div>
+            ) : (
+              // Map through all user posts and render each one
+              userPosts.map((post, index) => (
+                <article
+                  // Unique key combining post ID and refresh key for proper re-rendering
+                  key={`${post.id}-${refreshKey}`}
+                  className={`rounded-2xl px-4 md:px-0 py-3 ${themeClasses.background} max-w-[350px]`}
+                >
+                  {/* Conditional rendering: Show edit form if this post is being edited */}
+                  {editingId === post.id ? (
+                    <div className="flex flex-col gap-3">
+                      {/* Edit form - Title input field */}
+                      <input
+                        type="text"
+                        value={editData.title}
+                        onChange={(e) =>
+                          setEditData({ ...editData, title: e.target.value })
+                        }
+                        className={`w-full p-2 border ${themeClasses.border} ${themeClasses.input} rounded outline-none focus:ring-2 focus:ring-blue-500`}
+                        placeholder="Post title"
                       />
-                    )}
-
-                    {/* Edit and Delete buttons - only show if current user is viewing their own profile */}
-                    {isCurrentUser && (
-                      <div className="flex gap-2 justify-end">
-                        {/* Edit button - pencil icon */}
+                      {/* Edit form - Content textarea field */}
+                      <textarea
+                        value={editData.content}
+                        onChange={(e) =>
+                          setEditData({ ...editData, content: e.target.value })
+                        }
+                        rows={4}
+                        className={`w-full p-2 border ${themeClasses.border} ${themeClasses.input} rounded outline-none focus:ring-2 focus:ring-blue-500 resize-none`}
+                        placeholder="Post content"
+                      />
+                      {/* Action buttons for save and cancel */}
+                      <div className="flex gap-2">
+                        {/* Save button - commits changes */}
                         <button
-                          onClick={() => handleEdit(post)}
-                          className={`p-2 rounded ${themeClasses.hover} text-blue-500`}
-                          aria-label="Edit post"
+                          onClick={() => handleSaveEdit(post.id)}
+                          className="flex-1 px-3 py-2 bg-blue-500 hover:bg-blue-600 text-white rounded font-medium text-sm"
                         >
-                          <Pencil size={18} weight="bold" />
+                          Save
                         </button>
-                        {/* Delete button - trash icon */}
+                        {/* Cancel button - exits edit mode without saving */}
                         <button
-                          onClick={() => handleDelete(post.id)}
-                          className={`p-2 rounded ${themeClasses.hover} text-red-500`}
-                          aria-label="Delete post"
+                          onClick={() => setEditingId(null)}
+                          className={`flex-1 px-3 py-2 border ${themeClasses.border} rounded font-medium text-sm`}
                         >
-                          <Trash size={18} weight="bold" />
+                          Cancel
                         </button>
                       </div>
-                    )}
-                  </>
-                )}
+                    </div>
+                  ) : (
+                    // Show post content if not in edit mode
+                    <>
+                      {/* Post title and content display */}
+                      <div>
+                        {/* Post title */}
+                        <h4 className={`font-semibold ${themeClasses.text}`}>
+                          {post.title}
+                        </h4>
+                        {/* Post content/body */}
+                        <p
+                          className={`text-sm font-medium ${themeClasses.text} mb-2`}
+                        >
+                          {post.content}
+                        </p>
+                      </div>
 
-                {/* Horizontal divider between posts (visible only on mobile, except for the last post) */}
-                {index < userPosts.length - 1 && (
-                  <hr
-                    className={`block md:hidden border-t ${themeClasses.border} w-full mx-auto`}
-                  />
-                )}
-              </article>
-            ))
-          )}
-        </div>
-      </section>
+                      {/* Display post image only if it exists and is not a placeholder */}
+                      {post.img && !post.img.includes("placeholder") && (
+                        <img
+                          src={post.img}
+                          className="w-full mb-3 h-40 object-cover rounded-lg"
+                          alt={post.title}
+                        />
+                      )}
+
+                      {/* Edit and Delete buttons - only show if current user is viewing their own profile */}
+                      {isCurrentUser && (
+                        <div className="flex gap-2 justify-end">
+                          {/* Edit button - pencil icon */}
+                          <button
+                            onClick={() => handleEdit(post)}
+                            className={`p-2 rounded ${themeClasses.hover} text-blue-500`}
+                            aria-label="Edit post"
+                          >
+                            <Pencil size={18} weight="bold" />
+                          </button>
+                          {/* Delete button - trash icon */}
+                          <button
+                            onClick={() => handleDelete(post.id)}
+                            className={`p-2 rounded ${themeClasses.hover} text-red-500`}
+                            aria-label="Delete post"
+                          >
+                            <Trash size={18} weight="bold" />
+                          </button>
+                        </div>
+                      )}
+                    </>
+                  )}
+
+                  {/* Horizontal divider between posts (visible only on mobile, except for the last post) */}
+                  {index < userPosts.length - 1 && (
+                    <hr
+                      className={`block md:hidden border-t ${themeClasses.border} w-auto`}
+                    />
+                  )}
+                </article>
+              ))
+            )}
+          </div>
+        </section>
+      </div>
     </main>
   );
 }

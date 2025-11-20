@@ -28,6 +28,7 @@ export default function AddPost() {
 
   // Handle image file selection
   const handleImageChange = (e) => {
+    console.log(e.target)
     const file = e.target.files?.[0];
     if (file) {
       // Validate file type
@@ -228,14 +229,14 @@ export default function AddPost() {
               onClick={() => navigate("/")}
               className={`flex-1 px-4 py-2 border ${themeClasses.border} rounded-full font-medium transition ${themeClasses.hover}`}
             >
-              Cancel
+              Discard
             </button>
             <button
               type="submit"
               disabled={isSubmitting}
               className="flex-1 px-4 py-2 bg-sky-600 hover:bg-sky-700 disabled:bg-gray-400 text-white rounded-full font-medium transition"
             >
-              {isSubmitting ? "Posting..." : "Post"}
+              {isSubmitting ? "Publishing..." : "Publish"}
             </button>
           </div>
         </form>

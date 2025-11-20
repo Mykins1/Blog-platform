@@ -45,7 +45,7 @@
         title: "State Management in React",
         content:
           "Managing state in React can be done using various methods, including local component state, Context API, and third-party libraries like Redux or MobX. Each method has its own use cases and benefits, allowing developers to choose the best approach for their applications.",
-        id: 2,
+        id: 5,
         author: "Mykel Akinsade",
         authorImg: "https://randomuser.me/api/portraits/men/5.jpg",
         profession: "Frontend Developer",

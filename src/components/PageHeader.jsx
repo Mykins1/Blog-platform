@@ -19,7 +19,7 @@ export default function Header({ title }) {
         >
           <ArrowLeft size={25} className=" cursor-pointer" />
         </button>
-        <h1 className="flex text-xl font-medium md:ml-15">{title}</h1>
+        <h1 className="flex text-xl font-medium md:ml-7">{title}</h1>
         <div className="w-1/9" aria-hidden />
       </div>
     </header>

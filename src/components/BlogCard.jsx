@@ -54,10 +54,11 @@ const BlogItem = ({ blog }) => {
           newState.isLiked = !prevState.isLiked;
           newState.likes += newState.isLiked ? 1 : -1;
           break;
-        // case "comment":
-        //   newState.isCommented = !prevState.isCommented;
-        //   newState.comments += newState.isCommented ? 1 : -1;
-        //   break;
+        case "comment":
+          newState.isCommented = !prevState.isCommented;
+          newState.comments += newState.isCommented ? 1 : -1;
+
+          break;
         case "save":
           newState.isSaved = !prevState.isSaved;
           break;
@@ -157,7 +158,7 @@ const BlogItem = ({ blog }) => {
 
         <button
           className={`${themeClasses.reaction} flex items-center gap-1 hover:text-green-500 transition`}
-          onClick={""}
+          onClick={() => handleInteraction("comment")}
         >
           <ChatCircleText
             size={20}
@@ -200,7 +201,7 @@ export default function BlogCard({ blogs }) {
       className="grid grid-cols-1 md:grid-cols-1 gap-4"
     >
       {blogs.map((blog) => (
-        <BlogItem key={blog.id} blog={blog} />
+        <BlogItem key={blog.author} blog={blog} />
       ))}
     </section>
   );

@@ -22,7 +22,7 @@ export default function App() {
     location.pathname === "/bookmarks" ||
     location.pathname === "/settings";
   const hideFooter = location.pathname.startsWith("/profile/");
-  const hideSearch = location.pathname !== "/";
+  // const hideSearch = location.pathname !== "/";
   const isNotHomePage =
     location.pathname.startsWith("/profile/") ||
     location.pathname === "/bookmarks" ||
@@ -40,7 +40,7 @@ export default function App() {
     >
       <div className="md:grid md:grid-cols-[280px_1fr_320px] md:gap-4">
         <aside
-          className={`hidden md:block md:fixed md:left-0 md:top-0 md:h-screen md:w-[280px] md:border-r ${themeClasses.border}`}
+          className={`hidden md:block md:fixed md:left-0 md:top-0 md:h-screen md:w-[400px] md:border-r pl-20 ${themeClasses.border}`}
           aria-label="Primary sidebar"
         >
           <Navbar />
@@ -49,7 +49,7 @@ export default function App() {
         <main className="md:col-start-2" role="main">
           <div className="block md:hidden">{!hideNavbar && <Navbar />}</div>
           <section
-            className={`body max-w-auto mx-auto p-4 ${
+            className={`body max-w-[600px] mx-auto p-4 md:px-0 ${
               isNotHomePage ? "" : "md:pt-4 pt-17"
             }`}
             style={{
@@ -70,11 +70,11 @@ export default function App() {
         </main>
 
         <aside
-          className={`hidden md:block md:fixed md:right-0 md:top-0 md:h-screen md:w-[320px] md:border-l ${themeClasses.border}`}
+          className={`hidden md:block md:fixed md:right-0 md:top-0 md:h-screen md:w-[430px] md:border-l pr-20 ${themeClasses.border}`}
           aria-label="Secondary sidebar"
         >
           <div className="h-full p-4 overflow-y-auto">
-            {!hideSearch && <SearchPage />}
+            {<SearchPage />}
           </div>
         </aside>
       </div>
