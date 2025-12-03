@@ -47,33 +47,35 @@ export const ThemeProvider = ({ children }) => {
         };
 
   useEffect(() => {
-    const root = document.documentElement;
+    // const root = document.documentElement;
     const mediaQuery = window.matchMedia("(prefers-color-scheme: dark)");
 
     // This is the function that runs when the system theme changes
     const handleSystemThemeChange = (e) => {
-      if (theme === "system") {
-        root.className = e.matches ? "dark" : "light";
-      }
+     const systemTheme = e.matches ? "dark" : "light";
+
+     // In a real app, you'd add logic to check if this change
+     // should override a user-set preference.
+     setTheme(systemTheme);
     };
 
     // Add the listener for system theme changes
     mediaQuery.addEventListener("change", handleSystemThemeChange);
 
-    // Set the initial class based on the current theme state
-    if (theme === "system") {
-      root.className = mediaQuery.matches ? "dark" : "light";
-    } else {
-      root.className = theme;
-    }
+    // // Set the initial class based on the current theme state
+    // if (theme === "system") {
+    //   root.className = mediaQuery.matches ? "dark" : "light";
+    // } else {
+    //   root.className = theme;
+    // }
 
-    localStorage.setItem("theme", theme);
+    // localStorage.setItem("theme", theme);
 
     // Cleanup function to remove the listener
     return () => {
       mediaQuery.removeEventListener("change", handleSystemThemeChange);
     };
-  }, [theme]);
+  }, []);
 
   const value = { theme, setTheme, themeClasses };
 

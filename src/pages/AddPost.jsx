@@ -29,6 +29,7 @@ export default function AddPost() {
   // Handle image file selection
   const handleImageChange = (e) => {
     console.log(e.target)
+    alert(e)
     const file = e.target.files?.[0];
     if (file) {
       // Validate file type
