@@ -107,39 +107,45 @@ export default function Navbar() {
                   to={`/profile/${encodeURIComponent("Mykel Akinsade")}`}
                   onClick={() => setMenuOpen(true)}
                   className={({ isActive }) =>
-                    `flex items-center gap-3 py-2 px-4 rounded-lg text-xl ${
-                      isActive ? "" : themeClasses.hover
-                    } ${themeClasses.active}`
+                    `flex items-center gap-3 py-2 px-4 rounded-lg text-xl font-bold transition ${
+                      isActive
+                        ? "bg-sky-100 dark:bg-sky-900 text-sky-700 dark:text-sky-100"
+                        : themeClasses.hover
+                    }`
                   }
                 >
                   <User size={22} weight="bold" />
-                  <span className="font-bold">Profile</span>
+                  <span>Profile</span>
                 </NavLink>
 
                 <NavLink
                   to="/bookmarks"
                   onClick={() => setMenuOpen(true)}
                   className={({ isActive }) =>
-                    `flex items-center gap-3 py-2 px-4 rounded-lg text-xl ${
-                      isActive ? "" : themeClasses.hover
-                    } ${themeClasses.active}`
+                    `flex items-center gap-3 py-2 px-4 rounded-lg text-xl font-bold transition ${
+                      isActive
+                        ? "bg-sky-100 dark:bg-sky-900 text-sky-700 dark:text-sky-100"
+                        : themeClasses.hover
+                    }`
                   }
                 >
                   <BookmarkSimple size={22} weight="bold" />
-                  <span className="font-bold">Bookmarks</span>
+                  <span>Bookmarks</span>
                 </NavLink>
 
                 <NavLink
                   to="/settings"
                   onClick={() => setMenuOpen(true)}
                   className={({ isActive }) =>
-                    `flex items-center gap-3 py-2 px-4 rounded-lg text-xl ${
-                      isActive ? "" : themeClasses.hover
-                    } ${themeClasses.active}`
+                    `flex items-center gap-3 py-2 px-4 rounded-lg text-xl font-bold transition ${
+                      isActive
+                        ? "bg-sky-100 dark:bg-sky-900  dark:text-sky-100"
+                        : themeClasses.hover
+                    }`
                   }
                 >
                   <Gear size={22} weight="bold" />
-                  <span className="relative font-bold">
+                  <span className="relative">
                     Settings
                     <span className="absolute top-0 right-0 h-2 w-2 -mt-0 -mr-4 rounded-full bg-red-500"></span>
                   </span>
@@ -149,9 +155,7 @@ export default function Navbar() {
             <div className="px-4">
               <NavLink
                 to="/addpost"
-                className={
-                  `flex items-center justify-center gap-2 py-3 px-6  rounded-full font-medium transition ${themeClasses.button}`
-                }
+                className={`flex items-center justify-center gap-2 py-3 px-6  rounded-full font-medium transition ${themeClasses.button}`}
               >
                 <Plus size={20} weight="bold" />
                 <span className="font-bold text-md">Post</span>
